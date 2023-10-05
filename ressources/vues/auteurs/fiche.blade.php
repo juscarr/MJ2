@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>La pastèque</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-</head>
-<body>
-<main>
+@extends('gabarit')
+
+@section('contenu')
     <div>
         <h1>L'oiseau de Colette</h1>
         <p id="nomAuteur">Isabelle Arsenault</p>
@@ -42,8 +33,5 @@
     <p id="lprecedent">Livre Précédent</p>
     <p id="lsuivant">Livre Suivant</p>
 
+@endsection
 
-</main>
-<script src="index.js"></script>
-</body>
-</html>

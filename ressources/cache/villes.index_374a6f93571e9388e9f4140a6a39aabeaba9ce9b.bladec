@@ -1,0 +1,14 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('contenu'); ?>
+ <h1>Page index des villes</h1>
+
+ <ul>
+ <?php $__currentLoopData = $villes; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $ville): $loop = $this->incrementLoopIndices();  ?>
+ <li><a href="index.php?controleur=ville&action=fiche&id=<?php echo \htmlentities($ville->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>"> <?php echo \htmlentities($ville->getId() . " : " . $ville->getNom()??'', ENT_QUOTES, 'UTF-8', false); ?></li>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </ul>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('gabarit'); } ?>

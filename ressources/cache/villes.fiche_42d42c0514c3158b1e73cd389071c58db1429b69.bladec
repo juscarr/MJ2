@@ -1,0 +1,25 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('contenu'); ?>
+ <h1>Fiche d'une ville</h1>
+
+ <ul>
+
+ <li> Id : <?php echo \htmlentities($ville->getId()??'', ENT_QUOTES, 'UTF-8', false); ?><br>
+ <li> Nom de la ville : <?php echo \htmlentities($ville->getNom()??'', ENT_QUOTES, 'UTF-8', false); ?><br>
+ <li> Id région : <?php echo \htmlentities($ville->getRegionId()??'', ENT_QUOTES, 'UTF-8', false); ?><br>
+ <li> Région : <?php echo \htmlentities($region->getNom()??'', ENT_QUOTES, 'UTF-8', false); ?><br>
+ <br><b> Liste des participants qui habitent dans cette ville : </b><br>
+ <?php $__currentLoopData = $participants; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $participant): $loop = $this->incrementLoopIndices();  ?>
+ <?php echo \htmlentities($participant->getPrenomNom()??'', ENT_QUOTES, 'UTF-8', false); ?><br>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ <br><b> Liste des activitées dans cette ville : </b><br>
+ <?php $__currentLoopData = $activites; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $activite): $loop = $this->incrementLoopIndices();  ?>
+ <?php echo \htmlentities($activite->getNom()??'', ENT_QUOTES, 'UTF-8', false); ?><br>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </ul>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('gabarit'); } ?>

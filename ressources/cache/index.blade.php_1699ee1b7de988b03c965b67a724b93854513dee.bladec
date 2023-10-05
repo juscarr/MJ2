@@ -1,0 +1,15 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('contenu'); ?>
+ <h1>Page index des participants</h1>
+
+<ul>
+ <?php $__currentLoopData = $participants; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $participant): $loop = $this->incrementLoopIndices();  ?>
+ <li>
+ <a href="index.php?controleur=participant&action=fiche&id=' . $participant->getId() . '">' . $participant->getId() . " : " . $participant->getPrenomNom() </a>
+ </li>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+</ul>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('gabarit'); } ?>
