@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /**
- * @author Prenom Nom courriel
+ * @author MJ2
  * @todo Lier les modules avec des instructions @import
  * @todo Compléter selon l'énoncé de l'exercice
  */
@@ -418,8 +418,8 @@ th {
 */
 /** Polices de caractères **/
 @font-face {
-  font-family: Roboto, sans-serif;
-  src: url("../fonts/Roboto.ttc") format("truetype");
+  font-family: Inter, sans-serif;
+  src: url("../fonts/Inter.ttc") format("truetype");
 }
 /** Palette de couleurs **/
 /* Couleurs de base */
@@ -468,56 +468,50 @@ th {
 /****** BASE ******/
 /** Typographie **/
 /**
-* @author Prenom Nom courriel
+* @author MJ2
 * @todo Préciser l’interlignage sur le body pour l’écran large
 * @todo Utiliser le mixin fontSize pour définir les tailles de polices
 * @todo Utiliser une variable pour la media query de la règle body
 */
 /**** Typographie responsive ****/
 html {
-  font-size: 62.5%;
+  font-size: 100%;
 }
 
 body {
-  font-family: Roboto, sans-serif;
-  font-size: 16px; /* 16px pour toutes les largeurs d'écran */
-  line-height: 1.375; /* facteur multiplicateur de la taille de la police 1.375x16=22 */
+  font-family: Inter, sans-serif;
 }
-h1, h2, h3 {
-  font-family: Roboto, sans-serif;
-  font-weight: bold;
+
+h1, h2, h3, p {
+  font-family: Inter, sans-serif;
 }
 
 h1 {
-  font-size: 24px;
-  margin: 0;
+  font-size: 50px;
 }
 
 h2 {
-  font-size: 20px;
-  text-align: center;
+  font-size: 45px;
 }
 
 h3 {
-  font-size: 18px;
-}
-h3 margin {
-  top: 10px;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
+  font-size: 40px;
 }
 
-.texte {
-  font-family: Roboto, sans-serif;
+p {
+  font-size: 25px;
+}
+
+/*.texte {
+  font-family: $fontePrimaire;
   font-size: 16px;
   font-size: 1.6rem;
   line-height: 1.375;
-}
-.texte--desktop {
-  line-height: 1.5;
-}
 
+  &--desktop {
+    line-height: 1.5;
+  }
+}*/
 /** Boutons **/
 /** Input **/
 /****** MODULES ******/
