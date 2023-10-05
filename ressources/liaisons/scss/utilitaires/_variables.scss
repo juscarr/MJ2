@@ -10,15 +10,24 @@
 /** Polices de caractères **/
 
 @font-face {
-  font-family: Roboto, sans-serif;
-  src: url('../fonts/Roboto.ttc') format('truetype');
+  font-family: Inter, sans-serif;
+  src: url('../fonts/Inter.ttc') format('truetype');
 }
 
-$fontePrimaire: Roboto, sans-serif;
+$fontePrimaire: Inter, sans-serif;
+
 
 /** Palette de couleurs **/
 // Utiliser http://chir.ag/projects/name-that-color pour obtenir des noms uniques et mémorisables
 // Permettez-vous d'utiliser un nom de variable plus explicite si la suggestion de name-that-color est trop étrange
 
 /* Couleurs de base */
+
+$couleur_orange: #C84B36;
+
+$couleur_grisFonce: #231F20;
+
+$couleur_verte: #33AE55;
+
+$couleur_blanche: #FFFFFF;
 
