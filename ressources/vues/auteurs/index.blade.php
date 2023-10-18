@@ -23,25 +23,30 @@
                 <span class="filtre-tri">Tri</span>
                 <div class="liste-tri"></div>
             </div>
-            <div class="catalogue-liste">
+            <ul class="catalogue-liste">
+                @foreach ($auteurs as $auteur)
 
-                <div class="catalogue-item">
 
-                    <img src="">
-                    <p class="item-titre"></p>
-                    <p class="item-auteur"></p>
-                    <p class="item-version"></p>
-                    <p class-="item-prix"></p>
 
-                </div>
+                    <li class="catalogue-item">
+                        <a href="index.php?controleur=auteur&action=fiche&id={{$auteur->getId()}}">
 
-                <div class="catalogue-pagination">
+                            <img src="">
+                            <p class="item-titre"></p>
+                            <p class="item-auteur"></p>
+                            <p class="item-version"></p>
+                            <p class-="item-prix"></p>
+                        </a>
 
-                    <!--- Navigation inter-page--->
+                    </li>
+                @endforeach
+            </ul>
+            <div class="catalogue-pagination">
 
-                </div>
+                <!--- Navigation inter-page--->
 
             </div>
+
 
         </div>
 

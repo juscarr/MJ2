@@ -4,14 +4,13 @@ declare(strict_types=1);
 namespace App;
 
 use eftec\bladeone\BladeOne;
+
 use \PDO;
 use \PDO\PDOStatement;
 
 use App\Controleurs\ControleurSite;
 use App\Controleurs\ControleurLivre;
-use App\Controleurs\ControleurParticipant;
-use App\Controleurs\ControleurRegion;
-use App\Controleurs\ControleurVille;
+use App\Controleurs\ControleurAuteur;
 
 
 class App
@@ -30,6 +29,7 @@ class App
     {
 
         if (!App::$pdo) {
+
 // Exemple de paramètre de connexion
             $serveur = 'localhost:8889';
             $utilisateur = 'root';
@@ -38,12 +38,11 @@ class App
             $chaineDSN = "mysql:dbname=$nomBd;host=$serveur";    // Data source name
 
 // Tentative de connexion
-            $pdo = new PDO($chaineDSN, $utilisateur, $motDePasse);
+            App::$pdo = new PDO($chaineDSN, $utilisateur, $motDePasse);
 // Changement d'encodage des caractères UTF-8
-            $pdo->exec("SET NAMES utf8");
+            App::$pdo->exec("SET NAMES utf8");
 // Affectation des attributs de la connexion : Obtenir des rapports d'erreurs et d'exception avec errorInfo()
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+            App::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             return App::$pdo;
         } else {
@@ -115,8 +114,8 @@ class App
             }
         }
 
-        if ($nomControleur === 'activite') {
-            $objControleur = new ControleurLivre();
+        if ($nomControleur === 'auteur') {
+            $objControleur = new ControleurAuteur();
             switch ($nomAction) {
 
                 case 'index':
@@ -131,46 +130,6 @@ class App
                 case 'creer':
                     $objControleur->creer();
                     break;
-                default:
-                    echo 'Erreur 404 - Page introuvable.';
-            }
-        }
-
-        if ($nomControleur === 'ville') {
-            $objControleur = new ControleurVille();
-            switch ($nomAction) {
-
-                case 'index':
-                    $objControleur->index();
-                    break;
-                case 'fiche':
-                    $objControleur->fiche();
-                    break;
-                case 'modifier':
-                    $objControleur->modifier();
-                    break;
-                case 'creer':
-                    $objControleur->creer();
-                default:
-                    echo 'Erreur 404 - Page introuvable.';
-            }
-        }
-
-        if ($nomControleur === 'region') {
-            $objControleur = new ControleurRegion();
-            switch ($nomAction) {
-
-                case 'index':
-                    $objControleur->index();
-                    break;
-                case 'fiche':
-                    $objControleur->fiche();
-                    break;
-                case 'modifier':
-                    $objControleur->modifier();
-                    break;
-                case 'creer':
-                    $objControleur->creer();
                 default:
                     echo 'Erreur 404 - Page introuvable.';
             }

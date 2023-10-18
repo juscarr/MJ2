@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controleurs;
 use App\App;
+use App\Modeles\Auteur;
 use App\Modeles\Exemple\Activite;
 use App\Modeles\Exemple\Participant;
 
@@ -16,10 +17,10 @@ class ControleurAuteur
     public function index(): void
     {
         $pdo = App::getPDO();
-        $participants = Participant::trouverTout($pdo);
+        $auteurs = Auteur::trouverTout($pdo);
 
-        $tDonnees = array("livres"=>$participants);
-        echo App::getBlade()->run("livres.index", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
+        $tDonnees = array("auteurs"=>$auteurs);
+        echo App::getBlade()->run("auteurs.index", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
 
     }
 

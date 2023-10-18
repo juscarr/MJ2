@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Modeles;
-
+use App\Modeles\AssocLivreAuteur;
 use PDO;
 use PDO\PDOStatement;
 
@@ -15,10 +15,9 @@ class Auteur
 {
     private int $id = 0;
     private string $nom = '';
-    private string $description = '';
-    private int $categorie_id = 0;
-    private int $niveau_id = 0;
-    private int $ville_id = 0;
+    private string $prenom = '';
+    private string $notice = '';
+    private string $site_web = '';
 
     public function __construct(){
 
@@ -35,76 +34,25 @@ class Auteur
         return $this->nom;
     }
 
-    public function getDescription(): string
+    public function getPrenom(): string
     {
-        return $this->description;
+        return $this->prenom;
     }
 
-    public function getCategorieId(): int
+    public function getNotice(): string
     {
-        return $this->categorie_id;
+        return $this->notice;
+    }
+    public function getSite(): string
+    {
+        return $this->site_web;
     }
 
-    public function getNiveauId(): int
+    public function getLivresAssociee($id, $pdo): array
     {
-        return $this->niveau_id;
+        return AssocLivreAuteur::trouverLivresParIdAuteur($id, $pdo);
     }
 
-    public function getVilleId(): int
-    {
-        return $this->ville_id;
-    }
-
-    /* Méthode SET */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
-    public function setNom(string $nom): void
-    {
-        $this->nom = $nom;
-    }
-
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
-
-    public function setCategorieId(int $categorie_id): void
-    {
-        $this->categorie_id = $categorie_id;
-    }
-
-    public function setNiveauId(int $niveau_id): void
-    {
-        $this->niveau_id = $niveau_id;
-    }
-
-    public function setVilleId(int $ville_id): void
-    {
-        $this->ville_id = $ville_id;
-    }
-
-    public function getVillesAssociee($id, $pdo): Ville
-    {
-        return Ville::trouverParId($id, $pdo);
-    }
-
-    public function getNiveauxAssociee($id, $pdo): Niveau
-    {
-        return Niveau::trouverParId($id, $pdo);
-    }
-
-    public function getCategorieAssociee($id, $pdo): Categorie
-    {
-        return Categorie::trouverParId($id, $pdo);
-    }
-
-    public function getParticipantsAssociees($id, $pdo): array
-    {
-        return Participant::trouverParIdActivite($id, $pdo);
-    }
 
     /* Méthode STATIC */
     public static function trouverTout($pdo):array {
@@ -113,48 +61,45 @@ class Auteur
         // Préparer la requête (optimisation)
         $requetePreparee = $pdo->prepare($chaineSQL);
         // Définir le mode de récupération
-        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Exemple\Activite');
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Auteur');
         // Exécuter la requête
         $requetePreparee->execute();
         // Récupérer le résultat
-        $activites = $requetePreparee->fetchAll();
+        $auteurs = $requetePreparee->fetchAll();
 
-        return $activites;
+        return $auteurs;
     }
 
-    public static function trouverParId(int $unIdActivite, $pdo):Activite {
+    public static function trouverParId(int $unIdAuteur, $pdo):Auteur {
         // Définir la chaine SQL
-        $chaineSQL = 'SELECT * FROM auteurs WHERE id=:idActivite';
+        $chaineSQL = 'SELECT * FROM auteurs WHERE id=:idAuteur';
         // Préparer la requête (optimisation)
         $requetePreparee = $pdo->prepare($chaineSQL);
-        $requetePreparee->bindParam(':idActivite', $unIdActivite,PDO::PARAM_INT);
+        $requetePreparee->bindParam(':idAuteur', $unIdAuteur,PDO::PARAM_INT);
 
         // Définir le mode de récupération
-        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Exemple\Activite');
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Auteur');
         // Exécuter la requête
         $requetePreparee->execute();
         // Récupérer le résultat
-        $activite = $requetePreparee->fetch();
+        $auteur = $requetePreparee->fetch();
 
-        return $activite;
+        return $auteur;
     }
-
-    public static function trouverParIdVille(int $unIdville, $pdo):array {
+    public static function trouverNbAuteurs($pdo): int
+    {
         // Définir la chaine SQL
-        $chaineSQL = 'SELECT * FROM auteurs WHERE ville_id=:idVille';
+        $chaineSQL = 'SELECT COUNT(*) AS nombres FROM auteurs;';
         // Préparer la requête (optimisation)
         $requetePreparee = $pdo->prepare($chaineSQL);
-        $requetePreparee->bindParam(':idVille', $unIdville,PDO::PARAM_INT);
-
         // Définir le mode de récupération
-        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Exemple\Activite');
+        $requetePreparee->setFetchMode(PDO::FETCH_ASSOC);
         // Exécuter la requête
         $requetePreparee->execute();
         // Récupérer le résultat
-        $activites = $requetePreparee->fetchAll();
+        $nbAuteur = $requetePreparee->fetch();
 
-        return $activites;
+        return $nbAuteur['nombres'];
     }
-
 
 }
