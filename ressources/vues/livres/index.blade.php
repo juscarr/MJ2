@@ -1,6 +1,7 @@
 @extends('gabarit')
 
 @section('contenu')
+    <script defer src="liaisons/js/categorie.js"></script>
     <section class="catalogue-main">
         <div class="catalogue-entete">
             <h1>Catalogue</h1>
@@ -18,7 +19,9 @@
                 <a>Réinitialiser les filtres</a>
                 <h2>Filtre</h2>
                 <span class="filtre-categorie">Catégories</span>
-                <div class="liste-deroulante"></div>
+                <div class="liste-deroulante">
+                    <input type="checkbox" id="">
+                </div>
 
                 <span class="filtre-tri">Tri</span>
                 <div class="liste-tri"></div>
