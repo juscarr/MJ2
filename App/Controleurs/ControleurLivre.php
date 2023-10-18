@@ -2,8 +2,11 @@
 declare(strict_types=1);
 
 namespace App\Controleurs;
+
 use App\App;
-use App\Modeles\Exemple\Activite;
+use App\Modeles\AssocLivreAuteur;
+use App\Modeles\Auteur;
+use App\Modeles\Livre;
 
 class ControleurLivre
 {
@@ -14,32 +17,27 @@ class ControleurLivre
 
     public function index(): void
     {
-//        $pdo = App::getPDO();
-//        $activites = Activite::trouverTout($pdo);
-//
-//        $tDonnees = array("auteurs"=>$activites);
-        echo App::getBlade()->run("livres.index"); // /ressource/vues/accueil.blade.php doit exister...
+        $pdo = App::getPDO();
+        $livres = Livre::trouverTout($pdo);
+        $tDonnees = array("livres" => $livres, "pdo"=>$pdo);
+        echo App::getBlade()->run("livres.index", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
 
     }
 
-    public function fiche():void {
+    public function fiche(): void
+    {
         $pdo = App::getPDO();
-        $id = (int)$_GET['id']; // Attention
+        $id = (int)$_GET['id'];
 
-        $collectionActivites = new Activite($pdo);
-        $activite = Activite::trouverParId($id, $pdo);
-        $villes = $collectionActivites->getVillesAssociee($id, $pdo);
-        $niveau = $collectionActivites->getNiveauxAssociee($activite->getNiveauId(), $pdo);
-        $categorie = $collectionActivites->getCategorieAssociee($activite->getCategorieId(), $pdo);
-        $participants = $collectionActivites->getParticipantsAssociees($id, $pdo);
-        $regionVille = $villes->getRegionAssociees($villes->getRegionId(), $pdo);
+        $livre = Livre::trouverParId($id, $pdo);
+        $tDonnees = array("livre" => $livre, "pdo"=>$pdo);
+        echo App::getBlade()->run("livres.fiche", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
 
-        $tDonnees = array("activite"=>$activite, "villes"=>$villes, "niveau"=>$niveau, "categorie"=>$categorie, "livres"=>$participants, "regionVille"=>$regionVille);
-        echo App::getBlade()->run("auteurs.fiche", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
 
 
     }
 }
+
 ?>
 
 

@@ -23,25 +23,32 @@
                 <span class="filtre-tri">Tri</span>
                 <div class="liste-tri"></div>
             </div>
-            <div class="catalogue-liste">
+            <ul class="catalogue-liste">
+                @foreach ($livres as $livre)
 
-                <div class="catalogue-item">
+                    <li class="catalogue-item">
+                        <a href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
-                    <img src="">
-                    <p class="item-titre"></p>
-                    <p class="item-auteur"></p>
-                    <p class="item-version"></p>
-                    <p class-="item-prix"></p>
+                            <img src="">
+                            <p class="item-titre">{{$livre->getTitre()}}</p>
+                            <p class="item-auteur">
+                                @foreach ($livre->getAuteurAssociee($livre->getId(), $pdo) as $livreAssocAuteur)
+                                    {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getNom()}}
+                                @endforeach
+                            </p>
+                            <p class="item-version">{{$livre->getStatut()}}</p>
+                            <p class-="item-prix">{{$livre->getPrixCan()}}</p>
+                        </a>
 
-                </div>
+                    </li>
+                @endforeach
+            </ul>
+            <div class="catalogue-pagination">
 
-                <div class="catalogue-pagination">
-
-                    <!--- Navigation inter-page--->
-
-                </div>
+                <!--- Navigation inter-page--->
 
             </div>
+
 
         </div>
 

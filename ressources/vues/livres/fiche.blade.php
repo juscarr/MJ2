@@ -2,8 +2,11 @@
 
 @section('contenu')
     <div>
-        <h1>L'oiseau de Colette</h1>
-        <p id="nomAuteur">Isabelle Arsenault</p>
+        <h1>{{$livre->getTitre()}}</h1>
+        <p id="nomAuteur">
+            @foreach ($livre->getAuteurAssociee($livre->getId(), $pdo) as $livreAssocAuteur)
+                {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getNom()}}
+            @endforeach</p>
         <p id="age">5 ans et plus</p>
         <p id="nbPages">115 pages</p>
         <p id="prix">75$</p>

@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace App\Controleurs;
 
 use App\App;
+use App\Modeles\Actualite;
+use App\Modeles\Evenement;
+use App\Modeles\Livre;
 
 class ControleurSite
 {
@@ -14,7 +17,16 @@ class ControleurSite
 
     public function accueil(): void
     {
-        echo App::getBlade()->run("accueil"); // /ressource/vues/accueil.blade.php doit exister...
+
+        $pdo = App::getPDO();
+        $actualites = Actualite::trouverTout($pdo);
+        $evenements = Evenement::trouverTout($pdo);
+        $livres = Livre::trouverTout($pdo);
+
+        $tDonnees = array("livres"=>$livres, "actualites"=>$actualites, "evenements"=>$evenements);
+
+        echo App::getBlade()->run("accueil", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
+
     }
 
 

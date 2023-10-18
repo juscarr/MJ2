@@ -2,10 +2,6 @@
 declare(strict_types=1);
 namespace App\Modeles;
 
-use App\Modeles\Exemple\Activite;
-use App\Modeles\Exemple\Participant;
-use App\Modeles\Exemple\Region;
-
 use PDO;
 use PDO\PDOStatement;
 
@@ -16,8 +12,11 @@ use PDO\PDOStatement;
 class Actualite
 {
     private int $id = 0;
-    private string $nom = '';
-    private int $region_id = 0;
+    private string $titre = '';
+    private string $l_activite = '';
+    private string $date = '0000-00-00';
+    private string $lien_facebook = '';
+    private string $lien_instagram = '';
 
 
     public function __construct(){
@@ -30,97 +29,60 @@ class Actualite
         return $this->id;
     }
 
-    public function getNom(): string
+    public function getTitre(): string
     {
-        return $this->nom;
+        return $this->titre;
     }
 
-    public function getRegionId(): int
+    public function getl_actualite(): string
     {
-        return $this->region_id;
+        return $this->l_activite;
     }
-
-    /* Méthode SET */
-    public function setId(int $id): void
+    public function getDate(): int
     {
-        $this->id = $id;
+        return $this->date;
     }
 
-    public function setNom(string $nom): void
+    public function getFacebook(): string
     {
-        $this->nom = $nom;
+        return $this->lien_facebook;
     }
 
-    public function setRegionId(int $region_id): void
+    public function getInstagram(): string
     {
-        $this->region_id = $region_id;
+        return $this->lien_instagram;
     }
-
-    public function getRegionAssociees($id, $pdo):Region {
-        return Region::trouverParId($id, $pdo);
-    }
-
-    public function getParticipantsAssociees($id, $pdo):Array {
-        return Participant::trouverParIdVille($id, $pdo);
-    }
-
-    public function getActivitesAssociees($id, $pdo):Array {
-        return Activite::trouverParIdVille($id, $pdo);
-    }
-
 
     /* Méthode STATIC */
     public static function trouverTout($pdo):array {
         // Définir la chaine SQL
-        $chaineSQL = 'SELECT * FROM villes';
+        $chaineSQL = 'SELECT * FROM actualites';
         // Préparer la requête (optimisation)
         $requetePreparee = $pdo->prepare($chaineSQL);
         // Définir le mode de récupération
-        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Ville');
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Actualite');
         // Exécuter la requête
         $requetePreparee->execute();
         // Récupérer le résultat
-        $villes = $requetePreparee->fetchAll();
+        $actualites = $requetePreparee->fetchAll();
 
-        return $villes;
+        return $actualites;
     }
 
-    public static function trouverParId(int $unIdVille, $pdo): Exemple\Ville {
+    public static function trouverParId(int $unIdActualite, $pdo): Exemple\Ville {
         // Définir la chaine SQL
-        $chaineSQL = 'SELECT * FROM villes WHERE id=:idVille';
+        $chaineSQL = 'SELECT * FROM actualites WHERE id=:idActualite';
         // Préparer la requête (optimisation)
         $requetePreparee = $pdo->prepare($chaineSQL);
-        $requetePreparee->bindParam(':idVille', $unIdVille,PDO::PARAM_INT);
+        $requetePreparee->bindParam(':idActualite', $unIdActualite,PDO::PARAM_INT);
 
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Ville');
         // Exécuter la requête
         $requetePreparee->execute();
         // Récupérer le résultat
-        $ville = $requetePreparee->fetch();
+        $actualite = $requetePreparee->fetch();
 
-        return $ville;
+        return $actualite;
     }
-
-    public static function trouverParRegion(int $unIdRegion, $pdo) {
-         // Définir la chaine SQL
-        $chaineSQL = 'SELECT * FROM villes WHERE region_id=:idRegion';
-        // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
-        $requetePreparee->bindParam(':idRegion', $unIdRegion,PDO::PARAM_INT);
-
-        // Définir le mode de récupération
-        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Ville');
-        // Exécuter la requête
-        $requetePreparee->execute();
-        // Récupérer le résultat
-        $tableauVille = $requetePreparee->fetchAll();
-
-        return $tableauVille;
-    }
-
-
-
-
-
 }
