@@ -1,20 +1,39 @@
-let modele = document.getElementById('modele');
+let btnRadio1 = document.getElementById('bande-dessine');
+let btnRadio2 = document.getElementById('bande-dessine-jeunesse');
+let btnRadio3 = document.getElementById('livre-illustre');
+let btnRadio4 = document.getElementById('album-jeunesse');
+let btnRadio5 = document.getElementById('documentaire');
+let btnRadio6 = document.getElementById('divers');
 
-modele.addEventListener("change", function synchron() {
+let tBtnRadio = [btnRadio1, btnRadio2, btnRadio3, btnRadio4, btnRadio5, btnRadio6]
 
-    fetch('http://localhost:8888/public/liaisons/js/categorie.php?id=' + modele.value)
-        .then(response1 => response1.json())
+for (let i = 0; i < tBtnRadio.length; i++) {
+    tBtnRadio[i].addEventListener("click", checkboxActif)
+}
+
+function checkboxActif() {
+    for (let i = 0; i < tBtnRadio.length; i++) {
+        if (tBtnRadio[i].checked) {
+            synchron(tBtnRadio[i].value);
+        }
+    }
+}
+
+
+function synchron(categories) {
+    fetch('http://localhost:8888/Rpni/MJ2/public/liaisons/categorie.php?categories=' + categories)
+        .then(response => response.json())
         .then(json1 => {
-            document.getElementById('couleurs').innerHTML = '';
+                document.getElementById('catalogue-liste').innerHTML = '';
+                for (let e = 0; e < json1.length; e++) {
+                    console.log(json1)
+                    let li = document.createElement('li');
+                    li.innerHTML = json1[e]['titre'];
+                    document.getElementById('catalogue-liste').appendChild(li);
 
-            for (let e = 0; e < 3; e++) {
-                let li = document.createElement('li');
-                li.innerText = json1[i];
-                document.getElementById('couleurs').appendChild(li);
-
+                }
             }
+        )
 
-        })
 
-});
-
+}
