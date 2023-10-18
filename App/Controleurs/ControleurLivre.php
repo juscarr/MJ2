@@ -4,10 +4,8 @@ declare(strict_types=1);
 namespace App\Controleurs;
 
 use App\App;
-use App\Modeles\AssocLivreAuteur;
-use App\Modeles\Auteur;
-use App\Modeles\Livre;
 
+use App\Modeles\Livre;
 class ControleurLivre
 {
 
@@ -26,11 +24,10 @@ class ControleurLivre
 
     public function fiche(): void
     {
-        $pdo = App::getPDO();
         $id = (int)$_GET['id'];
 
-        $livre = Livre::trouverParId($id, $pdo);
-        $tDonnees = array("livre" => $livre, "pdo"=>$pdo);
+        $livre = Livre::trouverParId($id, App::getPDO());
+        $tDonnees = array("livre" => $livre);
         echo App::getBlade()->run("livres.fiche", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
 
 

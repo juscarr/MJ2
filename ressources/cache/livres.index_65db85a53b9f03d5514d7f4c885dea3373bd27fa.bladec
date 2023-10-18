@@ -20,34 +20,42 @@
  <h2>Filtre</h2>
  <span class="filtre-categorie">Catégories</span>
  <div class="liste-deroulante">
- <input type="checkbox" id="">
+ <input type="radio" id="bande-dessine" value="1" name="categorie"><label for="bande-dessine">Bande
+ dessinée</label>
+ <input type="radio" id="bande-dessine-jeunesse" value="2" name="categorie"><label
+ for="bande-dessine-jeunesse">Bande dessinée jeunesse</label>
+ <input type="radio" id="livre-illustre" value="3" name="categorie"><label for="livre-illustre">Livre
+ illustrée</label>
+ <input type="radio" id="album-jeunesse" value="4" name="categorie"><label for="album-jeunesse">Album
+ jeunesse</label>
+ <input type="radio" id="documentaire" value="5" name="categorie"><label for="documentaire">Documentaire</label>
+ <input type="radio" id="divers" value="6" name="categorie"><label for="divers">Divers</label>
  </div>
 
  <span class="filtre-tri">Tri</span>
  <div class="liste-tri"></div>
  </div>
- <ul class="catalogue-liste">
- <?php $__currentLoopData = $livres; $this->addLoop($__currentLoopData);$this->getFirstLoop();
- foreach($__currentLoopData as $livre): $loop = $this->incrementLoopIndices();  ?>
+ <ul class="catalogue-liste" id="catalogue-liste">
+ <?php /*                <?php $__currentLoopData = $livres; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $livre): $loop = $this->incrementLoopIndices();  ?>*/ ?>
 
- <li class="catalogue-item">
- <a href="index.php?controleur=livre&action=fiche&id=<?php echo \htmlentities($livre->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <?php /*                    <li class="catalogue-item">*/ ?>
+ <?php /*                        <a href="index.php?controleur=livre&action=fiche&id=<?php echo \htmlentities($livre->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>">*/ ?>
 
- <img src="">
- <p class="item-titre"><?php echo \htmlentities($livre->getTitre()??'', ENT_QUOTES, 'UTF-8', false); ?></p>
- <p class="item-auteur">
- <?php $__currentLoopData = $livre->getAuteurAssociee($livre->getId(), $pdo); $this->addLoop($__currentLoopData);$this->getFirstLoop();
- foreach($__currentLoopData as $livreAssocAuteur): $loop = $this->incrementLoopIndices();  ?>
- <?php echo \htmlentities($livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getNom()??'', ENT_QUOTES, 'UTF-8', false); ?>
+ <?php /*                            <img src="">*/ ?>
+ <?php /*                            <p class="item-titre"><?php echo \htmlentities($livre->getTitre()??'', ENT_QUOTES, 'UTF-8', false); ?></p>*/ ?>
+ <?php /*                            <p class="item-auteur">*/ ?>
+ <?php /*                                <?php $__currentLoopData = $livre->getAuteurAssociee($livre->getId(), $pdo); $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $livreAssocAuteur): $loop = $this->incrementLoopIndices();  ?>*/ ?>
+ <?php /*                                    <?php echo \htmlentities($livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getNom()??'', ENT_QUOTES, 'UTF-8', false); ?>*/ ?>
+ <?php /*                                <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>*/ ?>
+ <?php /*                            </p>*/ ?>
+ <?php /*                            <p class="item-version"><?php echo \htmlentities($livre->getStatut()??'', ENT_QUOTES, 'UTF-8', false); ?></p>*/ ?>
+ <?php /*                            <p class-="item-prix"><?php echo \htmlentities($livre->getPrixCan()??'', ENT_QUOTES, 'UTF-8', false); ?></p>*/ ?>
+ <?php /*                        </a>*/ ?>
 
- <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
- </p>
- <p class="item-version"><?php echo \htmlentities($livre->getStatut()??'', ENT_QUOTES, 'UTF-8', false); ?></p>
- <p class-="item-prix"><?php echo \htmlentities($livre->getPrixCan()??'', ENT_QUOTES, 'UTF-8', false); ?></p>
- </a>
-
- </li>
- <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ <?php /*                    </li>*/ ?>
+ <?php /*                <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>*/ ?>
  </ul>
  <div class="catalogue-pagination">
 
