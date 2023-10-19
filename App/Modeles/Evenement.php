@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Modeles;
 
+use App\App;
 use PDO;
 use PDO\PDOStatement;
 
@@ -64,12 +65,12 @@ class Evenement
 
 
     /* Méthode STATIC */
-    public static function trouverTout($pdo): array
+    public static function trouverTout(): array
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM evenements';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Evenement');
         // Exécuter la requête
@@ -80,12 +81,12 @@ class Evenement
         return $evenements;
     }
 
-    public static function trouverParId(int $unIdEvenement, $pdo): Evenement
+    public static function trouverParId(int $unIdEvenement): Evenement
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM evenements WHERE id=:idEvenement';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idEvenement', $unIdEvenement, PDO::PARAM_INT);
 
         // Définir le mode de récupération

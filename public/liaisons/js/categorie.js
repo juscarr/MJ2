@@ -21,19 +21,32 @@ function checkboxActif() {
 
 
 function synchron(categories) {
-    fetch('http://localhost:8888/Rpni/MJ2/public/liaisons/categorie.php?categories=' + categories)
+    fetch('http://localhost:8888/Rpni/MJ2/public/index.php?controleur=livre&action=index&categorie=' + categories)
         .then(response => response.json())
         .then(json1 => {
-                document.getElementById('catalogue-liste').innerHTML = '';
-                for (let e = 0; e < json1.length; e++) {
-                    console.log(json1)
-                    let li = document.createElement('li');
-                    li.innerHTML = json1[e]['titre'];
-                    document.getElementById('catalogue-liste').appendChild(li);
+                console.log(json1)
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'livres';
+                hiddenInput.value = JSON.stringify(json1);
 
-                }
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'http://localhost:8888/Rpni/MJ2/public/index.php?controleur=livre&action=index&categorie=' + categories;
+                form.appendChild(hiddenInput);
+
+                document.body.appendChild(form);
+
+                form.submit();
+
+                // document.getElementById('catalogue-liste').innerHTML = '';
+                // for (let e = 0; e < json1.length; e++) {
+                //     console.log(json1)
+                //     let li = document.createElement('li');
+                //     li.innerHTML = json1[e]['titre'];
+                //     document.getElementById('catalogue-liste').appendChild(li);
+                //
+                // }
             }
         )
-
-
 }

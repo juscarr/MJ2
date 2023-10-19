@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Modeles;
 
+use App\App;
 use PDO;
 use PDO\PDOStatement;
 
@@ -34,12 +35,12 @@ class Couverture
 
 
     /* Méthode STATIC */
-    public static function trouverTout($pdo): array
+    public static function trouverTout(): array
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM type_couverture';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Couverture');
         // Exécuter la requête
@@ -50,12 +51,12 @@ class Couverture
         return $couvertures;
     }
 
-    public static function trouverParId(int $unIdCouverture, $pdo): Couverture
+    public static function trouverParId(int $unIdCouverture): Couverture
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM type_couverture WHERE id=:idCouverture';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idCouverture', $unIdCouverture, PDO::PARAM_INT);
 
         // Définir le mode de récupération
