@@ -99,6 +99,9 @@ class App
             switch ($nomAction) {
 
                 case 'index':
+//                    if (isset($_GET["categorie"])) {
+//                        $objControleur->categorie();
+//                    }
                     $objControleur->index();
                     break;
                 case 'fiche':

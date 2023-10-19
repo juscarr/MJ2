@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Modeles;
 
+use App\App;
 use App\Modeles\AssocLivreAuteur;
 use App\Modeles\Categorie;
 use App\Modeles\Impression;
@@ -147,24 +148,24 @@ class Livre
         return $this->type_couverture_id;
     }
 
-    public function getImpressionAssociee($id, $pdo): Impression
+    public function getImpressionAssociee($id): Impression
     {
-        return Impression::trouverParId($id, $pdo);
+        return Impression::trouverParId($id);
     }
 
-    public function getCouvertureAssociee($id, $pdo): Couverture
+    public function getCouvertureAssociee($id): Couverture
     {
-        return Couverture::trouverParId($id, $pdo);
+        return Couverture::trouverParId($id);
     }
 
-    public function getCategorieAssociee($id, $pdo): Categorie
+    public function getCategorieAssociee($id): Categorie
     {
-        return Categorie::trouverParId($id, $pdo);
+        return Categorie::trouverParId($id);
     }
 
-    public function getAuteurAssociee($id, $pdo): array
+    public function getAuteurAssociee($id): array
     {
-        return AssocLivreAuteur::TrouverAuteursParIdLivre($id, $pdo);
+        return AssocLivreAuteur::TrouverAuteursParIdLivre($id);
     }
 
 
@@ -184,12 +185,12 @@ class Livre
 
 
     /* Méthode STATIC */
-    public static function trouverTout($pdo): array
+    public static function trouverTout(): array
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM livres';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Livre');
         // Exécuter la requête
@@ -200,12 +201,12 @@ class Livre
         return $livres;
     }
 
-    public static function trouverParId(int $unIdLivre, $pdo): Livre
+    public static function trouverParId(int $unIdLivre): Livre
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM livres WHERE id=:idLivre';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idLivre', $unIdLivre, PDO::PARAM_INT);
 
         // Définir le mode de récupération
@@ -218,14 +219,49 @@ class Livre
         return $livre;
     }
 
+//    public static function trouverParCategorieId($categorie): array
+//    {
+//        header("Content-type: application/json; charset=utf-8");
+//        header("Expires: Thu, 19 Nov 1981 08:52:00 GMT");
+//        header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
+//        header("Pragma: no-cache");
+//        $msgErreur = null;
+//        $tabLivres = array();
+//        $chaineSQL = 'SELECT * FROM livres WHERE categorie_id=:idCategorie';
+//        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+//        $requetePreparee->bindParam(':idCategorie', $categorie, PDO::PARAM_INT);
+//
+////        $requetePreparee->setFetchMode(PDO::FETCH_OBJ);
+//        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Livre');
+//        $requetePreparee->execute();
+//
+//        if ($requetePreparee->rowCount() == 0)
+//            $msgErreur = "Le id du chandail n'existe pas.";
+//        else {
+//            $tabLivres = $requetePreparee->fetchAll();
+//        }
+//
+//        $requetePreparee->closeCursor();
+//
+//        if ($msgErreur != null) {
+//            echo "{\n";
+//            echo "\t\"erreur\":\n";
+//            echo "\t{\n";
+//            echo "\t\t\"message\": \"" . str_replace("\"", "\\\"", $msgErreur) . "\"\n";
+//            echo "\t}\n";
+//            echo "}\n";
+//        }
+//
+//        return $tabLivres;
+//
+//    }
 
-
-    public static function trouverNbLivres($pdo): int
+    public static function trouverNbLivres(): int
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT COUNT(*) AS nombres FROM livres;';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_ASSOC);
         // Exécuter la requête

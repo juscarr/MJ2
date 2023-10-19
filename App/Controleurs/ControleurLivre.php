@@ -6,6 +6,7 @@ namespace App\Controleurs;
 use App\App;
 
 use App\Modeles\Livre;
+
 class ControleurLivre
 {
 
@@ -13,11 +14,22 @@ class ControleurLivre
     {
     }
 
+//    public function categorie(): void
+//    {
+//        $categorie = $_GET["categorie"];
+//
+//        if ($categorie === "tous") {
+//            $livres = Livre::trouverTout();
+//        } else {
+//            $livres = Livre::trouverParCategorieId($categorie);
+//        }
+//        echo json_encode($livres);
+//    }
+
     public function index(): void
     {
-        $pdo = App::getPDO();
-        $livres = Livre::trouverTout($pdo);
-        $tDonnees = array("livres" => $livres, "pdo"=>$pdo);
+        $livres = Livre::trouverTout();
+        $tDonnees = array("livres" => $livres);
         echo App::getBlade()->run("livres.index", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
 
     }
@@ -26,10 +38,9 @@ class ControleurLivre
     {
         $id = (int)$_GET['id'];
 
-        $livre = Livre::trouverParId($id, App::getPDO());
+        $livre = Livre::trouverParId($id);
         $tDonnees = array("livre" => $livre);
         echo App::getBlade()->run("livres.fiche", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
-
 
 
     }

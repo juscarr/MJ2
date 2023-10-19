@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Modeles;
 
+use App\App;
 use PDO;
 use PDO\PDOStatement;
 
@@ -32,12 +33,12 @@ class Categorie
     }
 
     /* Méthode STATIC */
-    public static function trouverTout($pdo): array
+    public static function trouverTout(): array
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM categories';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Categorie');
         // Exécuter la requête
@@ -48,12 +49,12 @@ class Categorie
         return $categories;
     }
 
-    public static function trouverParId(int $unIdCategorie, $pdo): Categorie
+    public static function trouverParId(int $unIdCategorie): Categorie
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM categories WHERE id=:idCategorie';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idCategorie', $unIdCategorie, PDO::PARAM_INT);
 
         // Définir le mode de récupération

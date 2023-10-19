@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace App\Modeles;
 
+use App\App;
 use PDO;
 use PDO\PDOStatement;
 
@@ -54,11 +55,11 @@ class Actualite
     }
 
     /* Méthode STATIC */
-    public static function trouverTout($pdo):array {
+    public static function trouverTout():array {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM actualites';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Actualite');
         // Exécuter la requête
@@ -69,15 +70,15 @@ class Actualite
         return $actualites;
     }
 
-    public static function trouverParId(int $unIdActualite, $pdo): Exemple\Ville {
+    public static function trouverParId(int $unIdActualite):Actualite {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM actualites WHERE id=:idActualite';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idActualite', $unIdActualite,PDO::PARAM_INT);
 
         // Définir le mode de récupération
-        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Ville');
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Actualite');
         // Exécuter la requête
         $requetePreparee->execute();
         // Récupérer le résultat

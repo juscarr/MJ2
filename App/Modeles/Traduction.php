@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Modeles;
 
+use App\App;
 use PDO;
 use PDO\PDOStatement;
 
@@ -51,12 +52,12 @@ class Traduction
     }
 
     /* Méthode STATIC */
-    public static function trouverTout($pdo): array
+    public static function trouverTout(): array
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM traductions';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Traduction');
         // Exécuter la requête
@@ -67,12 +68,12 @@ class Traduction
         return $traductions;
     }
 
-    public static function trouverParId(int $unIdTraduction, $pdo): Traduction
+    public static function trouverParId(int $unIdTraduction): Traduction
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM traductions WHERE id=:idTraduction';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idTraduction', $unIdTraduction, PDO::PARAM_INT);
 
         // Définir le mode de récupération
@@ -85,12 +86,12 @@ class Traduction
         return $traduction;
     }
 
-    public static function trouverParLivre(int $unIdLivre, $pdo): array
+    public static function trouverParLivre(int $unIdLivre): array
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM traductions WHERE livre_id=:idLivre';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idLivre', $unIdLivre, PDO::PARAM_INT);
 
         // Définir le mode de récupération

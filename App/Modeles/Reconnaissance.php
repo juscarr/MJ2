@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Modeles;
 
+use App\App;
 use PDO;
 use PDO\PDOStatement;
 
@@ -40,12 +41,12 @@ class Reconnaissance
 
 
     /* Méthode STATIC */
-    public static function trouverTout($pdo): array
+    public static function trouverTout(): array
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM reconnaissances';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Reconnaissance');
         // Exécuter la requête
@@ -56,12 +57,12 @@ class Reconnaissance
         return $reconnaissances;
     }
 
-    public static function trouverParId(int $unIdReconnaissance, $pdo): Reconnaissance
+    public static function trouverParId(int $unIdReconnaissance): Reconnaissance
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM reconnaissances WHERE id=:idReconnaissance';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idReconnaissance', $unIdReconnaissance, PDO::PARAM_INT);
 
         // Définir le mode de récupération

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace App\Modeles;
 
+use App\App;
 use PDO;
 use PDO\PDOStatement;
 
@@ -33,12 +34,12 @@ class Impression
 
 
     /* Méthode STATIC */
-    public static function trouverTout($pdo): array
+    public static function trouverTout(): array
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM type_impression';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Impression');
         // Exécuter la requête
@@ -49,12 +50,12 @@ class Impression
         return $impressions;
     }
 
-    public static function trouverParId(int $unIdImpression, $pdo): Impression
+    public static function trouverParId(int $unIdImpression): Impression
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM type_impression WHERE id=:idImpression';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idImpression', $unIdImpression, PDO::PARAM_INT);
 
         // Définir le mode de récupération

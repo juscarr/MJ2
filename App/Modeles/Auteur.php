@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Modeles;
+use App\App;
 use App\Modeles\AssocLivreAuteur;
 use PDO;
 use PDO\PDOStatement;
@@ -48,18 +49,18 @@ class Auteur
         return $this->site_web;
     }
 
-    public function getLivresAssociee($id, $pdo): array
+    public function getLivresAssociee($id): array
     {
-        return AssocLivreAuteur::trouverLivresParIdAuteur($id, $pdo);
+        return AssocLivreAuteur::trouverLivresParIdAuteur($id);
     }
 
 
     /* Méthode STATIC */
-    public static function trouverTout($pdo):array {
+    public static function trouverTout():array {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM auteurs';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Auteur');
         // Exécuter la requête
@@ -70,11 +71,11 @@ class Auteur
         return $auteurs;
     }
 
-    public static function trouverParId(int $unIdAuteur, $pdo):Auteur {
+    public static function trouverParId(int $unIdAuteur):Auteur {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM auteurs WHERE id=:idAuteur';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         $requetePreparee->bindParam(':idAuteur', $unIdAuteur,PDO::PARAM_INT);
 
         // Définir le mode de récupération
@@ -86,12 +87,12 @@ class Auteur
 
         return $auteur;
     }
-    public static function trouverNbAuteurs($pdo): int
+    public static function trouverNbAuteurs(): int
     {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT COUNT(*) AS nombres FROM auteurs;';
         // Préparer la requête (optimisation)
-        $requetePreparee = $pdo->prepare($chaineSQL);
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_ASSOC);
         // Exécuter la requête
