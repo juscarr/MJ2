@@ -1,0 +1,87 @@
+
+h1{
+  margin-bottom: 10px;
+}
+h2{
+  color: #C84B36;
+  margin-top: 10px;
+}
+.auteur{
+  color: #C84B36;
+}
+
+.article{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.couvert_livre{
+  max-width: 75%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn_principal {
+  background-color: #C84B36;
+  color: #fff;
+  padding: 15px 61px;
+  border: none;
+  cursor: pointer;
+}
+.btn_secondaire {
+  background-color: #fff;
+  color: #C84B36;
+  padding: 15px 50px;
+  border: 2px solid #C84B36;;
+  cursor: pointer;
+}
+
+.boutons{
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.boutons button {
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.voir_plus{
+  color: #C84B36;
+}
+
+.formats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.un-format{
+  background-color: #C84B36;
+  color: #fff;
+  padding: 15px 61px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.space {
+  margin-right: 20px;
+}
+
+.precedent{
+  color: #C84B36;
+  margin-right: 50%;
+}
+.suivant{
+  color: #C84B36;
+}
+
+
+
+
