@@ -9,7 +9,7 @@
     <p>Se connecter</p>
 
     <ul>
-        <li><a href="index.php?controleur=livre&action=index">Livres</a></li>
+        <li><a href="index.php?controleur=livre&action=index&page=1">Livres</a></li>
         <li>Liste de souhaits</li>
         <li><a href="index.php?controleur=auteur&action=index">Auteurs</a></li>
         <li>Contact</li>

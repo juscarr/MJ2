@@ -272,5 +272,27 @@ class Livre
         return $nbLivre['nombres'];
     }
 
+    public static function paginer (int $unNoDePage, float $unNbrParPage){
+        if($unNoDePage) {
+
+        }
+        $unNoDePage = 5 * ($unNoDePage - 1);
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT * FROM `livres` LIMIT :indexDepart, :nbrParPage';
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        $requetePreparee->bindParam(':indexDepart', $unNoDePage,PDO::PARAM_INT);
+        $requetePreparee->bindParam(':nbrParPage', $unNbrParPage,PDO::PARAM_INT);
+
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Livre');
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $paginerLivres = $requetePreparee->fetchAll();
+
+        return $paginerLivres;
+    }
+
 
 }

@@ -58,7 +58,11 @@
             </ul>
             <div class="catalogue-pagination">
 
+<<<<<<< HEAD
 
+=======
+                @include('livres.fragments.pagination')
+>>>>>>> pagination-index
 
             </div>
 
