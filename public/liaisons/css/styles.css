@@ -177,6 +177,10 @@ p {
 }
 
 /** Style mgraignon **/
+body {
+  background-color: red;
+}
+
 /** Style jcarrier **/
 html {
   background-color: blue;
