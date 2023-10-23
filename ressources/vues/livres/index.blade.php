@@ -58,7 +58,7 @@
             </ul>
             <div class="catalogue-pagination">
 
-                <!--- Navigation inter-page--->
+
 
             </div>
 
