@@ -61,7 +61,7 @@
  </ul>
  <div class="catalogue-pagination">
 
- <!--- Navigation inter-page--->
+ <?php echo $this->runChild('livres.fragments.pagination'); ?>
 
  </div>
 
