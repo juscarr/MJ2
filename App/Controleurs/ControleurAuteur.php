@@ -16,8 +16,7 @@ class ControleurAuteur
 
     public function index(): void
     {
-        $pdo = App::getPDO();
-        $auteurs = Auteur::trouverTout($pdo);
+        $auteurs = Auteur::trouverTout();
 
         $tDonnees = array("auteurs"=>$auteurs);
         echo App::getBlade()->run("auteurs.index", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...

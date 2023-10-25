@@ -18,10 +18,9 @@ class ControleurSite
     public function accueil(): void
     {
 
-        $pdo = App::getPDO();
-        $actualites = Actualite::trouverTout($pdo);
-        $evenements = Evenement::trouverTout($pdo);
-        $livres = Livre::trouverTout($pdo);
+        $actualites = Actualite::trouverTout();
+        $evenements = Evenement::trouverTout();
+        $livres = Livre::trouverTout();
 
         $tDonnees = array("livres"=>$livres, "actualites"=>$actualites, "evenements"=>$evenements);
 

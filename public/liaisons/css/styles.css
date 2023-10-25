@@ -105,21 +105,39 @@ h1, h2, h3, p {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 45px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 h3 {
-  font-size: 40px;
+  font-size: 20px;
 }
 
 p {
-  font-size: 25px;
+  font-size: 16px;
 }
 
+@media (min-width: 600px) {
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 45px;
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 40px;
+  }
+  p {
+    font-size: 25px;
+  }
+}
 /*.texte {
   font-family: $fontePrimaire;
   font-size: 16px;
@@ -177,10 +195,181 @@ p {
 }
 
 /** Style mgraignon **/
-body {
-  background-color: red;
+* {
+  background-color: white;
 }
 
+element {
+  margin: 0px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.date_evenement {
+  text-align: center;
+}
+
+.h2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  padding: 8px;
+  height: 50px;
+}
+@media (min-width: 600px) {
+  .h2 {
+    width: 550px;
+    text-align: center;
+  }
+}
+
+.h2_section1 {
+  /* Décoration */
+  border-style: solid;
+  border-radius: 0px 100px 100px 0px;
+  background-color: #C84B36;
+  /* Écriture */
+  color: #FFFFFF;
+  margin-left: -10px;
+}
+
+.h2_section2 {
+  /* Décoration */
+  border-style: solid;
+  border-radius: 0px 100px 100px 0px;
+  background-color: #C84B36;
+  /* Écriture */
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.h2_section3 {
+  /* Décoration */
+  border-style: solid;
+  border-radius: 0px 100px 100px 0px;
+  background-color: #C84B36;
+  /* Écriture */
+  color: #FFFFFF;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 600px) {
+  ul {
+    width: -webkit-fill-available;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.nouveautes,
+.prix_recu,
+.livres_recommandes {
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 600px) {
+  .nouveautes,
+  .prix_recu,
+  .livres_recommandes {
+    flex-direction: row;
+  }
+}
+
+.item_li {
+  margin-bottom: 100px;
+  text-align: left;
+}
+
+.prix {
+  font-weight: bold;
+}
+
+.image_evenement {
+  border-style: solid;
+  border-radius: 0px 90px 0px 90px;
+}
+@media (min-width: 400px) {
+  .image_evenement {
+    width: 1017px;
+    height: 530px;
+  }
+}
+
+@media (min-width: 600px) {
+  .image_evenement_div {
+    text-align: center;
+  }
+}
+
+/* Décoration | Flêches */
+.flecheDroite {
+  background: #C84B36;
+  width: 50px;
+  height: 30px;
+  margin: auto;
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+}
+
+.flecheGauche {
+  background: #C84B36;
+  width: 50px;
+  height: 30px;
+  margin: auto;
+  clip-path: polygon(100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%, 40% 0%, 40% 20%);
+}
+
+.cercle {
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 83%;
+  height: 100px;
+  width: 100px;
+  top: -100px;
+  display: flex;
+}
+
+.flecheMobile {
+  display: flex;
+  margin-top: -82px;
+}
+
+@media (min-width: 600px) {
+  .flecheDroite {
+    background: #C84B36;
+    width: 50px;
+    height: 30px;
+    margin: auto;
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  }
+  .flecheGauche {
+    background: #C84B36;
+    width: 50px;
+    height: 30px;
+    margin: auto;
+    clip-path: polygon(100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%, 40% 0%, 40% 20%);
+  }
+  .cercle {
+    border-style: solid;
+    border-color: #C84B36;
+    border-radius: 83%;
+    height: 100px;
+    width: 100px;
+    top: -100px;
+    display: flex;
+  }
+}
 /** Style jcarrier **/
 html {
   background-color: blue;
