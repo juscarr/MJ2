@@ -1,7 +1,3 @@
-* {
-  background-color: white;
-}
-
 
 element {
   margin: 0px;
@@ -135,7 +131,8 @@ ul {
 
 }
 
-.cercle {
+.cercleGauche1,
+.cercleDroit1{
   border-style: solid;
   border-color: #C84B36;
   border-radius: 83%;
@@ -143,6 +140,8 @@ ul {
   width: 100px;
   top: -100px;
   display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .flecheMobile {
@@ -150,6 +149,10 @@ ul {
   margin-top: -82px;
 }
 
+
+.flecheVisionneuse {
+  display: flex;
+}
 
 @media (min-width:600px) {
   .flecheDroite {
@@ -170,7 +173,8 @@ ul {
 
   }
 
-  .cercle {
+  .cercleGauche1,
+  .cercleDroit1 {
     border-style: solid;
     border-color: #C84B36;
     border-radius: 83%;
@@ -179,4 +183,14 @@ ul {
     top: -100px;
     display: flex;
   }
+
+}
+
+.FlecheNonFonctionnel {
+  background-color: rgb(162, 162, 162);
+}
+
+.item_image {
+  width: 210px;
+  height: 340px;
 }
