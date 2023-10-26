@@ -1,11 +1,20 @@
 
+
 h1{
   margin-bottom: 10px;
+}
+@media screen and (min-width: 600px){
+  .intro{
+    float: right;
+    width: 50%;
+    text-align: left;
+  }
 }
 h2{
   color: #C84B36;
   margin-top: 10px;
 }
+
 .auteur{
   color: #C84B36;
 }
@@ -16,7 +25,13 @@ h2{
   flex-direction: column;
   align-items: center;
 }
-
+@media screen and (min-width: 600px){
+  .article{
+    float: left;
+    width: 50%;
+    text-align: left;
+  }
+}
 .couvert_livre{
   max-width: 75%;
   display: flex;
@@ -38,10 +53,22 @@ h2{
   cursor: pointer;
 }
 
+@media screen and (min-width: 600px){
+  .description{
+    float: right;
+    width: 50%;
+    text-align: left;
+  }
+}
 .boutons{
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
+}
+@media screen and (min-width: 600px){
+  .boutons{
+
+  }
 }
 
 .boutons button {
@@ -59,6 +86,8 @@ h2{
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  max-width: 500px;
+  margin: auto;
 }
 .un-format{
   background-color: #C84B36;
@@ -74,14 +103,24 @@ h2{
   margin-right: 20px;
 }
 
+.livre-suivant-precedent{
+  display: flex;
+  justify-content: center;
+}
+
 .precedent{
   color: #C84B36;
-  margin-right: 50%;
+  margin-right: 5%;
 }
 .suivant{
   color: #C84B36;
 }
 
+@media screen and (min-width: 600px){
+  .commentaires{
+    width: 48%;
+  }
+}
 
 
 
