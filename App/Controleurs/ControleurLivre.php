@@ -28,8 +28,21 @@ class ControleurLivre
 
     public function index(): void
     {
-        $livres = Livre::trouverTout();
-        $tDonnees = array("livres" => $livres);
+
+        $nbLivres = Livre::trouverNbLivres();
+
+        $numeroPage = (int)$_GET['page'];
+
+        $nombreTotalPages = ceil($nbLivres / 5);
+
+
+        $nombreParPage = ceil($nbLivres / $nombreTotalPages);
+
+
+        $livres = Livre::paginer($numeroPage, $nombreParPage);
+
+        $tDonnees = array("livres" => $livres, "nbLivres" => $nbLivres, "numeroPage" => $numeroPage, "nombreTotalPages" => $nombreTotalPages);
+
         echo App::getBlade()->run("livres.index", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
 
     }

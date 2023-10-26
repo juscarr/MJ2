@@ -22,19 +22,41 @@ h1, h2, h3, p {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 45px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 h3 {
-  font-size: 40px;
+  font-size: 20px;
 }
 
 p {
-  font-size: 25px;
+  font-size: 16px;
+}
+
+@media (min-width: 600px){
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 45px;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 25px;
+  }
 }
 
 /*.texte {

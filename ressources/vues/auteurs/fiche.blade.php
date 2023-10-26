@@ -5,6 +5,7 @@
         <h1>L'Oiseau de Colette</h1>
         <h2><a class="auteur" href="">Isabelle Arsenault</a></h2>
     </div>
+<<<<<<< HEAD
     <p><strong>75$</strong>115 pages</p>
     <p><strong>5 ans et plus</strong></p>
     <div class="article">
@@ -12,6 +13,15 @@
         <div class="boutons">
             <button class="btn_principal">Ajouter au panier</button>
             <button class="btn_secondaire">Ajouter aux souhaits</button>
+=======
+    <div>
+        <img src="../../../images/img_couvert_livres/4/9782897770167.jpg">
+        <div class="commentaire">
+            <p>Manon Massé</p>
+            <p>Ce livre est le premier d’une série mettant en vedette les personnages de la bande du Mile-End.
+                Chaque livre apportera de nouvelles aventures, de nouvelles couleurs et des univers propres à
+                la personnalité de chacun.</p>
+>>>>>>> c7904b7a96d8adc7f38b85db62214d37e9a4c313
         </div>
     </div>
     <p>Dans ce conte féerique captivant, l'héroïne, Colette, est une petite
