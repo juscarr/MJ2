@@ -1,7 +1,7 @@
 
 
 <!-- Si on est pas sur la première page et s'il y a plus d'une page -->
-@if ($numeroPage > 0)
+@if ($numeroPage > 1)
     <a href= "{{ 'index.php?controleur=livre&action=index' . "&page=1"  }}">Premier</a>
 @else
     <span style="color:#999">Premier</span> <!-- Bouton premier inactif -->
@@ -9,7 +9,7 @@
 
 &nbsp;|&nbsp;
 
-@if ($numeroPage > 0)
+@if ($numeroPage > 1)
     <a href="{{ 'index.php?controleur=livre&action=index' . "&page=" . ($numeroPage - 1) }}">Précédent</a>
 @else
     <span style="color:#999">Précédent</span><!-- Bouton précédent inactif -->

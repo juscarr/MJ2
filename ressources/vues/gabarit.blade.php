@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../public/liaisons/css/styles.css">
+        <script defer src="liaisons/js/main.js"></script>
     </head>
     <body>
         <header >

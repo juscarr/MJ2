@@ -158,9 +158,9 @@ class Livre
         return Couverture::trouverParId($id);
     }
 
-    public function getCategorieAssociee($id): Categorie
+    public function getCategorieAssociee(): Categorie
     {
-        return Categorie::trouverParId($id);
+        return Categorie::trouverParId($this->categorie_id);
     }
 
     public function getAuteurAssociee($id): array

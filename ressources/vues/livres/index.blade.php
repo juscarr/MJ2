@@ -5,7 +5,7 @@
     <section class="catalogue-main">
         <div class="catalogue-entete">
             <h1>Catalogue</h1>
-            <div><p><a>Accueil</a>/ Catalogue</p></div>
+            <p class="fil-arianne"><a class="fil-arianne--lien" href="index.php?controleur=site&action=accueil">Accueil</a>/ Catalogue</p>
         </div>
         <div class="content">
             <div class="catalogue-filtre">
@@ -15,8 +15,8 @@
                     <label for="disposition-droite">Liste</label>
                     <input id="disposition-droite" type="radio" class="input input-radio--double">
                 </div>
-                <input type="search">
                 <a>Réinitialiser les filtres</a>
+                <input type="search">
                 <h2>Filtre</h2>
                 <span class="filtre-categorie">Catégories</span>
                 <div class="liste-deroulante">
@@ -39,36 +39,36 @@
 
                 @foreach ($livres as $livre)
 
-                    <li class="catalogue-item">
-                        <a href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
+                    <li>
+                        <a class="catalogue-item" href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
-                            <img src="">
+                            <div class="container-item--img">
+                                <img class="item-img"
+                                     src="../images/img_couvert_livres/{{$livre->getCategorieId()}}/{{$livre->getIsbnPapier()}}.jpg">
+                            </div>
                             <p class="item-titre">{{$livre->getTitre()}}</p>
-                            <p class="item-auteur">
-                                @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
-                                    {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
-                                @endforeach
-                            </p>
-                            <p class="item-version">{{$livre->getStatut()}}</p>
-                            <p class-="item-prix">{{$livre->getPrixCan()}}</p>
                         </a>
+                        <p class="item-auteur">
+                            @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
+                                {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
+                            @endforeach
+                        </p>
+                        <p class="item-categorie">{{$livre->getCategorieAssociee()->getNom()}}</p>
+
+                        <p class="item-prix">{{$livre->getPrixCan()}}$</p>
 
                     </li>
                 @endforeach
             </ul>
             <div class="catalogue-pagination">
 
-<<<<<<< HEAD
-
-=======
                 @include('livres.fragments.pagination')
->>>>>>> pagination-index
 
             </div>
 
 
         </div>
-{{--        <script src="liaisons/js/categorie.js"></script>--}}
+        {{--        <script src="liaisons/js/categorie.js"></script>--}}
     </section>
 
 @endsection
