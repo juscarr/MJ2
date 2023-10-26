@@ -1,14 +1,3 @@
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a    \2577 \a 31 \2502  @import '../../../node_modules/normalize.scss/normalize.scss';\a    \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   ressources/liaisons/scss/styles.scss 31:9  root stylesheet";
-}
-
 @charset "UTF-8";
 /**
  * @author MJ2
@@ -34,7 +23,6 @@ body::before {
  ** listeInteractivite - Éléments interactifs
  */
 /****** Librairies ******/
-/** Normalize **/
 /**** UTILITAIRES ****/
 /** Variables **/
 /**
@@ -205,6 +193,107 @@ p {
   flex: 1 1 100%;
 }
 
+/** Style footer **/
+footer {
+  background-color: #33AE55;
+}
+
+.logo_container {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+  .logo {
+    max-width: 20%;
+  }
+}
+@media screen and (min-width: 600px) {
+  .logo_container {
+    justify-content: flex-start;
+    margin-left: 20%;
+    padding-top: 20px;
+  }
+}
+.liens_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 600px) {
+  .liens_container {
+    position: absolute;
+    justify-content: flex-end;
+  }
+}
+.lien_footer {
+  color: white;
+  text-decoration: none;
+}
+
+.adresse_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+@media (min-width: 600px) {
+  .adresse_container {
+    display: inline-block;
+    float: right;
+  }
+}
+.heure-ouverture_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+@media (min-width: 600px) {
+  .heure-ouverture_container {
+    display: inline-block;
+    float: right;
+  }
+}
+.fondateurs_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+@media (min-width: 600px) {
+  .fondateurs {
+    display: flex;
+    flex-direction: row;
+  }
+}
+@media (min-width: 600px) {
+  .fondateur {
+    margin-right: 10px;
+  }
+}
+.bas-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+@media (min-width: 600px) {
+  .ligne {
+    margin: 0;
+  }
+}
+@media (min-width: 600px) {
+  hr {
+    visibility: hidden;
+  }
+}
 /** Style mgraignon **/
 * {
   background-color: white;
@@ -452,6 +541,127 @@ p {
 }
 
 /** Style jsavard **/
+h1 {
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .intro {
+    float: right;
+    width: 50%;
+    text-align: left;
+  }
+}
+h2 {
+  color: #C84B36;
+  margin-top: 10px;
+}
+
+.auteur {
+  color: #C84B36;
+}
+
+.article {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 600px) {
+  .article {
+    float: left;
+    width: 50%;
+    text-align: left;
+  }
+}
+.couvert_livre {
+  max-width: 75%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn_principal {
+  background-color: #C84B36;
+  color: #fff;
+  padding: 15px 61px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn_secondaire {
+  background-color: #fff;
+  color: #C84B36;
+  padding: 15px 50px;
+  border: 2px solid #C84B36;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+  .description {
+    float: right;
+    width: 50%;
+    text-align: left;
+  }
+}
+.boutons {
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.boutons button {
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.voir_plus {
+  color: #C84B36;
+}
+
+.formats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 500px;
+  margin: auto;
+}
+
+.un-format {
+  background-color: #C84B36;
+  color: #fff;
+  padding: 15px 61px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.space {
+  margin-right: 20px;
+}
+
+.livre-suivant-precedent {
+  display: flex;
+  justify-content: center;
+}
+
+.precedent {
+  color: #C84B36;
+  margin-right: 5%;
+}
+
+.suivant {
+  color: #C84B36;
+}
+
+@media screen and (min-width: 600px) {
+  .commentaires {
+    width: 48%;
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */
->>>>>>> c7904b7a96d8adc7f38b85db62214d37e9a4c313
