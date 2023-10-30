@@ -337,6 +337,35 @@ ul {
   display: flex;
   margin-left: 25px;
   margin-right: 25px;
+  cursor: pointer;
+}
+
+.cercleGauche2,
+.cercleDroit2 {
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 83%;
+  height: 100px;
+  width: 100px;
+  top: -100px;
+  display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.cercleGauche3,
+.cercleDroit3 {
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 83%;
+  height: 100px;
+  width: 100px;
+  top: -100px;
+  display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
+  cursor: pointer;
 }
 
 .flecheMobile {
@@ -381,6 +410,13 @@ ul {
 .item_image {
   width: 210px;
   height: 340px;
+}
+
+.h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
 }
 
 /** Style jcarrier **/
