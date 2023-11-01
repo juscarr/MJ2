@@ -295,10 +295,6 @@ footer {
   }
 }
 /** Style mgraignon **/
-* {
-  background-color: white;
-}
-
 element {
   margin: 0px;
 }
@@ -430,7 +426,8 @@ ul {
   clip-path: polygon(100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%, 40% 0%, 40% 20%);
 }
 
-.cercle {
+.cercleGauche1,
+.cercleDroit1 {
   border-style: solid;
   border-color: #C84B36;
   border-radius: 83%;
@@ -438,11 +435,46 @@ ul {
   width: 100px;
   top: -100px;
   display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.cercleGauche2,
+.cercleDroit2 {
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 83%;
+  height: 100px;
+  width: 100px;
+  top: -100px;
+  display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.cercleGauche3,
+.cercleDroit3 {
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 83%;
+  height: 100px;
+  width: 100px;
+  top: -100px;
+  display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
+  cursor: pointer;
 }
 
 .flecheMobile {
   display: flex;
   margin-top: -82px;
+}
+
+.flecheVisionneuse {
+  display: flex;
 }
 
 @media (min-width: 600px) {
@@ -460,7 +492,8 @@ ul {
     margin: auto;
     clip-path: polygon(100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%, 40% 0%, 40% 20%);
   }
-  .cercle {
+  .cercleGauche1,
+  .cercleDroit1 {
     border-style: solid;
     border-color: #C84B36;
     border-radius: 83%;
@@ -470,6 +503,22 @@ ul {
     display: flex;
   }
 }
+.FlecheNonFonctionnel {
+  background-color: rgb(162, 162, 162);
+}
+
+.item_image {
+  width: 210px;
+  height: 340px;
+}
+
+.h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
 /** Style jcarrier **/
 p {
   font-size: 16px;
