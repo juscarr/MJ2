@@ -1,41 +1,49 @@
 
-
-h1{
+h1 {
   margin-bottom: 10px;
 }
-@media screen and (min-width: 600px){
-  .intro{
+
+@media screen and (min-width: 600px) {
+  .intro {
     float: right;
     width: 50%;
     text-align: left;
   }
 }
-h2{
+
+h2 {
   color: #C84B36;
   margin-top: 10px;
 }
 
-.auteur{
+.auteur {
   color: #C84B36;
 }
 
-.article{
+.article {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-@media screen and (min-width: 600px){
-  .article{
+
+@media screen and (min-width: 600px) {
+  .article {
     float: left;
     width: 50%;
     text-align: left;
   }
 }
-.couvert_livre{
+
+.couvert_livre {
   max-width: 75%;
   display: flex;
   justify-content: center;
+}
+@media screen and (min-width: 600px) {
+  .couvert_livre{
+    min-height: 430px;
+  }
 }
 
 .btn_principal {
@@ -45,6 +53,7 @@ h2{
   border: none;
   cursor: pointer;
 }
+
 .btn_secondaire {
   background-color: #fff;
   color: #C84B36;
@@ -53,21 +62,35 @@ h2{
   cursor: pointer;
 }
 
-@media screen and (min-width: 600px){
-  .description{
+@media screen and (min-width: 600px) {
+  .description {
     float: right;
     width: 50%;
     text-align: left;
   }
 }
-.boutons{
+
+.boutons {
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
 }
-@media screen and (min-width: 600px){
-  .boutons{
 
+.boutons-large{
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
+  .boutons {
+    display: none;
+  }
+  .boutons-large{
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .boutons-large_container{
+    padding-top: 320px;
+    margin-right: 10%;
   }
 }
 
@@ -77,7 +100,7 @@ h2{
   font-size: 16px;
 }
 
-.voir_plus{
+.voir_plus {
   color: #C84B36;
 }
 
@@ -89,7 +112,8 @@ h2{
   max-width: 500px;
   margin: auto;
 }
-.un-format{
+
+.un-format {
   background-color: #C84B36;
   color: #fff;
   padding: 15px 61px;
@@ -99,25 +123,27 @@ h2{
   margin: 5px 0;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
+
 .space {
   margin-right: 20px;
 }
 
-.livre-suivant-precedent{
+.livre-suivant-precedent {
   display: flex;
   justify-content: center;
 }
 
-.precedent{
+.precedent {
   color: #C84B36;
   margin-right: 5%;
 }
-.suivant{
+
+.suivant {
   color: #C84B36;
 }
 
-@media screen and (min-width: 600px){
-  .commentaires{
+@media screen and (min-width: 600px) {
+  .commentaires {
     width: 48%;
   }
 }

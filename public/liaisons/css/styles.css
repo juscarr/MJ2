@@ -196,6 +196,7 @@ p {
 /** Style footer **/
 footer {
   background-color: #33AE55;
+  padding-top: 50px;
 }
 
 .logo_container {
@@ -211,7 +212,7 @@ footer {
 @media screen and (min-width: 600px) {
   .logo_container {
     justify-content: flex-start;
-    margin-left: 20%;
+    margin-left: 15%;
     padding-top: 20px;
   }
 }
@@ -225,7 +226,7 @@ footer {
 @media screen and (min-width: 600px) {
   .liens_container {
     position: absolute;
-    justify-content: flex-end;
+    margin-left: 70%;
   }
 }
 .lien_footer {
@@ -244,6 +245,7 @@ footer {
   .adresse_container {
     display: inline-block;
     float: right;
+    margin-right: 20px;
   }
 }
 .heure-ouverture_container {
@@ -259,6 +261,13 @@ footer {
     float: right;
   }
 }
+@media (min-width: 600px) {
+  .adresse-heure_container {
+    position: absolute;
+    margin-left: 38%;
+    margin-top: -170px;
+  }
+}
 .fondateurs_container {
   display: flex;
   align-items: center;
@@ -266,6 +275,14 @@ footer {
   color: white;
 }
 
+@media (min-width: 600px) {
+  .fondateurs_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 15%;
+  }
+}
 @media (min-width: 600px) {
   .fondateurs {
     display: flex;
@@ -291,7 +308,7 @@ footer {
 }
 @media (min-width: 600px) {
   hr {
-    visibility: hidden;
+    display: none;
   }
 }
 /** Style mgraignon **/
@@ -581,6 +598,11 @@ h2 {
   justify-content: center;
 }
 
+@media screen and (min-width: 600px) {
+  .couvert_livre {
+    min-height: 430px;
+  }
+}
 .btn_principal {
   background-color: #C84B36;
   color: #fff;
@@ -610,6 +632,23 @@ h2 {
   flex-direction: column;
 }
 
+.boutons-large {
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
+  .boutons {
+    display: none;
+  }
+  .boutons-large {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .boutons-large_container {
+    padding-top: 320px;
+    margin-right: 10%;
+  }
+}
 .boutons button {
   margin: 5px 0;
   border-radius: 5px;
