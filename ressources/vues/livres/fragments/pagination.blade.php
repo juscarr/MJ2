@@ -1,5 +1,3 @@
-
-
 {{--<!-- Si on est pas sur la première page et s'il y a plus d'une page -->--}}
 {{--@if ($numeroPage > 1)--}}
 {{--    <a href= "{{ 'index.php?controleur=livre&action=index' . "&page=1"  }}">Premier</a>--}}
@@ -38,28 +36,38 @@
 {{--@endif--}}
 
 
-
 <div class="catalogue-pagination">
-@if ($numeroPage > 1)
-    <a href="{{ 'index.php?controleur=livre&action=index' . "&page=" . ($numeroPage - 1) }}"><div class="cercle catalogue-cercle">
-            <div class="flecheGauche catalogue-fleche"></div>
-        </div></a>
-@else
-        <div class="cercle">
+    @if ($numeroPage > 1)
+        <a href="{{ 'index.php?controleur=livre&action=index' . "&page=" . ($numeroPage - 1) }}">
+            <div class="cercle catalogue-cercle">
+                <div class="flecheGauche catalogue-fleche"></div>
+            </div>
+        </a>
+        <a href='index.php?controleur=livre&action=index&page=1'>1</a>
+        <p>|</p>
+    @else
+        <div class="cercle catalogue-cercle">
             <div class="flecheGauche catalogue-fleche"></div>
         </div>
-@endif
+    @endif
+
 
     <p class="catalogue-page">{{$numeroPage}}</p>
 
-@if ($numeroPage < $nombreTotalPages)
-    <a href="{{ 'index.php?controleur=livre&action=index' . "&page=" . ($numeroPage + 1)  }}"><div class="cercle catalogue-cercle">
-            <div class="flecheDroite catalogue-fleche"></div>
-        </div></a>
-@else
-        <div class="cercle">
+    @if ($numeroPage < $nombreTotalPages)
+        <p>|</p>
+        <a href={{ 'index.php?controleur=livre&action=index' . "&page=" . ($nombreTotalPages)}}>{{$nombreTotalPages}}</a>
+
+        <a href="{{ 'index.php?controleur=livre&action=index' . "&page=" . ($numeroPage + 1)  }}">
+            <div class="cercle catalogue-cercle">
+                <div class="flecheDroite catalogue-fleche"></div>
+            </div>
+        </a>
+
+    @else
+        <div class="cercle catalogue-cercle">
             <div class="flecheDroite catalogue-fleche"></div>
         </div>
-@endif
+    @endif
 </div>
 

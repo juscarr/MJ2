@@ -276,7 +276,7 @@ class Livre
         if($unNoDePage) {
 
         }
-        $unNoDePage = 5 * ($unNoDePage - 1);
+        $unNoDePage = 6 * ($unNoDePage - 1);
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM `livres` LIMIT :indexDepart, :nbrParPage';
         // Préparer la requête (optimisation)
