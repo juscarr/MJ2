@@ -33,7 +33,7 @@ class ControleurLivre
 
         $numeroPage = (int)$_GET['page'];
 
-        $nombreTotalPages = ceil($nbLivres / 5);
+        $nombreTotalPages = ceil($nbLivres / 6);
 
 
         $nombreParPage = ceil($nbLivres / $nombreTotalPages);
