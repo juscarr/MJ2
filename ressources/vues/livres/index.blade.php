@@ -111,7 +111,7 @@
 {{--                        <p class="catalogue-header--prix">Prix</p>--}}
 {{--                    </div>--}}
                     @foreach ($livres as $livre)
-{{--@if()--}}
+@if($livre->getDateParutionQuebec() <)
                         <li>
                             {{$livre->getDateParutionQuebec()}}
                             <a class="catalogue-item"

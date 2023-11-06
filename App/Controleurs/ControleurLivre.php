@@ -29,7 +29,7 @@ class ControleurLivre
     public function index(): void
     {
 
-        $filAriane=FilAriane::majFilArianne();
+        $filAriane = FilAriane::majFilArianne();
         $nbLivres = Livre::trouverNbLivres();
 
         $numeroPage = (int)$_GET['page'];
@@ -38,12 +38,13 @@ class ControleurLivre
 
         $nombreParPage = ceil($nbLivres / $nombreTotalPages);
 
-        $dateFormat = date('Y-m-d', strtotime('-1 month'));
-        $dateNow = date('Y-m-d');
+        $date2022 = date('Y-m-d', strtotime('-1 year'));
+        $date2024 = date('Y-m-d', strtotime('+1 year'));
+        $dateAujourdhui = date('Y-m-d');
 
         $livres = Livre::paginer($numeroPage, $nombreParPage);
 
-        $tDonnees = array("livres" => $livres, "nbLivres" => $nbLivres, "numeroPage" => $numeroPage, "nombreTotalPages" => $nombreTotalPages, "filAriane" => $filAriane);
+        $tDonnees = array("livres" => $livres, "nbLivres" => $nbLivres, "numeroPage" => $numeroPage, "nombreTotalPages" => $nombreTotalPages, "filAriane" => $filAriane, "aujourdhui" => $dateAujourdhui, "aparaitre" => $date2024, "nouveau" => $date2022);
 
         echo App::getBlade()->run("livres.index", $tDonnees);
 
