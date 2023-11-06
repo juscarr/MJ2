@@ -3,12 +3,20 @@
 <?php $this->startSection('contenu'); ?>
 
  <section class="catalogue-main">
- <div class="catalogue-entete">
- <h1>Catalogue</h1>
- <p class="fil-arianne"><a class="fil-arianne--lien"
- href="index.php?controleur=site&action=accueil">Accueil</a>/ Catalogue</p>
- </div>
+
  <div class="content">
+ <div class="fil-arianne"> <?php $__currentLoopData = $filAriane; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $lien): $loop = $this->incrementLoopIndices();  ?>
+ <?php if(isset($lien["lien"])): ?>
+ <a href="<?php echo \htmlentities($lien["lien"]??'', ENT_QUOTES, 'UTF-8', false); ?>"><?php echo \htmlentities($lien["titre"]??'', ENT_QUOTES, 'UTF-8', false); ?></a>
+ <?php else: ?>
+ <?php echo \htmlentities($lien["titre"]??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ <?php endif; ?>
+ <span> | </span>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </div>
+ <h1>Catalogue</h1>
  <div class="catalogue">
  <div class="catalogue-filtre">
  <div class="filtre-disposition">
@@ -19,9 +27,9 @@
  Vignette
  </label>
 
- <input type="radio" id="disposition-droite" name="disposition" class="radio" value="Mensuel"
- disabled=disabled>
- <label class="toggle toggle-right toggle-double toggle-disabled" for="disposition-droite">
+ <input type="radio" id="disposition-droite" name="disposition" class="radio" value="Mensuel">
+ <label class="toggle toggle-right toggle-double toggle-disabled" for="disposition-droite"
+ id="label-disposition">
  Liste
  </label>
 
@@ -98,11 +106,18 @@
  </div>
  </div>
  <ul class="catalogue-liste" id="catalogue-liste">
-
+<?php /*                    <div class="catalogue-header--liste">*/ ?>
+<?php /*                        <p class="catalogue-header--titre">Titre</p>*/ ?>
+<?php /*                        <p class="catalogue-header--auteur">Auteur</p>*/ ?>
+<?php /*                        <p class="catalogue-header--categorie">Catégorie</p>*/ ?>
+<?php /*                        <p class="catalogue-header--prix">Prix</p>*/ ?>
+<?php /*                    </div>*/ ?>
  <?php $__currentLoopData = $livres; $this->addLoop($__currentLoopData);$this->getFirstLoop();
  foreach($__currentLoopData as $livre): $loop = $this->incrementLoopIndices();  ?>
-
+<?php /*<?php if(): ?>*/ ?>
  <li>
+ <?php echo \htmlentities($livre->getDateParutionQuebec()??'', ENT_QUOTES, 'UTF-8', false); ?>
+
  <a class="catalogue-item"
  href="index.php?controleur=livre&action=fiche&id=<?php echo \htmlentities($livre->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>">
 
@@ -137,6 +152,7 @@
  </div>
  <?php /*        <script src="liaisons/js/categorie.js"></script>*/ ?>
  <script src="liaisons/js/dropdown.js"></script>
+ <script src="liaisons/js/catalogue.js"></script>
  </section>
 
 <?php $this->stopSection(); ?>

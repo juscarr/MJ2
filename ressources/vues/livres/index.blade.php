@@ -3,12 +3,18 @@
 @section('contenu')
 
     <section class="catalogue-main">
-        <div class="catalogue-entete">
-            <h1>Catalogue</h1>
-            <p class="fil-arianne"><a class="fil-arianne--lien"
-                                      href="index.php?controleur=site&action=accueil">Accueil</a>/ Catalogue</p>
-        </div>
+
         <div class="content">
+            <div class="fil-arianne"> @foreach($filAriane as $lien)
+                    @if(isset($lien["lien"]))
+                        <a href="{{$lien["lien"]}}">{{$lien["titre"]}}</a>
+                    @else
+                        {{$lien["titre"]}}
+                    @endif
+                    <span> | </span>
+                @endforeach
+            </div>
+            <h1>Catalogue</h1>
             <div class="catalogue">
                 <div class="catalogue-filtre">
                     <div class="filtre-disposition">
@@ -19,9 +25,9 @@
                             Vignette
                         </label>
 
-                        <input type="radio" id="disposition-droite" name="disposition" class="radio" value="Mensuel"
-                               disabled=disabled>
-                        <label class="toggle toggle-right toggle-double toggle-disabled" for="disposition-droite">
+                        <input type="radio" id="disposition-droite" name="disposition" class="radio" value="Mensuel">
+                        <label class="toggle toggle-right toggle-double toggle-disabled" for="disposition-droite"
+                               id="label-disposition">
                             Liste
                         </label>
 
@@ -98,10 +104,16 @@
                     </div>
                 </div>
                 <ul class="catalogue-liste" id="catalogue-liste">
-
+{{--                    <div class="catalogue-header--liste">--}}
+{{--                        <p class="catalogue-header--titre">Titre</p>--}}
+{{--                        <p class="catalogue-header--auteur">Auteur</p>--}}
+{{--                        <p class="catalogue-header--categorie">Catégorie</p>--}}
+{{--                        <p class="catalogue-header--prix">Prix</p>--}}
+{{--                    </div>--}}
                     @foreach ($livres as $livre)
-
+{{--@if()--}}
                         <li>
+                            {{$livre->getDateParutionQuebec()}}
                             <a class="catalogue-item"
                                href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
@@ -134,6 +146,7 @@
         </div>
         {{--        <script src="liaisons/js/categorie.js"></script>--}}
         <script src="liaisons/js/dropdown.js"></script>
+        <script src="liaisons/js/catalogue.js"></script>
     </section>
 
 @endsection

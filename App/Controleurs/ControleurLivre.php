@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controleurs;
 
 use App\App;
-
+use App\FilAriane;
 use App\Modeles\Livre;
 
 class ControleurLivre
@@ -29,21 +29,23 @@ class ControleurLivre
     public function index(): void
     {
 
+        $filAriane=FilAriane::majFilArianne();
         $nbLivres = Livre::trouverNbLivres();
 
         $numeroPage = (int)$_GET['page'];
 
         $nombreTotalPages = ceil($nbLivres / 6);
 
-
         $nombreParPage = ceil($nbLivres / $nombreTotalPages);
 
+        $dateFormat = date('Y-m-d', strtotime('-1 month'));
+        $dateNow = date('Y-m-d');
 
         $livres = Livre::paginer($numeroPage, $nombreParPage);
 
-        $tDonnees = array("livres" => $livres, "nbLivres" => $nbLivres, "numeroPage" => $numeroPage, "nombreTotalPages" => $nombreTotalPages);
+        $tDonnees = array("livres" => $livres, "nbLivres" => $nbLivres, "numeroPage" => $numeroPage, "nombreTotalPages" => $nombreTotalPages, "filAriane" => $filAriane);
 
-        echo App::getBlade()->run("livres.index", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
+        echo App::getBlade()->run("livres.index", $tDonnees);
 
     }
 

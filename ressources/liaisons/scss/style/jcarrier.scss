@@ -27,11 +27,12 @@
 
 
 .catalogue-liste {
-  padding: 0px;
+  padding: 0;
   list-style-type: none;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   margin: {
     top: 0;
@@ -41,11 +42,66 @@
   }
 }
 
-//**CSS d'un item Livre**//
 
-.catalogue-liste li {
+//** CSS d'un item Livre AFFICHAGE LISTE**//
+.item-liste {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-liste {
+  .item-img {
+    max-width: 100px;
+  }
+
+  .catalogue-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 40%;
+  }
+
+  .item-titre {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .item-auteur, .item-categorie, .item-prix {
+    font-size: 16px;
+    width: 15%;
+  }
+}
+
+//.catalogue-header--liste {
+//  display: flex;
+//  width: 100%;
+//  justify-content: space-between;
+//
+//  .catalogue-header--titre {
+//    width:30%;
+//    font-size: 18px;
+//    padding: {
+//      left: 110px;
+//    };
+//
+//  }
+//  .catalogue-header--auteur, .catalogue-header--categorie, .catalogue-header--prix {
+//    font-size: 18px;
+//    width: 15%;
+//  }
+//}
+
+.header-hidden {
+  display: none;
+}
+
+//**CSS d'un item Livre AFFICHAGE VIGNETTE**//
+
+.item-vignette {
   max-width: 240px;
-
 }
 
 .catalogue-item {
@@ -114,7 +170,7 @@
 /** CSS du fil arianne (à mettre en global) **/
 
 .fil-arianne {
-  text-align: center;
+  text-align: left;
 }
 
 .fil-arianne--lien {
@@ -299,7 +355,7 @@ input[type="radio"].radio:checked + label {
   }
 }
 
-h3, h2 {
+.catalogue-filtre h3, .catalogue-filtre h2 {
   margin: {
     top: 5px;
     bottom: 5px;
@@ -320,6 +376,19 @@ h3, h2 {
 .catalogue-cercle {
   height: 50px;
   width: 50px;
+}
+
+.cercle {
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 83%;
+  height: 50px;
+  width: 50px;
+  top: -100px;
+  display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
+  cursor: pointer;
 }
 
 .catalogue-fleche {
