@@ -38,7 +38,7 @@ class ControleurLivre
 
         $nombreParPage = ceil($nbLivres / $nombreTotalPages);
 
-        $date2022 = date('Y-m-d', strtotime('-1 year'));
+        $date2022 = date('Y-m-d', strtotime('-2 year'));
         $date2024 = date('Y-m-d', strtotime('+1 year'));
         $dateAujourdhui = date('Y-m-d');
 

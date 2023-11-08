@@ -402,3 +402,19 @@ input[type="radio"].radio:checked + label {
   font-size: 20px;
 }
 
+//** Nouveauté / À paraître **//
+
+.container-type--vignette {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 60px;
+  background-color: white;
+  color: $couleur_orange;
+  border: $couleur_orange solid 2px;
+  border-radius: 5px;
+  font-weight: bold;
+
+}

@@ -870,6 +870,20 @@ input[type=radio].radio:checked + label {
   font-size: 20px;
 }
 
+.container-type--vignette {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 60px;
+  background-color: white;
+  color: #C84B36;
+  border: #C84B36 solid 2px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
 /** Style jsavard **/
 h1 {
   margin-bottom: 10px;
