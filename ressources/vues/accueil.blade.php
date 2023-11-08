@@ -6,7 +6,7 @@
     <script defer src="../public/liaisons/js/visionneuse.js"></script>
     <!-- Importer les infos de la base de donnée en mode aléatoire (Nom / Date / Photo / Description) -->
     {{$cpt = rand(0, count($evenements))}}
-    <h1>{{$evenements[$cpt]->getTitre()}}</h1>
+    <h1 class="h1_accueil">{{$evenements[$cpt]->getTitre()}}</h1>
     <p class="date_evenement">{{$evenements[$cpt]->getDate()}}</p>
 
 
@@ -18,8 +18,6 @@
     <div class="nouveautes">
         <!-- Importer les infos de la base de donnée en mode aléatoire (Titre de livre / Nom auteur / Catégorie / Prix en cad) -->
         <ul class="itemCacheEnMobile">
-
-
             @foreach($livres as $livre)
                 <li class="item_li" hidden>
                     <img class="item_image" src="../images/img_couvert_livres/{{$livre->getCategorieId()}}/{{$livre->getIsbnPapier()}}.jpg" alt="">
