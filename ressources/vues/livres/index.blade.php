@@ -104,18 +104,12 @@
                     </div>
                 </div>
                 <ul class="catalogue-liste" id="catalogue-liste">
-                    {{--                    <div class="catalogue-header--liste">--}}
-                    {{--                        <p class="catalogue-header--titre">Titre</p>--}}
-                    {{--                        <p class="catalogue-header--auteur">Auteur</p>--}}
-                    {{--                        <p class="catalogue-header--categorie">Catégorie</p>--}}
-                    {{--                        <p class="catalogue-header--prix">Prix</p>--}}
-                    {{--                    </div>--}}
                     @foreach ($livres as $livre)
                         <li>
                             @if($livre->getDateParutionQuebec() < $aujourdhui && $livre->getDateParutionQuebec() > $nouveau)
-                                <div class="container-type--vignette">Nouveau</div>
+                                <div class="container-type--vignette container-type">Nouveau</div>
                             @elseif($livre->getDateParutionQuebec() > $aujourdhui && $livre->getDateParutionQuebec() < $aparaitre)
-                                <div class="container-type--vignette">À paraître</div>
+                                <div class="container-type--vignette  container-type">À paraître</div>
                             @endif
                             <a class="catalogue-item"
                                href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">

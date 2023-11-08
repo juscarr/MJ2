@@ -546,11 +546,11 @@ ul {
 
 @media (min-width: 600px) {
   .content {
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
   }
 }
-@media (min-width: 10000px) {
+@media (min-width: 1000px) {
   .content {
     margin-left: 200px;
     margin-right: 200px;
@@ -587,14 +587,25 @@ ul {
   align-items: center;
   gap: 10px;
   width: 40%;
+  z-index: 0;
 }
 .item-liste .item-titre {
   font-size: 16px;
   width: 100%;
 }
+@media (min-width: 600px) {
+  .item-liste .item-titre {
+    font-size: 14px;
+  }
+}
 .item-liste .item-auteur, .item-liste .item-categorie, .item-liste .item-prix {
-  font-size: 16px;
+  font-size: 14px;
   width: 15%;
+}
+@media (min-width: 800px) {
+  .item-liste .item-auteur, .item-liste .item-categorie, .item-liste .item-prix {
+    font-size: 16px;
+  }
 }
 
 .header-hidden {
@@ -711,10 +722,6 @@ ul {
 input[type=radio].radio:checked + label {
   background-color: #C84B36;
   color: #FFFFFF;
-}
-
-.toggle-disabled {
-  opacity: 60%;
 }
 
 /* Recherche de livre */
@@ -882,6 +889,23 @@ input[type=radio].radio:checked + label {
   border: #C84B36 solid 2px;
   border-radius: 5px;
   font-weight: bold;
+  z-index: 1;
+}
+.container-type--liste {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 25px;
+  background-color: white;
+  color: #C84B36;
+  border: #C84B36 solid 2px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 1;
+  margin-bottom: 90px;
 }
 
 /** Style jsavard **/

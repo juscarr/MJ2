@@ -1,37 +1,13 @@
 let buttonListe = document.getElementById("disposition-droite");
-let labelListe = document.getElementById("label-disposition");
 let buttonVignette = document.getElementById("disposition-gauche");
 let liste = document.querySelectorAll(".catalogue-liste li");
+let containerNvApr = document.querySelectorAll(".container-type")
+
 // let header = document.querySelector(".catalogue-header--liste")
 
-function handleResize() {
-    if (window.innerWidth >= 800) {
-        buttonListe.disable = false;
-        labelListe.classList.remove("toggle-disabled");
+buttonListe.addEventListener("click", affichageToggle);
+buttonVignette.addEventListener("click", affichageToggle);
 
-        buttonListe.addEventListener("click", affichageToggle);
-        buttonVignette.addEventListener("click", affichageToggle);
-        affichageToggle();
-
-    } else {
-        buttonListe.disable = true;
-        labelListe.classList.add("toggle-disabled");
-        buttonVignette.checked = true;
-
-        buttonListe.removeEventListener("click", affichageToggle);
-        buttonVignette.removeEventListener("click", affichageToggle);
-        affichageToggle();
-    }
-    labelListe.addEventListener('click', function (event) {
-        if (buttonListe.disable) {
-            event.preventDefault();
-        }
-    })
-}
-
-window.addEventListener('resize', handleResize);
-
-handleResize();
 
 function affichageToggle() {
     liste.forEach(li => {
@@ -52,6 +28,24 @@ function affichageToggle() {
             }
         }
     )
+    containerNvApr.forEach(vignette => {
+        console.log(vignette)
+        if (buttonListe.checked) {
+            vignette.classList.add("container-type--liste");
+            vignette.classList.remove("container-type--vignette");
+
+            // header.classList.add("catalogue-header--liste")
+            // header.classList.remove("header-hidden")
+        }
+        if (buttonVignette.checked) {
+            vignette.classList.add("container-type--vignette");
+            vignette.classList.remove("container-type--liste");
+
+            // header.classList.remove("catalogue-header--liste")
+            // header.classList.add("header-hidden")
+
+        }
+    })
 
 }
 
