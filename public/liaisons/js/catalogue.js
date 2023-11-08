@@ -29,7 +29,6 @@ function affichageToggle() {
         }
     )
     containerNvApr.forEach(vignette => {
-        console.log(vignette)
         if (buttonListe.checked) {
             vignette.classList.add("container-type--liste");
             vignette.classList.remove("container-type--vignette");

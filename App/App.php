@@ -99,9 +99,6 @@ class App
             switch ($nomAction) {
 
                 case 'index':
-//                    if (isset($_GET["categorie"])) {
-//                        $objControleur->categorie();
-//                    }
                     $objControleur->index();
                     break;
                 case 'fiche':
@@ -112,7 +109,6 @@ class App
                     break;
                 case 'creer':
                     $objControleur->creer();
-                default:
                     echo 'Erreur 404 - Page introuvable.';
             }
         }

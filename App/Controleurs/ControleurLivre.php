@@ -26,25 +26,68 @@ class ControleurLivre
 //        echo json_encode($livres);
 //    }
 
-    public function index(): void
+
+    public function ASC(): void
     {
 
-        $filAriane = FilAriane::majFilArianne();
-        $nbLivres = Livre::trouverNbLivres();
+    }
 
+    public function DESC(): void
+    {
+
+    }
+
+    public function index(): void
+    {
         $numeroPage = (int)$_GET['page'];
 
-        $nombreTotalPages = ceil($nbLivres / 6);
+        if (isset($_GET["categorie"]) && $_GET["categorie"] != 0) {
+            var_dump($_GET["categorie"]);
+            $nbLivres = Livre::trouverNbLivresParCategorie(intval($_GET["categorie"]));
+            if ($nbLivres != 0) {
+                $nombreTotalPages = ceil($nbLivres / 6);
+                $nombreParPage = ceil($nbLivres / $nombreTotalPages);
+            } else {
+                $nombreTotalPages = 1;
+                $nombreParPage = 1;
+            }
 
-        $nombreParPage = ceil($nbLivres / $nombreTotalPages);
+            $livres = Livre::paginer($numeroPage, $nombreParPage, intval($_GET["categorie"]));
+            $categorie = $_GET["categorie"];
+        } elseif (isset($_POST["categorie"]) && $_POST["categorie"] != 0) {
+            $nbLivres = Livre::trouverNbLivresParCategorie(intval($_POST["categorie"]));
+            if ($nbLivres != 0) {
+                $nombreTotalPages = ceil($nbLivres / 6);
+                $nombreParPage = ceil($nbLivres / $nombreTotalPages);
+            } else {
+                $nombreTotalPages = 1;
+                $nombreParPage = 1;
+            }
+            $livres = Livre::paginer($numeroPage, $nombreParPage, intval($_POST["categorie"]));
+            $categorie = $_POST["categorie"];
 
-        $date2022 = date('Y-m-d', strtotime('-2 year'));
+        } else {
+            $nbLivres = Livre::trouverNbLivres();
+            if ($nbLivres != 0) {
+                $nombreTotalPages = ceil($nbLivres / 6);
+                $nombreParPage = ceil($nbLivres / $nombreTotalPages);
+            } else {
+                $nombreTotalPages = 1;
+                $nombreParPage = 1;
+            }
+            $livres = Livre::paginer($numeroPage, $nombreParPage, 0);
+            $categorie = 0;
+        }
+
+
+        $filAriane = FilAriane::majFilArianne();
+
+
+        $date2022 = date('Y-m-d', strtotime('-3 year'));
         $date2024 = date('Y-m-d', strtotime('+1 year'));
         $dateAujourdhui = date('Y-m-d');
 
-        $livres = Livre::paginer($numeroPage, $nombreParPage);
-
-        $tDonnees = array("livres" => $livres, "nbLivres" => $nbLivres, "numeroPage" => $numeroPage, "nombreTotalPages" => $nombreTotalPages, "filAriane" => $filAriane, "aujourdhui" => $dateAujourdhui, "aparaitre" => $date2024, "nouveau" => $date2022);
+        $tDonnees = array("livres" => $livres, "nbLivres" => $nbLivres, "numeroPage" => $numeroPage, "nombreTotalPages" => $nombreTotalPages, "filAriane" => $filAriane, "aujourdhui" => $dateAujourdhui, "aparaitre" => $date2024, "nouveau" => $date2022, "categorie" => $categorie);
 
         echo App::getBlade()->run("livres.index", $tDonnees);
 

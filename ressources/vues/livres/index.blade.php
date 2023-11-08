@@ -71,36 +71,39 @@
                             <i class="fa-solid fa-arrow-right arrow"></i>
 
                         </button>
-                        <ul class="select-dropdown display-none" role="listbox" id="categorie-list">
-                            <li role="option">
-                                <input type="radio" id="0" name="categorie" checked/>
-                                <label for="0">Tous</label>
-                            </li>
-                            <li role="option">
-                                <input type="radio" id="1" name="categorie"/>
-                                <label for="1">Bande dessinée</label>
-                            </li>
-                            <li role="option">
-                                <input type="radio" id="2" name="categorie"/>
-                                <label for="2">Bande dessinée jeunesse</label>
-                            </li>
-                            <li role="option">
-                                <input type="radio" id="3" name="categorie"/>
-                                <label for="3">Livre illustré</label>
-                            </li>
-                            <li role="option">
-                                <input type="radio" id="4" name="categorie"/>
-                                <label for="4">Album jeunesse</label>
-                            </li>
-                            <li role="option">
-                                <input type="radio" id="5" name="categorie"/>
-                                <label for="5">Documentaire</label>
-                            </li>
-                            <li role="option">
-                                <input type="radio" id="6" name="categorie"/>
-                                <label for="6">Divers</label>
-                            </li>
-                        </ul>
+                        <form id="form-categorie" method="POST"
+                              action="index.php?controleur=livre&action=index&page=1">
+                            <ul class="select-dropdown display-none" role="listbox" id="categorie-list">
+                                <li role="option">
+                                    <input type="radio" id="0" value="0" name="categorie" @if($categorie == 0) checked @endif/>
+                                    <label for="0">Tous</label>
+                                </li>
+                                <li role="option">
+                                    <input type="radio" id="1" value="1" name="categorie" @if($categorie == 1) checked @endif/>
+                                    <label for="1">Bande dessinée</label>
+                                </li>
+                                <li role="option">
+                                    <input type="radio" id="2" value="2" name="categorie" @if($categorie == 2) checked @endif/>
+                                    <label for="2">Bande dessinée jeunesse</label>
+                                </li>
+                                <li role="option">
+                                    <input type="radio" id="3" value="3" name="categorie" @if($categorie == 3) checked @endif/>
+                                    <label for="3">Livre illustré</label>
+                                </li>
+                                <li role="option">
+                                    <input type="radio" id="4" value="4" name="categorie" @if($categorie == 4) checked @endif/>
+                                    <label for="4">Album jeunesse</label>
+                                </li>
+                                <li role="option">
+                                    <input type="radio" id="5" value="5" name="categorie" @if($categorie == 5) checked @endif/>
+                                    <label for="5">Documentaire</label>
+                                </li>
+                                <li role="option">
+                                    <input type="radio" id="6" value="6" name="categorie" @if($categorie == 6) checked @endif/>
+                                    <label for="6">Divers</label>
+                                </li>
+                            </ul>
+                        </form>
                     </div>
                 </div>
                 <ul class="catalogue-liste" id="catalogue-liste">
@@ -141,7 +144,7 @@
 
 
         </div>
-        {{--        <script src="liaisons/js/categorie.js"></script>--}}
+        <script src="liaisons/js/categorie.js"></script>
         <script src="liaisons/js/dropdown.js"></script>
         <script src="liaisons/js/catalogue.js"></script>
     </section>

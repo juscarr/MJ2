@@ -219,42 +219,21 @@ class Livre
         return $livre;
     }
 
-//    public static function trouverParCategorieId($categorie): array
-//    {
-//        header("Content-type: application/json; charset=utf-8");
-//        header("Expires: Thu, 19 Nov 1981 08:52:00 GMT");
-//        header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
-//        header("Pragma: no-cache");
-//        $msgErreur = null;
-//        $tabLivres = array();
-//        $chaineSQL = 'SELECT * FROM livres WHERE categorie_id=:idCategorie';
-//        $requetePreparee = App::getPDO()->prepare($chaineSQL);
-//        $requetePreparee->bindParam(':idCategorie', $categorie, PDO::PARAM_INT);
-//
-////        $requetePreparee->setFetchMode(PDO::FETCH_OBJ);
-//        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Livre');
-//        $requetePreparee->execute();
-//
-//        if ($requetePreparee->rowCount() == 0)
-//            $msgErreur = "Le id du chandail n'existe pas.";
-//        else {
-//            $tabLivres = $requetePreparee->fetchAll();
-//        }
-//
-//        $requetePreparee->closeCursor();
-//
-//        if ($msgErreur != null) {
-//            echo "{\n";
-//            echo "\t\"erreur\":\n";
-//            echo "\t{\n";
-//            echo "\t\t\"message\": \"" . str_replace("\"", "\\\"", $msgErreur) . "\"\n";
-//            echo "\t}\n";
-//            echo "}\n";
-//        }
-//
-//        return $tabLivres;
-//
-//    }
+    public static function trouverParCategorieId($categorie): array
+    {
+
+        $chaineSQL = 'SELECT * FROM livres WHERE categorie_id=:idCategorie';
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        $requetePreparee->bindParam(':idCategorie', $categorie, PDO::PARAM_INT);
+
+//        $requetePreparee->setFetchMode(PDO::FETCH_OBJ);
+        $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Livre');
+        $requetePreparee->execute();
+        $livres = $requetePreparee->fetchAll();
+
+        return $livres;
+
+    }
 
     public static function trouverNbLivres(): int
     {
@@ -272,17 +251,43 @@ class Livre
         return $nbLivre['nombres'];
     }
 
-    public static function paginer (int $unNoDePage, float $unNbrParPage){
-        if($unNoDePage) {
-
-        }
-        $unNoDePage = 6 * ($unNoDePage - 1);
+    public static function trouverNbLivresParCategorie($categorie): int
+    {
         // Définir la chaine SQL
-        $chaineSQL = 'SELECT * FROM `livres` LIMIT :indexDepart, :nbrParPage';
+        $chaineSQL = 'SELECT COUNT(*) AS nombres FROM livres WHERE categorie_id=:idCategorie;';
+
         // Préparer la requête (optimisation)
         $requetePreparee = App::getPDO()->prepare($chaineSQL);
-        $requetePreparee->bindParam(':indexDepart', $unNoDePage,PDO::PARAM_INT);
-        $requetePreparee->bindParam(':nbrParPage', $unNbrParPage,PDO::PARAM_INT);
+        $requetePreparee->bindParam(':idCategorie', $categorie, PDO::PARAM_INT);
+
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_ASSOC);
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $nbLivre = $requetePreparee->fetch();
+
+        return $nbLivre['nombres'];
+    }
+
+
+
+    public static function paginer(int $unNoDePage, float $unNbrParPage, int $categorie)
+    {
+
+        $unNoDePage = 6 * ($unNoDePage - 1);
+        if($categorie == 0) {
+            $chaineSQL = 'SELECT * FROM `livres` LIMIT :indexDepart, :nbrParPage';
+            $requetePreparee = App::getPDO()->prepare($chaineSQL);
+
+        } else {
+            $chaineSQL = 'SELECT * FROM `livres` WHERE categorie_id=:idCategorie LIMIT :indexDepart, :nbrParPage ';
+            $requetePreparee = App::getPDO()->prepare($chaineSQL);
+            $requetePreparee->bindParam(':idCategorie', $categorie, PDO::PARAM_INT);
+        }
+
+        $requetePreparee->bindParam(':indexDepart', $unNoDePage, PDO::PARAM_INT);
+        $requetePreparee->bindParam(':nbrParPage', $unNbrParPage, PDO::PARAM_INT);
 
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Livre');
@@ -293,6 +298,5 @@ class Livre
 
         return $paginerLivres;
     }
-
 
 }
