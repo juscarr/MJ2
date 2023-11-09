@@ -39,6 +39,7 @@ class Actualite
     {
         return $this->l_activite;
     }
+
     public function getDate(): int
     {
         return $this->date;

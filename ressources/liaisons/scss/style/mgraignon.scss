@@ -88,7 +88,6 @@ element {
 }
 
 .item_li {
-  margin-bottom: 100px;
   text-align: left;
 }
 
@@ -183,6 +182,8 @@ element {
 
 .flecheVisionneuse {
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 55px;
 }
 
 @media (min-width:600px) {
@@ -230,7 +231,13 @@ element {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 150px;
+  max-width: 200px;
+}
+
+.auteur,
+.categorie,
+.prix {
+  text-align: left;
 }
 
 /*********************************************/
