@@ -7,7 +7,7 @@
         <title>La Pastèque | Technique d'intégration multimédia - Cégep de Sainte-Foy</title>
         <meta name="description" content="Voici un exemple de description" />
         <meta name="keywords" content="Livres, vente, auteurs, site web, design, nouveautes, a paraitre, bande dessinnee, jeunesse, comedie, pasteque, fruit" />
-        <link rel="icon" type="image/x-icon" href="../../images/logo_LaPasteque/icons/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="../images/logo_LaPasteque/icons/favicon.ico">
     </head>
     <body>
         <header role="banner">
