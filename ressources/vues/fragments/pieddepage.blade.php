@@ -1,4 +1,4 @@
-<footer>
+<footer class="footer">
     <div class="logo_container">
         <img class="logo" src="images/image%203.png">
     </div>
@@ -40,9 +40,11 @@
         </div>
     </div>
     <br>
+    <div class="bas-page_container">
     <div class="bas-page">
         <p>info@lapasteque.com</p>
         <p><small>&copy;2023 Technique d’Intégration Multimédia</small></p>
+    </div>
     </div>
 
 

@@ -194,9 +194,10 @@ p {
 }
 
 /** Style footer **/
-footer {
+.footer {
   background-color: #33AE55;
   padding-top: 50px;
+  font-size: 16px !important;
 }
 
 .logo_container {
@@ -977,6 +978,22 @@ h2 {
     text-align: left;
   }
 }
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.clamp {
+  -webkit-line-clamp: 3; /* Nombre de lignes à afficher avant de couper le texte */
+}
+
+.voir_plus {
+  cursor: pointer;
+  color: #C84B36;
+}
+
 .boutons {
   padding-bottom: 30px;
   display: flex;
@@ -1004,10 +1021,6 @@ h2 {
   margin: 5px 0;
   border-radius: 5px;
   font-size: 16px;
-}
-
-.voir_plus {
-  color: #C84B36;
 }
 
 .formats {
