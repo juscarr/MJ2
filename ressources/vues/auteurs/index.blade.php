@@ -34,9 +34,9 @@
                     </div>
                     <input type="search" class="catalogue-search" placeholder="Titre, Auteur, ISBN...">
                 </div>
-                <ul class="catalogue-liste" id="catalogue-liste">
+                <ul class="catalogue-liste " id="catalogue-liste">
                     @foreach ($auteurs as $auteur)
-                        <li>
+                        <li class="catalogue-item--auteur">
                             <a class="catalogue-item"
                                href="index.php?controleur=auteur&action=fiche&id={{$auteur->getId()}}">
 
