@@ -28,6 +28,7 @@ CategorieOptionsList.forEach((option) => {
         if (e.type === "click") {
             CategorieSelectedValue.textContent = this.children[1].textContent;
         }
+
         //Accessible pour la navigation clavier
 
         if (e.key === "Enter") {

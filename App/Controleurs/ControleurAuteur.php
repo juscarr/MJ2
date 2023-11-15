@@ -2,10 +2,11 @@
 declare(strict_types=1);
 
 namespace App\Controleurs;
+
 use App\App;
+use App\FilAriane;
 use App\Modeles\Auteur;
-use App\Modeles\Exemple\Activite;
-use App\Modeles\Exemple\Participant;
+
 
 class ControleurAuteur
 {
@@ -16,14 +17,30 @@ class ControleurAuteur
 
     public function index(): void
     {
-        $auteurs = Auteur::trouverTout();
+        $numeroPage = (int)$_GET['page'];
 
-        $tDonnees = array("auteurs"=>$auteurs);
-        echo App::getBlade()->run("auteurs.index", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
+        $nbAuteurs = Auteur::trouverNbAuteurs();
+        if ($nbAuteurs != 0) {
+            $nombreTotalPages = ceil($nbAuteurs / 6);
+            $nombreParPage = ceil($nbAuteurs / $nombreTotalPages);
+        } else {
+            $nombreTotalPages = 1;
+            $nombreParPage = 1;
+        }
+
+        $auteurs = Auteur::paginer($numeroPage, $nombreParPage);
+
+        $filAriane = FilAriane::majFilArianne();
+
+        $tDonnees = array("auteurs" => $auteurs, "nbAuteurs" => $nbAuteurs, "numeroPage" => $numeroPage, "nombreTotalPages" => $nombreTotalPages, "filAriane" => $filAriane);
+
+        echo App::getBlade()->run("auteurs.index", $tDonnees);
+
 
     }
 
-    public function fiche():void {
+    public function fiche(): void
+    {
 
         $pdo = App::getPDO();
 
@@ -44,13 +61,14 @@ class ControleurAuteur
         $regionVille = $ville->getRegionAssociees($villeActivite->getRegionId(), $pdo);
 
 
-        $tDonnees = array("participant"=>$participant, "ville"=>$ville, "activite"=>$activite, "idActivite"=>$idActivite, "categorieActivite"=>$categorieActivite, "niveauActivite"=>$niveauActivite,
-                            "regionVille"=>$regionVille, "villeActivite"=>$villeActivite);
+        $tDonnees = array("participant" => $participant, "ville" => $ville, "activite" => $activite, "idActivite" => $idActivite, "categorieActivite" => $categorieActivite, "niveauActivite" => $niveauActivite,
+            "regionVille" => $regionVille, "villeActivite" => $villeActivite);
 
         echo App::getBlade()->run("livres.fiche", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
 
     }
 }
+
 ?>
 
 
