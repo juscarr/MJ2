@@ -11,7 +11,7 @@
 
 
     <div class="image_evenement_div">
-        <img class="image_evenement" src="../images/" alt="Image de l'evenement">
+        <img class="image_evenement" src="" alt="Image de l'evenement">
     </div>
 
     <h2 class="h2 h2_section1">Nouveautés</h2>

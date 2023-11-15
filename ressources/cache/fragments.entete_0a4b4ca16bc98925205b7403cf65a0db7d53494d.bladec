@@ -1,7 +1,7 @@
 <div class="header_delimitation">
  <div>
  <div class="test">
- <img class="logo" src="logo.png" alt="">
+ <img class="logo" src="../images/logo_LaPasteque/icons/android-chrome-192x192.png" alt="">
  <img class="panier" src="Shopping Cart.png" alt="">
  <input type="checkbox" class="menu-toggle" id="menu-toggle">
  <div class="mobile-bar">
