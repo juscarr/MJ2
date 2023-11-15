@@ -18,10 +18,7 @@
     <div class="nouveautes">
         <!-- Importer les infos de la base de donnée en mode aléatoire (Titre de livre / Nom auteur / Catégorie / Prix en cad) -->
         <ul class="itemCacheEnMobile">
-<<<<<<< HEAD
 
-=======
->>>>>>> header--css
             @foreach($livres as $livre)
                 <li class="item_li" hidden>
                     <img class="item_image" src="../images/img_couvert_livres/{{$livre->getCategorieId()}}/{{$livre->getIsbnPapier()}}.jpg" alt="">
