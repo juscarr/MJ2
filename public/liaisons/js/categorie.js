@@ -6,9 +6,10 @@ let btnRadio4 = document.getElementById('4');
 let btnRadio5 = document.getElementById('5');
 let btnRadio6 = document.getElementById('6');
 
-let pagination = document.querySelectorAll(".pagination-interaction")
+let btnRadioRecent = document.getElementById('recent');
+let btnRadioAncien = document.getElementById('ancien');
 
-let tBtnRadio = [btnRadio0, btnRadio1, btnRadio2, btnRadio3, btnRadio4, btnRadio5, btnRadio6]
+let tBtnRadio = [btnRadio0, btnRadio1, btnRadio2, btnRadio3, btnRadio4, btnRadio5, btnRadio6, btnRadioRecent, btnRadioAncien]
 
 for (let i = 0; i < tBtnRadio.length; i++) {
     tBtnRadio[i].addEventListener("click", function () {

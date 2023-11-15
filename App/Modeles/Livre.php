@@ -272,19 +272,32 @@ class Livre
 
 
 
-    public static function paginer(int $unNoDePage, float $unNbrParPage, int $categorie)
+    public static function paginer(int $unNoDePage, float $unNbrParPage, int $categorie, string $tri)
     {
 
         $unNoDePage = 6 * ($unNoDePage - 1);
-        if($categorie == 0) {
-            $chaineSQL = 'SELECT * FROM `livres` LIMIT :indexDepart, :nbrParPage';
-            $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        if($tri === "DESC") {
+            if($categorie == 0) {
+                $chaineSQL = 'SELECT * FROM `livres` ORDER BY date_parution_quebec DESC LIMIT :indexDepart, :nbrParPage ';
+                $requetePreparee = App::getPDO()->prepare($chaineSQL);
 
+            } else {
+                $chaineSQL = 'SELECT * FROM `livres` WHERE categorie_id=:idCategorie ORDER BY date_parution_quebec DESC LIMIT :indexDepart, :nbrParPage  ';
+                $requetePreparee = App::getPDO()->prepare($chaineSQL);
+                $requetePreparee->bindParam(':idCategorie', $categorie, PDO::PARAM_INT);
+            }
         } else {
-            $chaineSQL = 'SELECT * FROM `livres` WHERE categorie_id=:idCategorie LIMIT :indexDepart, :nbrParPage ';
-            $requetePreparee = App::getPDO()->prepare($chaineSQL);
-            $requetePreparee->bindParam(':idCategorie', $categorie, PDO::PARAM_INT);
+            if($categorie == 0) {
+                $chaineSQL = 'SELECT * FROM `livres` ORDER BY date_parution_quebec ASC LIMIT :indexDepart, :nbrParPage';
+                $requetePreparee = App::getPDO()->prepare($chaineSQL);
+
+            } else {
+                $chaineSQL = 'SELECT * FROM `livres` WHERE categorie_id=:idCategorie ORDER BY date_parution_quebec ASC LIMIT :indexDepart, :nbrParPage';
+                $requetePreparee = App::getPDO()->prepare($chaineSQL);
+                $requetePreparee->bindParam(':idCategorie', $categorie, PDO::PARAM_INT);
+            }
         }
+
 
         $requetePreparee->bindParam(':indexDepart', $unNoDePage, PDO::PARAM_INT);
         $requetePreparee->bindParam(':nbrParPage', $unNbrParPage, PDO::PARAM_INT);
