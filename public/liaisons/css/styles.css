@@ -127,11 +127,11 @@ p {
     font-weight: bold;
   }
   h2 {
-    font-size: 45px;
+    font-size: 40px;
     font-weight: bold;
   }
   h3 {
-    font-size: 40px;
+    font-size: 30px;
   }
   p {
     font-size: 25px;
@@ -316,7 +316,7 @@ element {
   margin: 0px;
 }
 
-h1 {
+.h1_accueil {
   text-align: center;
 }
 
@@ -368,14 +368,14 @@ h1 {
   color: #FFFFFF;
 }
 
-ul {
+.itemCacheEnMobile {
   list-style-type: none;
   padding-left: 0px;
   display: flex;
   flex-direction: column;
 }
 @media (min-width: 600px) {
-  ul {
+  .itemCacheEnMobile {
     width: -webkit-fill-available;
     display: flex;
     flex-direction: row;
@@ -401,7 +401,6 @@ ul {
 }
 
 .item_li {
-  margin-bottom: 100px;
   text-align: left;
 }
 
@@ -410,6 +409,8 @@ ul {
 }
 
 .image_evenement {
+  width: 285px;
+  height: 217px;
   border-style: solid;
   border-radius: 0px 90px 0px 90px;
 }
@@ -492,6 +493,8 @@ ul {
 
 .flecheVisionneuse {
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 55px;
 }
 
 @media (min-width: 600px) {
@@ -533,7 +536,302 @@ ul {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 150px;
+  max-width: 200px;
+}
+
+.auteur,
+.categorie,
+.prix {
+  text-align: left;
+}
+
+/*********************************************/
+.header_delimitation {
+  width: 100%;
+  height: 210px;
+  background-color: #33AE55;
+}
+@media (min-width: 600px) {
+  .header_delimitation {
+    height: 255px;
+  }
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.mobile-bar {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 25px;
+  /*BAR HOW MUCH IN RIGHT*/
+  width: 100%;
+  height: 65px;
+}
+
+.menu-icon {
+  float: left;
+  display: block;
+  position: relative;
+  width: 25px;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 300ms ease-in;
+  /*the bar to X*/
+}
+
+.menu-icon > span {
+  display: block;
+  position: absolute;
+  top: 55%;
+  margin-top: -0.3em;
+  width: 100%;
+  height: 0.199em;
+  border-radius: 1px;
+  background-color: #FFFFFF;
+  transition: transform 300ms ease-in;
+}
+
+.menu-icon > span:before,
+.menu-icon > span:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+  background-color: #FFFFFF;
+  transition: transform 300ms ease;
+}
+
+.menu-icon > span:before {
+  transform: translateY(-0.6em);
+}
+
+.menu-icon > span:after {
+  transform: translateY(0.6em);
+}
+
+/*need this for bringing down the examples*/
+.menu-toggle:checked + .mobile-bar .menu-icon {
+  transform: rotate(45deg);
+}
+
+.menu-toggle:checked + .mobile-bar span:before,
+.menu-toggle:checked + .mobile-bar span:after {
+  transform: rotate(90deg);
+}
+
+/*needed*/
+.menu-toggle:checked ~ .header {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.header {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 60px;
+  width: 100%;
+  height: 100%;
+  background-color: #33AE55;
+  padding-right: 5.7px;
+  color: #eee;
+  transition: opacity 300ms ease-in, visibility 0s ease-in 300ms;
+}
+
+.header nav,
+.header ul {
+  height: 100%;
+}
+
+.header li {
+  border-bottom: 1px solid #eee;
+  color: #FFFFFF;
+  /*text on navbar*/
+  font-weight: 430;
+  line-height: 2.4;
+  /*height of the navbar*/
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+}
+
+.header a {
+  display: block;
+  padding: 25px;
+  transition: background-color 300ms ease-in;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+
+.navbar-brand > img {
+  height: 40px;
+  width: auto;
+  z-index: 10;
+  position: fixed;
+  top: 13.45px;
+  left: 0;
+  padding: 0 25px;
+  /*BAR HOW MUCH IN RIGHT*/
+  background-color: white;
+}
+
+.test {
+  top: 0;
+  width: 100%;
+  position: absolute;
+}
+
+@media (min-width: 1000px) {
+  .mobile-bar {
+    display: none;
+  }
+  .header {
+    z-index: 5;
+    position: relative;
+    left: 0;
+    padding-top: 0;
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    text-align: center;
+    margin: auto;
+    margin-top: -3px;
+  }
+  .header li {
+    display: inline-block;
+    margin-right: -6px;
+    /* fix the inline-block gap */
+    border: none;
+    text-align: left;
+  }
+  .header a {
+    padding: 15px 35px;
+    /*header height and text spacing*/
+  }
+  .header li:hover {
+    text-decoration: underline;
+    color: #000000;
+    transition: color 300ms ease-in;
+  }
+}
+.lien {
+  text-decoration: none;
+}
+
+.lien:hover,
+.lien:focus,
+.lien:active {
+  text-decoration: none;
+}
+
+/*******************/
+@media only screen and (max-width: 600px) {
+  body[yahoo] .full_width_600 {
+    width: 90% !important;
+  }
+}
+@media only screen and (max-width: 700px) {
+  body[yahoo] .full_width_700 {
+    width: 100% !important;
+  }
+  body[yahoo] .txt_center {
+    text-align: center !important;
+  }
+  body[yahoo] .separator {
+    height: 40px !important;
+  }
+}
+.ul {
+  list-style: none;
+}
+
+.lien {
+  text-decoration: none;
+  color: inherit;
+}
+
+.search {
+  margin-top: 150px;
+  margin-left: 5px;
+  width: 298px;
+  height: 43px;
+  border: solid;
+  border-color: #C84B36;
+}
+@media (min-width: 600px) {
+  .search {
+    margin-top: 115px;
+    margin-left: 55em;
+  }
+}
+
+/************************/
+.new-chat-window {
+  position: relative;
+  width: 200px;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  z-index: 2;
+}
+
+.new-chat-window .fa {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.search:focus {
+  outline-color: blue;
+}
+
+.new-chat-window-input {
+  border: 1px solid #ccc;
+  line-height: 30px;
+  padding-left: 30px;
+  width: 100%;
+  z-index: 1;
+}
+
+.logo {
+  width: 103px;
+  height: 103px;
+  margin-left: 85px;
+  margin-top: 18px;
+}
+@media (min-width: 600px) {
+  .logo {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.panier {
+  width: 43px;
+  height: 43px;
+  color: #C84B36;
+  border: solid;
+  background: white;
+  border-radius: 25px;
+  padding: 3px;
+}
+@media (min-width: 600px) {
+  .panier {
+    margin-left: 52em;
+    margin-bottom: 10px;
+  }
 }
 
 /** Style jcarrier **/
