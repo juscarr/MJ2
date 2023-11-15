@@ -23,7 +23,7 @@
 
 }
 
-//**CSS de la liste de livre**//
+//**CSS de la liste de livre + Auteur**//
 
 
 .catalogue-liste {
@@ -43,13 +43,29 @@
 }
 
 
-//** CSS d'un item Livre AFFICHAGE LISTE**//
+//** CSS d'un item Livre + Auteur AFFICHAGE LISTE**//
 .item-liste {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.item-liste--auteur {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .catalogue-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    z-index: 0;
+  }
 }
 
 .item-liste {
@@ -106,7 +122,7 @@
   display: none;
 }
 
-//**CSS d'un item Livre AFFICHAGE VIGNETTE**//
+//**CSS d'un item Livre + auteur AFFICHAGE VIGNETTE**//
 
 .item-vignette {
   max-width: 240px;
@@ -422,6 +438,7 @@ input[type="radio"].radio:checked + label {
     font-weight: bold;
     z-index: 1;
   }
+
   &liste {
     position: absolute;
     display: flex;

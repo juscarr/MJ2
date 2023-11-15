@@ -1,55 +1,68 @@
 @extends('gabarit')
 
 @section('contenu')
+
     <section class="catalogue-main">
-        <div class="catalogue-entete">
-            <h1>Catalogue</h1>
-            <div><p><a>Accueil</a>/ Catalogue</p></div>
-        </div>
+
         <div class="content">
-            <div class="catalogue-filtre">
-                <div class="filtre-disposition">
-                    <label for="disposition-gauche">Vignette</label>
-                    <input id="disposition-gauche" type="radio" class="input input-radio--double">
-                    <label for="disposition-droite">Liste</label>
-                    <input id="disposition-droite" type="radio" class="input input-radio--double">
-                </div>
-                <input type="search">
-                <a>Réinitialiser les filtres</a>
-                <h2>Filtre</h2>
-                <span class="filtre-categorie">Catégories</span>
-                <div class="liste-deroulante"></div>
-
-                <span class="filtre-tri">Tri</span>
-                <div class="liste-tri"></div>
-            </div>
-            <ul class="catalogue-liste">
-                @foreach ($auteurs as $auteur)
-
-
-
-                    <li class="catalogue-item">
-                        <a href="index.php?controleur=auteur&action=fiche&id={{$auteur->getId()}}">
-
-                            <img src="">
-                            <p class="item-titre"></p>
-                            <p class="item-auteur"></p>
-                            <p class="item-version"></p>
-                            <p class-="item-prix"></p>
-                        </a>
-
-                    </li>
+            <div class="fil-arianne"> @foreach($filAriane as $lien)
+                    @if(isset($lien["lien"]))
+                        <a href="{{$lien["lien"]}}">{{$lien["titre"]}}</a>
+                    @else
+                        {{$lien["titre"]}}
+                    @endif
+                    <span> | </span>
                 @endforeach
-            </ul>
-            <div class="catalogue-pagination">
+            </div>
+            <h1>Artistes</h1>
+            <div class="catalogue">
+                <div class="catalogue-filtre">
+                    <div class="filtre-disposition">
 
-                <!--- Navigation inter-page--->
+                        <input checked="checked" type="radio" id="disposition-gauche" name="disposition" class="radio"
+                               value="Simple">
+                        <label class="toggle toggle-left toggle-double" for="disposition-gauche">
+                            Vignette
+                        </label>
 
+                        <input type="radio" id="disposition-droite" name="disposition" class="radio" value="Mensuel">
+                        <label class="toggle toggle-right toggle-double toggle-disabled" for="disposition-droite"
+                               id="label-disposition">
+                            Liste
+                        </label>
+
+                    </div>
+                    <input type="search" class="catalogue-search" placeholder="Titre, Auteur, ISBN...">
+                </div>
+                <ul class="catalogue-liste " id="catalogue-liste">
+                    @foreach ($auteurs as $auteur)
+                        <li class="catalogue-item--auteur">
+                            <a class="catalogue-item"
+                               href="index.php?controleur=auteur&action=fiche&id={{$auteur->getId()}}">
+
+                                <div class="container-item--img">
+                                    <img class="item-img"
+                                         src="https://placehold.co/240x320">
+                                </div>
+                                <p class="item-titre">{{$auteur->getPrenomNom()}}</p>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
 
+        </div>
+        <div class="catalogue-pagination">
+
+            @include('auteurs.fragments.pagination')
 
         </div>
 
+
+        </div>
+        <script src="liaisons/js/categorie.js"></script>
+        <script src="liaisons/js/dropdown.js"></script>
+        <script src="liaisons/js/catalogue.js"></script>
     </section>
 
 @endsection

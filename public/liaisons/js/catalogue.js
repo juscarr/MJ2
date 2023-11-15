@@ -12,15 +12,27 @@ buttonVignette.addEventListener("click", affichageToggle);
 function affichageToggle() {
     liste.forEach(li => {
             if (buttonListe.checked) {
-                li.classList.add("item-liste");
-                li.classList.remove("item-vignette");
+                if (li.classList.contains("catalogue-item--auteur")) {
+                    li.classList.add("item-liste--auteur");
+                    li.classList.remove("item-vignette");
+                } else {
+                    li.classList.add("item-liste");
+                    li.classList.remove("item-vignette");
+                }
+
 
                 // header.classList.add("catalogue-header--liste")
                 // header.classList.remove("header-hidden")
             }
             if (buttonVignette.checked) {
-                li.classList.add("item-vignette");
-                li.classList.remove("item-liste");
+                if (li.classList.contains("catalogue-item--auteur")) {
+                    li.classList.add("item-vignette");
+                    li.classList.remove("item-liste--auteur");
+                } else {
+                    li.classList.add("item-vignette");
+                    li.classList.remove("item-liste");
+                }
+
 
                 // header.classList.remove("catalogue-header--liste")
                 // header.classList.add("header-hidden")
