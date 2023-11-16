@@ -23,7 +23,7 @@
             <form action="index.php?controleur=article&action=quantite&id={{$article->getLivreAssoc()->getId()}}"
                   method="POST">
 
-                <h2>Formulaire de mise à jour de quantité :</h2>
+                <h3>Formulaire de mise à jour de quantité :</h3>
 
                 <br>
 

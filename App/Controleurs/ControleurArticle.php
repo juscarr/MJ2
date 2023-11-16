@@ -20,6 +20,7 @@ class ControleurArticle
     {
 
         $quantite = $_POST["quantite"];
+
         $idLivre = $_GET["id"];
 
         $panier = Panier::trouverPanierParIdSession();
@@ -52,14 +53,6 @@ class ControleurArticle
                         header('Location:index.php?controleur=panier&action=fiche');
                         exit;
                     }
-                } else {
-                    $nouveauArticle = new Article;
-                    $nouveauArticle->setPanierId($idPanier);
-                    $nouveauArticle->setLivreId(intval($idLivre));
-                    $nouveauArticle->setQuantite(intval($quantite));
-                    $nouveauArticle->inserer();
-                    header('Location:index.php?controleur=panier&action=fiche');
-                    exit;
                 }
             }
 
@@ -69,22 +62,24 @@ class ControleurArticle
     public function modifierQuantite(): void
     {
         $quantite = $_POST["quantite"];
+
         $idLivre = $_GET["id"];
 
         $panier = Panier::trouverPanierParIdSession();
 
         $article = Article::trouverArticleParIdPanierEtIdLivre($panier->getId(), $idLivre);
 
-
         $article->setQuantite(intval($quantite));
         $article->modifierQuantite();
 
         header('Location:index.php?controleur=panier&action=fiche');
+
         exit;
 
-
     }
-    public function supprimer(): void {
+
+    public function supprimer(): void
+    {
         $idLivre = $_GET["id"];
 
         $panier = Panier::trouverPanierParIdSession();
@@ -92,20 +87,23 @@ class ControleurArticle
         $article = Article::trouverArticleParIdPanierEtIdLivre($panier->getId(), $idLivre);
 
         $article->supprimer();
+
         header('Location:index.php?controleur=panier&action=fiche');
+
         exit;
 
-
     }
-    public function supprimerPanier(): void {
+
+    public function supprimerPanier(): void
+    {
 
         $panier = Panier::trouverPanierParIdSession();
 
         Article::supprimerPanier($panier->getId());
 
         header('Location:index.php?controleur=panier&action=fiche');
-        exit;
 
+        exit;
 
     }
 

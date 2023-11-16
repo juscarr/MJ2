@@ -76,7 +76,6 @@ class App
             $panier->modifier();
         } else {
             $timestamp = time();
-
             $panier = new Panier;
             $panier->setIdSession(App::getIdSession());
             $panier->setDateUnixDernierAcces($timestamp);
