@@ -11,7 +11,9 @@ use \PDO\PDOStatement;
 use App\Controleurs\ControleurSite;
 use App\Controleurs\ControleurLivre;
 use App\Controleurs\ControleurAuteur;
-
+use App\Controleurs\ControleurArticle;
+use App\Controleurs\ControleurPanier;
+use App\Modeles\Panier;
 
 class App
 {
@@ -60,9 +62,39 @@ class App
         return App::$refBlade;
     }
 
+    private function demarrerSession(): void
+    {
+
+        session_start();
+
+        $panier = Panier::trouverPanierParIdSession();
+
+
+        if ($panier != null) {
+            $timestamp = time();
+            $panier->setDateUnixDernierAcces($timestamp);
+            $panier->modifier();
+        } else {
+            $timestamp = time();
+
+            $panier = new Panier;
+            $panier->setIdSession(App::getIdSession());
+            $panier->setDateUnixDernierAcces($timestamp);
+            $panier->inserer();
+        }
+    }
+
+    public static function getIdSession(): string
+    {
+        $idSession = session_id();
+
+        return $idSession;
+    }
 
     public function routerRequete(): void
     {
+        $this->demarrerSession();
+
         // Variables locales
         $nomControleur = 'site'; // Nom du controleur par défaut
         $nomAction = 'accueil'; // Nom de l'action par défaut
@@ -129,6 +161,30 @@ class App
                 case 'creer':
                     $objControleur->creer();
                     break;
+                default:
+                    echo 'Erreur 404 - Page introuvable.';
+            }
+        }
+        if ($nomControleur === 'article') {
+            $objControleur = new ControleurArticle();
+            switch ($nomAction) {
+                case 'ajouter':
+                    $objControleur->ajouter();
+                case 'quantite':
+                    $objControleur->modifierQuantite();
+                case 'supprimer':
+                    $objControleur->supprimer();
+                case 'supprimerPanier':
+                    $objControleur->supprimerPanier();
+                default:
+                    echo 'Erreur 404 - Page introuvable.';
+            }
+        }
+        if ($nomControleur === 'panier') {
+            $objControleur = new ControleurPanier();
+            switch ($nomAction) {
+                case 'fiche':
+                    $objControleur->fiche();
                 default:
                     echo 'Erreur 404 - Page introuvable.';
             }
