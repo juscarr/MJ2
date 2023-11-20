@@ -1248,6 +1248,19 @@ input[type=radio].radio:checked + label {
   margin-bottom: 90px;
 }
 
+/** image d'item **/
+.panier-image {
+  width: 100px;
+}
+
+.panier-list {
+  list-style: none;
+}
+
+.panier-titre {
+  text-align: center;
+}
+
 /** Style jsavard **/
 h1 {
   margin-bottom: 10px;

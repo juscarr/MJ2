@@ -10,10 +10,16 @@
         <p><strong>{{$livre->getPrixCan()}} </strong>{{$livre->getPagination()}}</p>
         <p><strong>{{$livre->getAgeMin()}} ans et plus</strong></p>
     </div>
+    {{$livre->getId()}}
+
     <div class="article">
         <img class="couvert_livre" src="images/colette.jpg">
         <div class="boutons">
-            <button class="btn_principal">Ajouter au panier</button>
+            <form action="index.php?controleur=article&action=ajouter&id={{$livre->getId()}}" method="POST">
+                <button class="btn_principal" type="submit">Ajouter au panier</button>
+                <label for="quantite">Quantite : </label>
+                <input id="quantite" name="quantite" type="number">
+            </form>
             <button class="btn_secondaire">Ajouter aux souhaits</button>
         </div>
     </div>
@@ -23,7 +29,11 @@
     </div>
     <div class="boutons-large_container">
         <div class="boutons-large">
-            <button class="btn_principal">Ajouter au panier</button>
+            <form action="index.php?controleur=article&action=ajouter&id={{$livre->getId()}}" method="POST">
+                <button class="btn_principal" type="submit">Ajouter au panier</button>
+                <label for="quantite">Quantite : </label>
+                <input id="quantite" name="quantite" type="number">
+            </form>
             <button class="btn_secondaire">Ajouter aux souhaits</button>
         </div>
     </div>

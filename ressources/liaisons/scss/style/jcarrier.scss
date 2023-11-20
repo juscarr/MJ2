@@ -457,3 +457,18 @@ input[type="radio"].radio:checked + label {
   }
 }
 
+//*** Panier ***//
+
+/** image d'item **/
+
+.panier-image {
+  width: 100px;
+}
+
+.panier-list {
+  list-style: none;
+}
+
+.panier-titre {
+  text-align: center;
+}

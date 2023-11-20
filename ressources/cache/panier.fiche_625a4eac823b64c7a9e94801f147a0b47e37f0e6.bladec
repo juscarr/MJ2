@@ -1,0 +1,96 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('contenu'); ?>
+
+ <h1 class="panier-titre">Votre panier</h1>
+
+ <?php /*    <ul class="catalogue-liste" id="catalogue-liste">*/ ?>
+ <?php /*        <?php $__currentLoopData = $article->getLivreAssoc()s; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $article->getLivreAssoc(): $loop = $this->incrementLoopIndices();  ?>*/ ?>
+ <?php /*            <li>*/ ?>
+ <?php /*                <?php if($article->getLivreAssoc()->getDateParutionQuebec() < $aujourdhui && $article->getLivreAssoc()->getDateParutionQuebec() > $nouveau): ?>*/ ?>
+ <?php /*                    <div class="container-type--vignette container-type">Nouveau</div>*/ ?>
+ <?php /*                <?php elseif($article->getLivreAssoc()->getDateParutionQuebec() > $aujourdhui && $article->getLivreAssoc()->getDateParutionQuebec() < $aparaitre): ?>*/ ?>
+ <?php /*                    <div class="container-type--vignette  container-type">À paraître</div>*/ ?>
+ <?php /*                <?php endif; ?>*/ ?>
+ <?php /*                <a class="catalogue-item"*/ ?>
+ <?php /*                   href="index.php?controleur=livre&action=fiche&id=<?php echo \htmlentities($article->getLivreAssoc()->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>">*/ ?>
+
+ <?php /*                    <div class="container-item--img">*/ ?>
+ <?php /*                        <img class="item-img"*/ ?>
+ <?php /*                             src="../images/img_couvert_livres/<?php echo \htmlentities($article->getLivreAssoc()->getCategorieId()??'', ENT_QUOTES, 'UTF-8', false); ?>/<?php echo \htmlentities($article->getLivreAssoc()->getIsbnPapier()??'', ENT_QUOTES, 'UTF-8', false); ?>.jpg">*/ ?>
+ <?php /*                    </div>*/ ?>
+ <?php /*                    <p class="item-titre"><?php echo \htmlentities($article->getLivreAssoc()->getTitre()??'', ENT_QUOTES, 'UTF-8', false); ?></p>*/ ?>
+ <?php /*                </a>*/ ?>
+ <?php /*                <p class="item-auteur">*/ ?>
+
+ <?php /*                    <?php $__currentLoopData = $article->getLivreAssoc()->getAuteurAssociee($article->getLivreAssoc()->getId()); $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $article->getLivreAssoc(): $loop = $this->incrementLoopIndices();  ?>*/ ?>
+ <?php /*                        <a href="index.php?controleur=auteur&action=fiche&id=<?php echo \htmlentities($article->getLivreAssoc()AssocAuteur->getAuteurAssoc($article->getLivreAssoc()AssocAuteur->getIdAuteur())->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>">*/ ?>
+ <?php /*                            <?php echo \htmlentities($article->getLivreAssoc()AssocAuteur->getAuteurAssoc($article->getLivreAssoc()AssocAuteur->getIdAuteur())->getPrenom() . " " . $article->getLivreAssoc()AssocAuteur->getAuteurAssoc($article->getLivreAssoc()AssocAuteur->getIdAuteur())->getNom()??'', ENT_QUOTES, 'UTF-8', false); ?>*/ ?>
+ <?php /*                        </a>*/ ?>
+ <?php /*                    <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>*/ ?>
+
+ <?php /*                </p>*/ ?>
+ <?php /*                <p class="item-categorie"><?php echo \htmlentities($article->getLivreAssoc()->getCategorieAssociee()->getNom()??'', ENT_QUOTES, 'UTF-8', false); ?></p>*/ ?>
+
+ <?php /*                <p class="item-prix"><?php echo \htmlentities($article->getLivreAssoc()->getPrixCan()??'', ENT_QUOTES, 'UTF-8', false); ?>$</p>*/ ?>
+
+ <?php /*            </li>*/ ?>
+ <?php /*        <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>*/ ?>
+ <?php /*        <script>let images = document.querySelectorAll("img")*/ ?>
+ <?php /*            images.forEach((image) => {*/ ?>
+ <?php /*                    image.onerror = function () {*/ ?>
+ <?php /*                        image.src = "https://placehold.co/240x320";*/ ?>
+ <?php /*                    };*/ ?>
+ <?php /*                }*/ ?>
+ <?php /*            )*/ ?>
+ <?php /*            console.log(images);*/ ?>
+
+ <?php /*        </script>*/ ?>
+ <?php /*    </ul>*/ ?>
+
+ <ul class="panier-list">
+ <?php $__currentLoopData = $articles; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $article): $loop = $this->incrementLoopIndices();  ?>
+ <li>
+ <?php if($article->getLivreAssoc()->getDateParutionQuebec() < $aujourdhui && $article->getLivreAssoc()->getDateParutionQuebec() > $nouveau): ?>
+ <div class="container-type--vignette container-type">Nouveau</div>
+ <?php elseif($article->getLivreAssoc()->getDateParutionQuebec() > $aujourdhui && $article->getLivreAssoc()->getDateParutionQuebec() < $aparaitre): ?>
+ <div class="container-type--vignette  container-type">À paraître</div>
+ <?php endif; ?>
+
+ <img class="panier-image"
+ src="../images/img_couvert_livres/<?php echo \htmlentities($article->getLivreAssoc()->getCategorieId()??'', ENT_QUOTES, 'UTF-8', false); ?>/<?php echo \htmlentities($article->getLivreAssoc()->getIsbnPapier()??'', ENT_QUOTES, 'UTF-8', false); ?>.jpg">
+
+ <p>Nom: <?php echo \htmlentities($article->getLivreAssoc()->getTitre()??'', ENT_QUOTES, 'UTF-8', false); ?></p>
+
+ <form action="index.php?controleur=article&action=quantite&id=<?php echo \htmlentities($article->getLivreAssoc()->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ method="POST">
+ <label for="quantite">Quantité :</label>
+ <select id="quantite" name="quantite">
+ <?php for($i = 1; $i <= 10; $i++): ?>
+ <option value=<?php echo \htmlentities($i??'', ENT_QUOTES, 'UTF-8', false); ?> <?php if($i == $article->getQuantite()): ?> selected <?php endif; ?>><?php echo \htmlentities($i??'', ENT_QUOTES, 'UTF-8', false); ?></option>
+ <?php endfor; ?>
+ </select>
+ <button type="submit">
+ Mettre à jour la quantité
+ </button>
+ </form>
+ <form action="index.php?controleur=article&action=supprimer&id=<?php echo \htmlentities($article->getLivreAssoc()->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ method="POST">
+ <button type="submit">
+ Supprimer l'article
+ </button>
+ </form>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </ul>
+ <form action="index.php?controleur=article&action=supprimerPanier"
+ method="POST">
+ <button type="submit">
+ Supprimer tous les articles du panier
+ </button>
+ </form>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('gabarit'); } ?>
