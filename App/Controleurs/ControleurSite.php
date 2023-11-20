@@ -22,7 +22,11 @@ class ControleurSite
         $evenements = Evenement::trouverTout();
         $livres = Livre::trouverTout();
 
-        $tDonnees = array("livres"=>$livres, "actualites"=>$actualites, "evenements"=>$evenements);
+        $date2022 = date('Y-m-d', strtotime('-4 year'));
+        $date2024 = date('Y-m-d', strtotime('+1 year'));
+        $aujourdhui = date('Y-m-d');
+
+        $tDonnees = array("livres"=>$livres, "actualites"=>$actualites, "evenements"=>$evenements, "nouveau" => $date2022, "aparaitre" => $date2024, "aujourdhui" => $aujourdhui);
 
         echo App::getBlade()->run("accueil", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
 
