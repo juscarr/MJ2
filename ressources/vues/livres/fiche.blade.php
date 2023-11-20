@@ -4,11 +4,11 @@
     <div class="intro">
         <h1>{{$livre->getTitre()}}</h1>
         <h2><p id="nomAuteur" class="auteur">
-                @foreach ($livre->getAuteurAssociee($livre->getId(), $pdo) as $livreAssocAuteur)
-                    {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur(), $pdo)->getNom()}}
+                @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
+                    {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
                 @endforeach</p></h2>
-        <p><strong>75$</strong>115 pages</p>
-        <p><strong>5 ans et plus</strong></p>
+        <p><strong>{{$livre->getPrixCan()}} </strong>{{$livre->getPagination()}}</p>
+        <p><strong>{{$livre->getAgeMin()}} ans et plus</strong></p>
     </div>
     <div class="article">
         <img class="couvert_livre" src="images/colette.jpg">
@@ -17,12 +17,9 @@
             <button class="btn_secondaire">Ajouter aux souhaits</button>
         </div>
     </div>
-    <div class="description">
-        <p>Dans ce conte féerique captivant, l'héroïne, Colette, est une petite
-            fille tout à fait ordinaire qui découvre un jour un mystérieux œuf dans son jardin.
-            Convaincue qu'il s'agit d'un œuf de dinosaure, elle décide de l'incuber en
-            utilisant des méthodes totalement farfelues, comme chanter... <a class="voir_plus" href="">Voir plus</a>
-        </p>
+    <div class="description" id="descriptionContenu">
+        <p>{{$livre->getLeLivre()}}</p>
+        <a class="voir_plus" href="javascript:void(0);" onclick="afficherDescription()">Voir plus</a>
     </div>
     <div class="boutons-large_container">
         <div class="boutons-large">
@@ -52,4 +49,21 @@
         <a class="precedent" href="">Livre précédent</a>
         <a class="suivant" href="">Livre suivant</a>
     </div>
+
+    <script>
+        function afficherDescription() {
+            var descriptionContenu = document.getElementById("descriptionContenu");
+            var voirPlusLink = document.querySelector(".voir_plus");
+
+            // Si la description est actuellement tronquée, alors afficher tout
+            if (descriptionContenu.classList.contains("tronquee")) {
+                descriptionContenu.classList.remove("tronquee");
+                voirPlusLink.innerHTML = "Voir moins";
+            } else {
+                // Sinon, tronquer la description et ajouter "Voir plus"
+                descriptionContenu.classList.add("tronquee");
+                voirPlusLink.innerHTML = "Voir plus";
+            }
+        }
+    </script>
 @endsection

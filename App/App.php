@@ -10,7 +10,7 @@ use \PDO\PDOStatement;
 
 use App\Controleurs\ControleurSite;
 use App\Controleurs\ControleurLivre;
-use App\Controleurs\ControleurAuteur;
+use App\Controleurs\ControleurAuteur;use App\Controleurs\ControleurCompte;
 
 
 class App
@@ -92,7 +92,34 @@ class App
                     echo 'Erreur 404 - Page introuvable.';
             }
 
+        } if ($nomControleur === 'compte') {
+        $objControleur = new ControleurCompte();
+        switch ($nomAction) {
+            case 'connexion':
+                $objControleur->connexion();
+                break;
+            case 'nouveau':
+                $objControleur->nouveau();
+                break;
+            default:
+                echo 'Erreur 404 - Page introuvable.';
         }
+        if ($nomControleur === 'compte') {
+            $objControleur = new ControleurCompte();
+            switch ($nomAction) {
+                case 'connexion':
+                    $objControleur->connexion();
+                    break;
+                case 'nouveau':
+                    $objControleur->nouveau();
+                    break;
+                default:
+                    echo 'Erreur 404 - Page introuvable.';
+            }
+
+        }
+
+    }
 
         if ($nomControleur === 'livre') {
             $objControleur = new ControleurLivre();
