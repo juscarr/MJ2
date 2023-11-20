@@ -1,8 +1,8 @@
 <div class="header_delimitation">
     <div>
         <div class="test">
-            <img class="logo" src="../images/logo_LaPasteque/icons/android-chrome-192x192.png" alt="">
-            <img class="panier" src="Shopping Cart.png" alt="">
+            <a href="index.php?controleur=site&action=accueil"><img class="logo" src="../images/logo_LaPasteque/icons/android-chrome-192x192.png" alt="Logo du site La pasteque"></a>
+            <img class="panier" src="../images/panier.png" alt="logo d'un panier d'epicerie">
             <input type="checkbox" class="menu-toggle" id="menu-toggle">
             <div class="mobile-bar">
                 <label for="menu-toggle" class="menu-icon">
@@ -25,28 +25,5 @@
 
         </div>
     </div>
-    <input type="search" class="search" placeholder="Recherche">
+    <input type="search" class="accueil-search" placeholder="Recherche">
 </div>
-
-
-{{--<h3>Entête</h3>--}}
-{{--<ul>--}}
-{{--    <li><a href="index.php?controleur=region&action=index">Liste des régions</a></li>--}}
-{{--    <!-- Importer le HEADER -->--}}
-{{--    <img src="" alt="">--}}
-{{--    <img src="" alt="">--}}
-
-{{--    <p>Se connecter</p>--}}
-
-{{--    <ul>--}}
-{{--        <li><a href="index.php?controleur=livre&action=index&page=1">Livres</a></li>--}}
-{{--        <li>Liste de souhaits</li>--}}
-{{--        <li><a href="index.php?controleur=auteur&action=index">Auteurs</a></li>--}}
-{{--        <li>Contact</li>--}}
-{{--    </ul>--}}
-
-{{--    <input type="text" value="Recherche">--}}
-
-{{--</ul>--}}
-
-

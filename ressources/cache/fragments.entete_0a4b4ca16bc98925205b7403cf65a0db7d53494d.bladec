@@ -1,8 +1,8 @@
 <div class="header_delimitation">
  <div>
  <div class="test">
- <img class="logo" src="../images/logo_LaPasteque/icons/android-chrome-192x192.png" alt="">
- <img class="panier" src="Shopping Cart.png" alt="">
+ <a href="index.php?controleur=site&action=accueil"><img class="logo" src="../images/logo_LaPasteque/icons/android-chrome-192x192.png" alt="Logo du site La pasteque"></a>
+ <img class="panier" src="../images/panier.png" alt="logo d'un panier d'epicerie">
  <input type="checkbox" class="menu-toggle" id="menu-toggle">
  <div class="mobile-bar">
  <label for="menu-toggle" class="menu-icon">
@@ -25,28 +25,5 @@
 
  </div>
  </div>
- <input type="search" class="search" placeholder="Recherche">
+ <input type="search" class="accueil-search" placeholder="Recherche">
 </div>
-
-
-<?php /*<h3>Entête</h3>*/ ?>
-<?php /*<ul>*/ ?>
-<?php /*    <li><a href="index.php?controleur=region&action=index">Liste des régions</a></li>*/ ?>
-<?php /*    <!-- Importer le HEADER -->*/ ?>
-<?php /*    <img src="" alt="">*/ ?>
-<?php /*    <img src="" alt="">*/ ?>
-
-<?php /*    <p>Se connecter</p>*/ ?>
-
-<?php /*    <ul>*/ ?>
-<?php /*        <li><a href="index.php?controleur=livre&action=index&page=1">Livres</a></li>*/ ?>
-<?php /*        <li>Liste de souhaits</li>*/ ?>
-<?php /*        <li><a href="index.php?controleur=auteur&action=index">Auteurs</a></li>*/ ?>
-<?php /*        <li>Contact</li>*/ ?>
-<?php /*    </ul>*/ ?>
-
-<?php /*    <input type="text" value="Recherche">*/ ?>
-
-<?php /*</ul>*/ ?>
-
-
