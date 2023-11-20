@@ -29,43 +29,43 @@ class App
         $this->routerRequete();
     }
 
-    public static function estEnLigne()
+    public static function getServeur(): string
     {
-        // Obtenir l'adresse IP associée au nom d'hôte
-        $adresseIP = gethostname();
-
-        // Comparer avec l'adresse IP locale (127.0.0.1)
-        return $adresseIP === 'localhost:8889';
+        // Vérifier la nature du serveur (local VS production)
+        $env = 'null';
+        if ((substr($_SERVER['HTTP_HOST'], 0, 9) == 'localhost') ||
+            (substr($_SERVER['HTTP_HOST'], 0, 7) == '199.202')) {
+            $env = 'serveur-local';
+        } else {
+            $env = 'serveur-production';
+        }
+        return $env;
     }
+
 
     public static function getPDO(): PDO
     {
-
-        if (!App::$pdo) {
-            if (App::estEnLigne()) {
-                $serveur = 'https://timunix3.csfoy.ca';
-                $utilisateur = 'mj2';
-                $motDePasse = 'poissonclown';
-                $nomBd = '23_rpni3_mj2';
-            } else {
+        if (App::$pdo == null) {
+            if (App::getServeur() === 'serveur-local') {
                 $serveur = 'localhost:8889';
                 $utilisateur = 'root';
                 $motDePasse = 'root';
                 $nomBd = 'pasteque';
+            } else if (App::getServeur() === 'serveur-production') {
+                //timunix3;
+                $serveur = 'https://timunix3.csfoy.ca';
+                $utilisateur = 'mj2';
+                $motDePasse = 'poissonclown';
+                $nomBd = '23_rpni3_mj2';
             }
-
-
-// Exemple de paramètre de connexion
-
-            $chaineDSN = "mysql:dbname=$nomBd;host=$serveur";    // Data source name
-// Tentative de connexion
+            $chaineDSN = "mysql:dbname=$nomBd;host=$serveur"; // Data source name
             App::$pdo = new PDO($chaineDSN, $utilisateur, $motDePasse);
-// Changement d'encodage des caractères UTF-8
+            // Changement d'encodage des caractères UTF-8
             App::$pdo->exec("SET NAMES utf8");
-// Affectation des attributs de la connexion : Obtenir des rapports d'erreurs et d'exception avec errorInfo()
+            // Affectation des attributs de la connexion : Obtenir des rapports d'erreurs et d'exception avec errorInfo()
             App::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             return App::$pdo;
+
         } else {
             return App::$pdo;
         }
