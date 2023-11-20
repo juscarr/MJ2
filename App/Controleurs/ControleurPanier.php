@@ -22,7 +22,11 @@ class ControleurPanier
 
         $articles = Article::trouverArticlesParIdPanier($panier->getId());
 
-        $tDonnees = array("articles" => $articles, "panier" => $panier);
+        $date2022 = date('Y-m-d', strtotime('-3 year'));
+        $date2024 = date('Y-m-d', strtotime('+1 year'));
+        $dateAujourdhui = date('Y-m-d');
+
+        $tDonnees = array("articles" => $articles, "panier" => $panier, "nouveau" => $date2022, "aujourdhui" => $dateAujourdhui, "aparaitre" => $date2024);
         echo App::getBlade()->run("panier.fiche", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
     }
 
