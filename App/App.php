@@ -29,20 +29,20 @@ class App
         $this->routerRequete();
     }
 
-    function estEnLigne()
+    public static function estEnLigne()
     {
         // Obtenir l'adresse IP associée au nom d'hôte
-        $adresseIP = gethostbyname(gethostname());
+        $adresseIP = gethostname();
 
         // Comparer avec l'adresse IP locale (127.0.0.1)
-        return $adresseIP !== 'localhost:8889';
+        return $adresseIP === 'localhost:8889';
     }
 
     public static function getPDO(): PDO
     {
 
         if (!App::$pdo) {
-            if (estEnLigne()) {
+            if (App::estEnLigne()) {
                 $serveur = 'https://timunix3.csfoy.ca';
                 $utilisateur = 'mj2';
                 $motDePasse = 'poissonclown';
@@ -58,7 +58,6 @@ class App
 // Exemple de paramètre de connexion
 
             $chaineDSN = "mysql:dbname=$nomBd;host=$serveur";    // Data source name
-
 // Tentative de connexion
             App::$pdo = new PDO($chaineDSN, $utilisateur, $motDePasse);
 // Changement d'encodage des caractères UTF-8
