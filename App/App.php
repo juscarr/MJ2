@@ -10,15 +10,12 @@ use \PDO\PDOStatement;
 
 use App\Controleurs\ControleurSite;
 use App\Controleurs\ControleurLivre;
-<<<<<<< HEAD
-use App\Controleurs\ControleurAuteur;use App\Controleurs\ControleurCompte;
-
-=======
 use App\Controleurs\ControleurAuteur;
+use App\Controleurs\ControleurCompte;
 use App\Controleurs\ControleurArticle;
 use App\Controleurs\ControleurPanier;
 use App\Modeles\Panier;
->>>>>>> MVC/CRUD-panier
+
 
 class App
 {
@@ -32,16 +29,34 @@ class App
         $this->routerRequete();
     }
 
+    function estEnLigne()
+    {
+        // Obtenir l'adresse IP associée au nom d'hôte
+        $adresseIP = gethostbyname(gethostname());
+
+        // Comparer avec l'adresse IP locale (127.0.0.1)
+        return $adresseIP !== 'localhost:8889';
+    }
+
     public static function getPDO(): PDO
     {
 
         if (!App::$pdo) {
+            if (estEnLigne()) {
+                $serveur = 'https://timunix3.csfoy.ca';
+                $utilisateur = 'mj2';
+                $motDePasse = 'poissonclown';
+                $nomBd = '23_rpni3_mj2';
+            } else {
+                $serveur = 'localhost:8889';
+                $utilisateur = 'root';
+                $motDePasse = 'root';
+                $nomBd = 'pasteque';
+            }
+
 
 // Exemple de paramètre de connexion
-            $serveur = 'localhost:8889';
-            $utilisateur = 'root';
-            $motDePasse = 'root';
-            $nomBd = 'pasteque';
+
             $chaineDSN = "mysql:dbname=$nomBd;host=$serveur";    // Data source name
 
 // Tentative de connexion
@@ -128,17 +143,6 @@ class App
                     echo 'Erreur 404 - Page introuvable.';
             }
 
-        } if ($nomControleur === 'compte') {
-        $objControleur = new ControleurCompte();
-        switch ($nomAction) {
-            case 'connexion':
-                $objControleur->connexion();
-                break;
-            case 'nouveau':
-                $objControleur->nouveau();
-                break;
-            default:
-                echo 'Erreur 404 - Page introuvable.';
         }
         if ($nomControleur === 'compte') {
             $objControleur = new ControleurCompte();
@@ -152,10 +156,22 @@ class App
                 default:
                     echo 'Erreur 404 - Page introuvable.';
             }
+            if ($nomControleur === 'compte') {
+                $objControleur = new ControleurCompte();
+                switch ($nomAction) {
+                    case 'connexion':
+                        $objControleur->connexion();
+                        break;
+                    case 'nouveau':
+                        $objControleur->nouveau();
+                        break;
+                    default:
+                        echo 'Erreur 404 - Page introuvable.';
+                }
+
+            }
 
         }
-
-    }
 
         if ($nomControleur === 'livre') {
             $objControleur = new ControleurLivre();
