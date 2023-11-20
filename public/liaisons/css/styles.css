@@ -905,6 +905,21 @@ element {
   align-items: center;
 }
 
+.item-liste--auteur {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.item-liste--auteur .catalogue-item {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  z-index: 0;
+}
+
 .item-liste .item-img {
   max-width: 100px;
 }

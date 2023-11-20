@@ -39,7 +39,7 @@
                     <form id="form-categorie" method="POST"
                           action="index.php?controleur=livre&action=index&page=1">
                         <div class="custom-select" id="tri-select">
-                            <button class="select-button" id="tri-button"
+                            <button type="button" class="select-button" id="tri-button"
                                     role="combobox"
                                     aria-labelledby="select button"
                                     aria-haspopup="listbox"
@@ -52,13 +52,13 @@
 
                             <ul class="select-dropdown display-none" role="listbox" id="tri-list">
                                 <li role="option">
-                                    <input type="radio" id="recent" name="tri" value="ASC"
-                                           @if($tri === "ASC")  checked @endif/>
+                                    <input type="radio" id="recent" name="tri" value="DESC"
+                                           @if($tri === "DESC")  checked @endif/>
                                     <label for="recent">Le plus récent</label>
                                 </li>
                                 <li role="option">
-                                    <input type="radio" id="ancien" value="DESC" name="tri"
-                                           @if($tri === "DESC") checked @endif/>
+                                    <input type="radio" id="ancien" value="ASC" name="tri"
+                                           @if($tri === "ASC") checked @endif/>
                                     <label for="ancien">Le plus ancien</label>
                                 </li>
 
@@ -66,7 +66,7 @@
                         </div>
                         <h3>Catégorie</h3>
                         <div class="custom-select" id="categorie-select">
-                            <button class="select-button" id="categorie-button"
+                            <button type="button" class="select-button" id="categorie-button"
                                     role="combobox"
                                     aria-labelledby="select button"
                                     aria-haspopup="listbox"
@@ -114,39 +114,55 @@
                                     <label for="6">Divers</label>
                                 </li>
                             </ul>
+                        </div>
                     </form>
                 </div>
+                <ul class="catalogue-liste" id="catalogue-liste">
+                    @foreach ($livres as $livre)
+                        <li>
+                            @if($livre->getDateParutionQuebec() < $aujourdhui && $livre->getDateParutionQuebec() > $nouveau)
+                                <div class="container-type--vignette container-type">Nouveau</div>
+                            @elseif($livre->getDateParutionQuebec() > $aujourdhui && $livre->getDateParutionQuebec() < $aparaitre)
+                                <div class="container-type--vignette  container-type">À paraître</div>
+                            @endif
+                            <a class="catalogue-item"
+                               href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
+
+                                <div class="container-item--img">
+                                    <img class="item-img"
+                                         src="../images/img_couvert_livres/{{$livre->getCategorieId()}}/{{$livre->getIsbnPapier()}}.jpg">
+                                </div>
+                                <p class="item-titre">{{$livre->getTitre()}}</p>
+                            </a>
+                            <p class="item-auteur">
+
+                                @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
+                                    <a href="index.php?controleur=auteur&action=fiche&id={{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getId()}}">
+                                        {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
+                                    </a>
+                                @endforeach
+
+                            </p>
+                            <p class="item-categorie">{{$livre->getCategorieAssociee()->getNom()}}</p>
+
+                            <p class="item-prix">{{$livre->getPrixCan()}}$</p>
+
+                        </li>
+                    @endforeach
+                    <script>let images = document.querySelectorAll("img")
+                        images.forEach((image) => {
+                                image.onerror = function () {
+                                    image.src = "https://placehold.co/240x320";
+                                };
+                            }
+                        )
+                        console.log(images);
+
+                    </script>
+                </ul>
             </div>
-            <ul class="catalogue-liste" id="catalogue-liste">
-                @foreach ($livres as $livre)
-                    <li>
-                        @if($livre->getDateParutionQuebec() < $aujourdhui && $livre->getDateParutionQuebec() > $nouveau)
-                            <div class="container-type--vignette container-type">Nouveau</div>
-                        @elseif($livre->getDateParutionQuebec() > $aujourdhui && $livre->getDateParutionQuebec() < $aparaitre)
-                            <div class="container-type--vignette  container-type">À paraître</div>
-                        @endif
-                        <a class="catalogue-item"
-                           href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
-
-                            <div class="container-item--img">
-                                <img class="item-img"
-                                     src="../images/img_couvert_livres/{{$livre->getCategorieId()}}/{{$livre->getIsbnPapier()}}.jpg">
-                            </div>
-                            <p class="item-titre">{{$livre->getTitre()}}</p>
-                        </a>
-                        <p class="item-auteur">
-                            @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
-                                {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
-                            @endforeach
-                        </p>
-                        <p class="item-categorie">{{$livre->getCategorieAssociee()->getNom()}}</p>
-
-                        <p class="item-prix">{{$livre->getPrixCan()}}$</p>
-
-                    </li>
-                @endforeach
-            </ul>
         </div>
+
         <div class="catalogue-pagination">
 
             @include('livres.fragments.pagination')

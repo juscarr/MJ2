@@ -33,7 +33,7 @@ class FilAriane
      *      <a href="$lien["lien"]">$lien["titre"]</a>
      *  else
      *      $lien["titre"]}
- *      endif
+     *      endif
      *  <span> | </span>
      * endforeach
      *
@@ -41,32 +41,33 @@ class FilAriane
      * Retourne une tableau associatif de liens et titre de liens.
      * @return array
      */
-    public static function majFilArianne(): array{
+    public static function majFilArianne(): array
+    {
         //Tableau de retour des liens du fil d'Ariane
-        $fil=array();
+        $fil = array();
 
         //Si le contrôleur est défini, on a déjà naviguer quelque part
-        if(isset($_GET["controleur"])){
+        if (isset($_GET["controleur"])) {
 
             //Si le contrôleur n'est pas celui du site, nous sommes au deuxième niveau
-            if($_GET["controleur"] !== 'site') {
+            if ($_GET["controleur"] !== 'site') {
 
-                switch(true){
+                switch (true) {
 
                     //Si l'action est d'afficher une liste de livres
                     case  $_GET["action"] === 'index' :
 
                         //On crée un lien de retour vers l'accueil
-                        $lien0=array("titre"=>"Accueil","lien"=>"index.php?controleur=site&action=accueil");
+                        $lien0 = array("titre" => "Accueil", "lien" => "index.php?controleur=site&action=accueil");
 
                         //@todo adapter cet algo pour les catégories...
 
                         //Est-ce qu'on affiche les nouveauté ou non?
                         //Afficher la fin du fil, sans lien
-                        if(isset($_GET["nouveau"])){
-                            $lien1=array("titre"=>"Nouveautés");
-                        }else{
-                            $lien1=array("titre"=>"Livres");
+                        if ($_GET["controleur"] === "livre") {
+                            $lien1 = array("titre" => "Livres");
+                        } else if ($_GET["controleur"] === "auteur") {
+                            $lien1 = array("titre" => "Auteurs");
                         }
 
                         //Prépare le tableau de liens de retour
@@ -78,15 +79,15 @@ class FilAriane
                     case  $_GET["action"] === 'fiche' :
 
                         //Lien de retour vers l'accueil
-                        $lien0=array("titre"=>"Accueil","lien"=>"index.php?controleur=site&action=accueil");
+                        $lien0 = array("titre" => "Accueil", "lien" => "index.php?controleur=site&action=accueil");
 
                         //@todo adapter cet algo pour les catégories...
 
                         //Lien vers la liste des pages se qualifiant (catégorie, nouveauté...)
-                        if(isset($_GET["nouveau"])){
-                            $lien1=array("titre"=>"Nouveautés","lien"=>"index.php?controleur=livre&action=index&nouveau=".$_GET["nouveau"]);
-                        }else{
-                            $lien1=array("titre"=>"Livres","lien"=>"index.php?controleur=livre&action=index");
+                        if (isset($_GET["nouveau"])) {
+                            $lien1 = array("titre" => "Nouveautés", "lien" => "index.php?controleur=livre&action=index&nouveau=" . $_GET["nouveau"]);
+                        } else {
+                            $lien1 = array("titre" => "Livres", "lien" => "index.php?controleur=livre&action=index");
                         }
 
                         //Prépare le tableau de liens de retour
@@ -96,9 +97,9 @@ class FilAriane
                         //Si un livre particuler est sélectionné par isbn
                         //Afficher la fin du fil, sans lien
                         //Pourrait aussi être fait par ID
-                        if(isset($_GET["id"])) {
+                        if (isset($_GET["id"])) {
                             $livre = Livre::trouverParId($_GET["id"]);
-                            $fil[2]=array("titre"=>$livre->getTitre());
+                            $fil[2] = array("titre" => $livre->getTitre());
                         }
                         break;
                 }
