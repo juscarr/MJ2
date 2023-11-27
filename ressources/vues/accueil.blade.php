@@ -28,7 +28,7 @@
                     <li class="item_li" hidden>
                         <div class="container-type--vignette  container-type">Nouveau</div>
 
-                        <a href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
+                        <a class="accueil-item" href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
                         @php
                             $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
@@ -79,7 +79,7 @@
                     <li class="item_li2" hidden>
 {{--                        <div class="container-type--vignette  container-type">À paraitre</div>--}}
 
-                        <a href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
+                        <a class="accueil-item" href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
                         @php
                             $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
@@ -127,7 +127,7 @@
 
                     <li class="item_li3" hidden>
 
-                        <a href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
+                        <a class="accueil-item" href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
                         @php
                             $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
