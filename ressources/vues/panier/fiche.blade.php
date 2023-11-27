@@ -52,28 +52,22 @@
         <span class="panier-separation"></span>
         @foreach($articles as $article)
             <li class="panier-item">
-                @if($article->getLivreAssoc()->getDateParutionQuebec() < $aujourdhui && $article->getLivreAssoc()->getDateParutionQuebec() > $nouveau)
-                    <div class="container-type--vignette container-type">Nouveau</div>
-                @elseif($article->getLivreAssoc()->getDateParutionQuebec() > $aujourdhui && $article->getLivreAssoc()->getDateParutionQuebec() < $aparaitre)
-                    <div class="container-type--vignette  container-type">À paraître</div>
-                @endif
 
                 <img class="panier-image"
                      src="../images/img_couvert_livres/{{$article->getLivreAssoc()->getCategorieId()}}/{{$article->getLivreAssoc()->getIsbnPapier()}}.jpg">
 
                 <p class="panier-titre">{{$article->getLivreAssoc()->getTitre()}}</p>
+                <div class="panier-prix">{{$article->getLivreAssoc()->getPrixCan()}}$</div>
 
                 <form class="panier-quantite"
                       action="index.php?controleur=article&action=quantite&id={{$article->getLivreAssoc()->getId()}}"
                       method="POST">
-                    <label for="quantite">Quantité :</label>
                     <select id="quantite" name="quantite" class="quantite">
                         @for ($i = 1; $i <= 10; $i++)
                             <option value={{$i}} @if($i == $article->getQuantite()) selected @endif>{{$i}}</option>
                         @endfor
                     </select>
                 </form>
-                <div class="panier-prix">{{$article->getLivreAssoc()->getPrixCan()}}$</div>
                 <div hidden
                      class="panier-prixtotal">{{intval($article->getLivreAssoc()->getPrixCan()) * $article->getQuantite()}}</div>
                 <form action="index.php?controleur=article&action=supprimer&id={{$article->getLivreAssoc()->getId()}}"
@@ -86,33 +80,39 @@
             <span class="panier-separation"></span>
 
         @endforeach
+        <form action="index.php?controleur=article&action=supprimerPanier"
+              method="POST" class="panier-supprimerTous">
+            <button type="submit" class="panier-bouton">
+                Supprimer tous
+            </button>
+        </form>
+
         <div class="panier-total"></div>
+        <div class="panier-livraison"><b>Le délai de livraison est de 10 jours</b></div>
+        <div class="panier-lien">
+            <a href="index.php?controleur=panier&action=paiement" class="panier-bouton--lien">Confirmer</a>
+        </div>
         <script>
-            console.log("allo")
             let prixtotal = document.querySelectorAll(".panier-prixtotal");
             let total = 0
             prixtotal.forEach(prix => {
                 total = total + parseInt(prix.innerHTML);
             });
-            document.querySelector('.panier-total').innerHTML = "Total: " + total + "$";
+            document.querySelector('.panier-total').innerHTML = "Votre total: " + total + "$";
 
             //Form quantite
 
-            let dropdownQuantite = document.querySelectorAll(".quantite");
-            let formQuantite = document.querySelector(".panier-quantite");
-            dropdownQuantite.forEach(dropdownQuantite => {
-                dropdownQuantite.addEventListener("change", () => {
-                    formQuantite.submit();
+            let formQuantite = document.querySelectorAll(".panier-quantite");
+            formQuantite.forEach(forQuantite => {
+
+
+                forQuantite.children[0].addEventListener("change", () => {
+                    forQuantite.submit();
                 })
             })
 
         </script>
 
     </ul>
-    <form action="index.php?controleur=article&action=supprimerPanier"
-          method="POST">
-        <button type="submit">
-            Supprimer tous les articles du panier
-        </button>
-    </form>
+
 @endsection
