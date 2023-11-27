@@ -7,7 +7,7 @@
                 @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
                     {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
                 @endforeach</p></h2>
-        <p><strong>{{$livre->getPrixCan()}} </strong>{{$livre->getPagination()}}</p>
+        <p><strong>{{$livre->getPrixCan()}} </strong>{{$livre->getPagination()}} pages</p>
         <p><strong>{{$livre->getAgeMin()}} ans et plus</strong></p>
     </div>
     <div class="article">
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="description" id="descriptionContenu">
-        <p>{{$livre->getLeLivre()}}</p>
+        <p>{!! $livre->getLeLivre() !!}</p>
         <a class="voir_plus" href="javascript:void(0);" onclick="afficherDescription()">Voir plus</a>
     </div>
     <div class="boutons-large_container">
@@ -36,13 +36,6 @@
         <button class="un-format">EWeb</button>
     </div>
 
-    <div class="commentaires">
-        <h4>Commentaires</h4>
-        <p><strong>Manon Massé</strong></p>
-        <p>Ce livre est le premier d’une série mettant en vedette les personnages de la bande du Mile-End.
-            Chaque livre apportera de nouvelles aventures, de nouvelles couleurs et des univers propres à
-            la personnalité de chacun.</p>
-    </div>
 
 
     <div class="livre-suivant-precedent">
