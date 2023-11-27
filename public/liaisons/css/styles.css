@@ -858,6 +858,17 @@ element {
   }
 }
 
+.accueil-item {
+  color: black;
+}
+.accueil-item:hover {
+  color: #C84B36;
+}
+.accueil-item:hover .item_image {
+  background-color: #C84B36;
+  opacity: 50%;
+}
+
 .body {
   margin: 0px;
 }
