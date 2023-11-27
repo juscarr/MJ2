@@ -53,9 +53,9 @@ class App
                 $nomBd = 'pasteque';
             } else if (App::getServeur() === 'serveur-production') {
                 //timunix3;
-                $serveur = 'https://timunix3.csfoy.ca';
-                $utilisateur = 'mj2';
-                $motDePasse = 'poissonclown';
+                $serveur = 'localhost';
+                $utilisateur = '23_rpni3_mj2';
+                $motDePasse = 'N5oGaNGsaHJci57p';
                 $nomBd = '23_rpni3_mj2';
             }
             $chaineDSN = "mysql:dbname=$nomBd;host=$serveur"; // Data source name
@@ -65,7 +65,6 @@ class App
             // Affectation des attributs de la connexion : Obtenir des rapports d'erreurs et d'exception avec errorInfo()
             App::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return App::$pdo;
-
         } else {
             return App::$pdo;
         }

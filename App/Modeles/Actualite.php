@@ -40,7 +40,7 @@ class Actualite
         return $this->l_activite;
     }
 
-    public function getDate(): int
+    public function getDate(): string
     {
         return $this->date;
     }
@@ -56,7 +56,7 @@ class Actualite
     }
 
     /* Méthode STATIC */
-    public static function trouverTout():array {
+    public static function trouverTout() {
         // Définir la chaine SQL
         $chaineSQL = 'SELECT * FROM actualites';
         // Préparer la requête (optimisation)

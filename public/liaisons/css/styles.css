@@ -1254,11 +1254,73 @@ input[type=radio].radio:checked + label {
 }
 
 .panier-list {
+  padding: 0;
   list-style: none;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+@media (min-width: 800px) {
+  .panier-list {
+    margin-right: 200px;
+    margin-left: 200px;
+  }
 }
 
 .panier-titre {
   text-align: center;
+}
+
+.panier-separation {
+  display: block;
+  width: 100%;
+  border: solid 2px #C84B36;
+  border-radius: 5px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+.panier-separation:nth-of-type(1) {
+  margin-top: 0;
+}
+
+.panier-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-around;
+  flex-direction: column;
+}
+@media (min-width: 600px) {
+  .panier-item {
+    flex-direction: row;
+  }
+}
+
+.panier-bouton {
+  width: 120px;
+  height: 50px;
+  background-color: #C84B36;
+  color: #FFFFFF;
+  font-weight: bold;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+}
+.panier-bouton--secondaire {
+  width: 120px;
+  height: 50px;
+  background-color: #FFFFFF;
+  color: #C84B36;
+  border: solid 1px #C84B36;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.panier-quantite {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 /** Style jsavard **/
