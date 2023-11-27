@@ -1,6 +1,7 @@
 @extends('gabarit')
 
 @section('contenu')
+
     <div class="intro">
         <h1>{{$livre->getTitre()}}</h1>
         <h2><p id="nomAuteur" class="auteur">
@@ -16,7 +17,7 @@
         <img class="couvert_livre" src="images/colette.jpg">
         <div class="boutons">
             <form action="index.php?controleur=article&action=ajouter&id={{$livre->getId()}}" method="POST">
-                <button class="btn_principal" type="submit">Ajouter au panier</button>
+                <button class="btn_principal" id="btn_principal" type="submit">Ajouter au panier</button>
                 <label for="quantite">Quantite : </label>
                 <input id="quantite" name="quantite" type="number">
             </form>
@@ -60,20 +61,7 @@
         <a class="suivant" href="">Livre suivant</a>
     </div>
 
-    <script>
-        function afficherDescription() {
-            var descriptionContenu = document.getElementById("descriptionContenu");
-            var voirPlusLink = document.querySelector(".voir_plus");
 
-            // Si la description est actuellement tronquée, alors afficher tout
-            if (descriptionContenu.classList.contains("tronquee")) {
-                descriptionContenu.classList.remove("tronquee");
-                voirPlusLink.innerHTML = "Voir moins";
-            } else {
-                // Sinon, tronquer la description et ajouter "Voir plus"
-                descriptionContenu.classList.add("tronquee");
-                voirPlusLink.innerHTML = "Voir plus";
-            }
-        }
-    </script>
+    <script defer src="public/liaisons/js/panier.js"></script>
+
 @endsection

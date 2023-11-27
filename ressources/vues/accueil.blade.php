@@ -22,10 +22,13 @@
 
             @foreach($livres as $livre)
 
+
                 @if($livre->getDateParutionQuebec() < $aujourdhui && $livre->getDateParutionQuebec() > $nouveau)
 
                     <li class="item_li" hidden>
                         <div class="container-type--vignette  container-type">Nouveau</div>
+
+                        <a href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
                         @php
                             $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
@@ -40,6 +43,7 @@
 
 
                         <h3 class="h3">{{$livre->getTitre()}}</h3>
+                        </a>
                         <p class="auteur">@foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
                                 {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
                             @endforeach
@@ -75,6 +79,8 @@
                     <li class="item_li2" hidden>
 {{--                        <div class="container-type--vignette  container-type">À paraitre</div>--}}
 
+                        <a href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
+
                         @php
                             $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
                         @endphp
@@ -88,6 +94,8 @@
 
 
                         <h3 class="h3">{{$livre->getTitre()}}</h3>
+                        </a>
+
                         <p class="auteur">@foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
                                 {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
                             @endforeach</p>
@@ -118,6 +126,9 @@
                 @if($livre->getCategorieId() === 2)
 
                     <li class="item_li3" hidden>
+
+                        <a href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
+
                         @php
                             $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
                         @endphp
@@ -131,6 +142,8 @@
 
 
                         <h3 class="h3">{{$livre->getTitre()}}</h3>
+                        </a>
+
                         <p class="auteur">@foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
                                 {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
                             @endforeach</p>
