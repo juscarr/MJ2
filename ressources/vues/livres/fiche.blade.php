@@ -24,8 +24,8 @@
         </div>
     </div>
     <div class="description" id="descriptionContenu">
-        <p>{{$livre->getLeLivre()}}</p>
-        <a class="voir_plus" href="javascript:void(0);" onclick="afficherDescription()">Voir plus</a>
+        <p>{!!$livre->getLeLivre()!!}</p>
+        <a class="voir_plus" href="#" onclick="afficherDescription()">Voir plus</a>
     </div>
     <div class="boutons-large_container">
         <div class="boutons-large">
@@ -68,11 +68,11 @@
             // Si la description est actuellement tronquée, alors afficher tout
             if (descriptionContenu.classList.contains("tronquee")) {
                 descriptionContenu.classList.remove("tronquee");
-                voirPlusLink.innerHTML = "Voir moins";
+                voirPlusLink.innerHTML = "Voir plus";
             } else {
                 // Sinon, tronquer la description et ajouter "Voir plus"
                 descriptionContenu.classList.add("tronquee");
-                voirPlusLink.innerHTML = "Voir plus";
+                voirPlusLink.innerHTML = "Voir moins";
             }
         }
     </script>

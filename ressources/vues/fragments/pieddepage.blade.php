@@ -10,7 +10,7 @@
     </div>
     <br>
     <div class="adresse_container">
-        <p class="adresse"><strong>Adresse</strong></p>
+        <p class="adresse"><sg>Adresse</strong></p>
         <p class="adresse-num ligne">102 avenue Laurier Ouest</p>
         <p class="adresse-ville">Montréal, H2T 2N7</p>
     </div>
