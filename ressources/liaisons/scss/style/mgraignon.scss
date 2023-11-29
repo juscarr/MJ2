@@ -595,6 +595,11 @@ element {
 .p_numeroPanier{
   margin-left: 13em;
   margin-top: -7em;
+
+  @media (min-width: 600px) {
+    margin-left: 13em;
+    margin-top: -2em;
+  }
 }
 
 
