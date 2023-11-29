@@ -1,4 +1,6 @@
-let btnAjouter = document.getElementById('btn_principal');
+let btnAjouter = document.getElementById('btn_secondaire');
+
+let numeroPanier = document.getElementById('p_numeroPanier');
 
 btnAjouter.addEventListener("click", incrementerPanier);
 
@@ -19,8 +21,11 @@ function afficherDescription() {
 }
 
 
+function incrementerPanier(event){
+    let compteurActuel = parseInt(numeroPanier.innerText);
+    compteurActuel++;
+    numeroPanier.innerText = compteurActuel;
 
-function incrementerPanier(){
     console.log("fonctionne");
 }
 

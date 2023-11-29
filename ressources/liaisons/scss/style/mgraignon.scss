@@ -242,6 +242,7 @@ element {
 .categorie,
 .prix {
   text-align: left;
+  max-width: 200px;
 }
 
 /*********************************************/
@@ -586,11 +587,18 @@ element {
     color: $couleur_orange;
 
     .item_image {
-      background-color: $couleur_orange;
       opacity: 50%;
     }
   }
 }
+/****************************/
+.p_numeroPanier{
+  margin-left: 13em;
+  margin-top: -7em;
+}
+
+
+/****************************/
 
 .body {
   margin: 0px;

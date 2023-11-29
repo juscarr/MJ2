@@ -21,7 +21,7 @@
                 <label for="quantite">Quantite : </label>
                 <input id="quantite" name="quantite" type="number">
             </form>
-            <button class="btn_secondaire">Ajouter aux souhaits</button>
+            <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
         </div>
     </div>
     <div class="description" id="descriptionContenu">
@@ -35,7 +35,7 @@
                 <label for="quantite">Quantite : </label>
                 <input id="quantite" name="quantite" type="number">
             </form>
-            <button class="btn_secondaire">Ajouter aux souhaits</button>
+            <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
         </div>
     </div>
 
@@ -62,6 +62,6 @@
     </div>
 
 
-    <script defer src="public/liaisons/js/panier.js"></script>
+    <script defer src="liaisons/js/panier.js"></script>
 
 @endsection

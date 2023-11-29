@@ -545,6 +545,7 @@ element {
 .categorie,
 .prix {
   text-align: left;
+  max-width: 200px;
 }
 
 /*********************************************/
@@ -865,10 +866,16 @@ element {
   color: #C84B36;
 }
 .accueil-item:hover .item_image {
-  background-color: #C84B36;
   opacity: 50%;
 }
 
+/****************************/
+.p_numeroPanier {
+  margin-left: 13em;
+  margin-top: -7em;
+}
+
+/****************************/
 .body {
   margin: 0px;
 }
