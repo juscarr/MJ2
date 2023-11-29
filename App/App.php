@@ -230,6 +230,8 @@ class App
             switch ($nomAction) {
                 case 'fiche':
                     $objControleur->fiche();
+                case 'compter':
+                    $objControleur->compter();
                 default:
                     echo 'Erreur 404 - Page introuvable.';
             }

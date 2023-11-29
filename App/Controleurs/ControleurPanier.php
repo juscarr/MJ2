@@ -15,6 +15,18 @@ class ControleurPanier
 
     }
 
+    public function compter(): void
+    {
+
+        $panier = Panier::trouverPanierParIdSession();
+        $nombreArticle = $panier->getNbArticleParPanier();
+        $jsonString = '{"quantite": ' . intval($nombreArticle) .' }';
+        echo $jsonString;
+        header('http://localhost:8888/Rpni/MJ2/public/index.php');
+        exit;
+
+    }
+
     public function fiche(): void
     {
 
