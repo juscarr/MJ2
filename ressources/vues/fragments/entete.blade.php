@@ -7,6 +7,10 @@
                                                                     alt="Logo du site La pasteque"></a>
             <a href="index.php?controleur=panier&action=fiche"><img class="panier" src="../images/panier.png"
                                                                     alt="logo d'un panier d'epicerie"></a>
+            <div class="numeroPanier" >
+                    <p class="p_numeroPanier"  id="p_numeroPanier">0</p>
+            </div>
+
             <input type="checkbox" class="menu-toggle" id="menu-toggle">
             <div class="mobile-bar">
                 <label for="menu-toggle" class="menu-icon">
