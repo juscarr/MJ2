@@ -62,18 +62,20 @@
     </div>
 
 
-
-    <script defer src="public/liaisons/js/panier.js">
-        // Si la description est actuellement tronquée, alors afficher tout
-        if (descriptionContenu.classList.contains("tronquee")) {
-            descriptionContenu.classList.remove("tronquee");
-            voirPlusLink.innerHTML = "Voir plus";
-        } else {
-            // Sinon, tronquer la description et ajouter "Voir plus"
-            descriptionContenu.classList.add("tronquee");
-            voirPlusLink.innerHTML = "Voir moins";
+<<<<<<< HEAD
+            // Si la description est actuellement tronquée, alors afficher tout
+            if (descriptionContenu.classList.contains("tronquee")) {
+                descriptionContenu.classList.remove("tronquee");
+                voirPlusLink.innerHTML = "Voir plus";
+            } else {
+                // Sinon, tronquer la description et ajouter "Voir plus"
+                descriptionContenu.classList.add("tronquee");
+                voirPlusLink.innerHTML = "Voir moins";
+            }
         }
-
     </script>
+=======
+    <script defer src="public/liaisons/js/panier.js"></script>
 
+>>>>>>> 76a3fefcd483a298ee79a905e01fee9ef3131274
 @endsection

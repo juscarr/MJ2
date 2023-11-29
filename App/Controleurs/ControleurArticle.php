@@ -50,7 +50,7 @@ class ControleurArticle
                     } else {
                         $article->setQuantite($quantiteArticle);
                         $article->modifierQuantite();
-                        header('Location:index.php?controleur=panier&action=fiche');
+                        header('Location:index.php?controleur=livre&action=fiche&id=' . $idLivre);
                         exit;
                     }
                 }
