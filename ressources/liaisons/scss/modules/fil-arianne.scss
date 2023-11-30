@@ -1,0 +1,18 @@
+
+.fil-arianne {
+  margin-top: 20px;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &--lien {
+
+    &:hover {
+      color: $couleur_orange;
+    }
+  }
+
+}

@@ -7,11 +7,11 @@
         <div class="content">
             <div class="fil-arianne"> @foreach($filAriane as $lien)
                     @if(isset($lien["lien"]))
-                        <a href="{{$lien["lien"]}}">{{$lien["titre"]}}</a>
+                        <a class="fil-arianne--lien" href="{{$lien["lien"]}}">{{$lien["titre"]}}</a>
+                        <span> | </span>
                     @else
-                        {{$lien["titre"]}}
+                        <p class="fil-arianne--titre">{{$lien["titre"]}}</p>
                     @endif
-                    <span> | </span>
                 @endforeach
             </div>
             <h1>Artistes</h1>

@@ -148,6 +148,10 @@ p {
   }
 }*/
 /** Boutons **/
+button:hover {
+  opacity: 80%;
+}
+
 /** Input **/
 /****** MODULES ******/
 /** gds - Styles généraux du Guide de styles **/
@@ -174,6 +178,20 @@ p {
 }
 .gds__categorie {
   border-bottom: 1px solid lightgray;
+}
+
+/** Styles généraux du fil d'Arianne **/
+.fil-arianne {
+  margin-top: 20px;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fil-arianne--lien:hover {
+  color: #C84B36;
 }
 
 /** listeInteractivite - Éléments interactifs **/
@@ -990,6 +1008,15 @@ element {
 .catalogue-item:visited {
   color: black;
 }
+.catalogue-item .container-item--img {
+  transition: background-color 0.3s ease;
+}
+.catalogue-item .item-titre {
+  transition: color 0.3s ease;
+}
+.catalogue-item .item-img {
+  transition: opacity 0.3s ease;
+}
 .catalogue-item:hover .item-titre {
   color: #C84B36;
 }
@@ -1014,6 +1041,12 @@ element {
 .item-auteur {
   margin-top: 5px;
   margin-bottom: 0;
+}
+.item-auteur-titre {
+  color: black;
+}
+.item-auteur-titre:hover {
+  color: #C84B36;
 }
 
 .item-prix {
@@ -1054,6 +1087,7 @@ element {
 }
 
 .toggle {
+  transition: background-color 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1068,7 +1102,7 @@ element {
   gap: 10px;
 }
 .toggle:hover {
-  border: solid 2px #C84B36;
+  background-color: rgba(200, 75, 54, 0.3);
 }
 .toggle-right {
   border-radius: 0 5px 5px 0;
@@ -1239,6 +1273,14 @@ input[type=radio].radio:checked + label {
   color: #C84B36;
   font-weight: bold;
   font-size: 20px;
+}
+
+.pagination-interaction {
+  color: black;
+  font-weight: bold;
+}
+.pagination-interaction:hover {
+  color: #C84B36;
 }
 
 .container-type--vignette {

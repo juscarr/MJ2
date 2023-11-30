@@ -7,11 +7,11 @@
         <div class="content">
             <div class="fil-arianne"> @foreach($filAriane as $lien)
                     @if(isset($lien["lien"]))
-                        <a href="{{$lien["lien"]}}">{{$lien["titre"]}}</a>
+                        <a class="fil-arianne--lien" href="{{$lien["lien"]}}">{{$lien["titre"]}}</a>
+                        <span> | </span>
                     @else
-                        {{$lien["titre"]}}
+                        <p class="fil-arianne--titre">{{$lien["titre"]}}</p>
                     @endif
-                    <span> | </span>
                 @endforeach
             </div>
             <h1>Catalogue</h1>
@@ -137,7 +137,7 @@
                             <p class="item-auteur">
 
                                 @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
-                                    <a href="index.php?controleur=auteur&action=fiche&id={{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getId()}}">
+                                    <a class="item-auteur-titre" href="index.php?controleur=auteur&action=fiche&id={{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getId()}}">
                                         {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
                                     </a>
                                 @endforeach
