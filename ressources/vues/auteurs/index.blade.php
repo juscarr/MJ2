@@ -42,7 +42,7 @@
 
                                 <div class="container-item--img">
                                     <img class="item-img"
-                                         src="https://placehold.co/240x320">
+                                         src="../images/photos-auteur/auteurs_optim/optim_{{strtoupper($auteur->getPrenom())}}-{{strtoupper($auteur->getNom())}}_CreditAlexBeausoleil.jpg">
                                 </div>
                                 <p class="item-titre">{{$auteur->getPrenomNom()}}</p>
                             </a>
@@ -57,7 +57,16 @@
             @include('auteurs.fragments.pagination')
 
         </div>
+        <script>let images = document.querySelectorAll("img")
+            images.forEach((image) => {
+                    image.onerror = function () {
+                        image.src = "https://placehold.co/240x320";
+                    };
+                }
+            )
+            console.log(images);
 
+        </script>
 
         </div>
         <script src="liaisons/js/categorie.js"></script>
