@@ -14,7 +14,7 @@
     {{$livre->getId()}}
 
     <div class="article">
-        <img class="couvert_livre" src="images/colette.jpg">
+
         <div class="boutons">
             <form action="index.php?controleur=article&action=ajouter&id={{$livre->getId()}}" method="POST">
                 <button class="btn_principal" id="btn_principal" type="submit">Ajouter au panier</button>

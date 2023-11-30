@@ -1378,10 +1378,6 @@ input[type=radio].radio:checked + label {
 }
 
 /** Style jsavard **/
-h1 {
-  margin-bottom: 10px;
-}
-
 @media screen and (min-width: 600px) {
   .intro {
     float: right;
@@ -1389,11 +1385,6 @@ h1 {
     text-align: left;
   }
 }
-h2 {
-  color: #C84B36;
-  margin-top: 10px;
-}
-
 .auteur {
   color: #C84B36;
 }
