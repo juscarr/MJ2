@@ -17,7 +17,9 @@ let btnAjouter = document.getElementById('btn_principal2');
 
 
 let idLivre = document.getElementById('idLivre').value;
-btnAjouter.addEventListener("click", synchron);
+btnAjouter.addEventListener("click", () => {
+    synchron()
+});
 
 function synchron() {
     let quantiteLivre = document.getElementById('quantite').value;
