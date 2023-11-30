@@ -55,13 +55,18 @@ class Panier
         $this->date_unix_dernier_acces = $date_unix_dernier_acces;
     }
 
+    public function getNbArticleParPanier(): int
+    {
+        return Article::compterNombreArticleParPanier($this->id);
+    }
+
     public static function trouverPanierParIdSession()
     {
         $id_session = App::getIdSession();
         $chaineSQL = 'SELECT * FROM paniers WHERE id_session=:idSession';
         // Préparer la requête (optimisation)
         $requetePreparee = App::getPDO()->prepare($chaineSQL);
-        $requetePreparee->bindParam(':idSession', $id_session,PDO::PARAM_INT);
+        $requetePreparee->bindParam(':idSession', $id_session, PDO::PARAM_INT);
 
         // Définir le mode de récupération
         $requetePreparee->setFetchMode(PDO::FETCH_CLASS, 'App\Modeles\Panier');
@@ -73,35 +78,38 @@ class Panier
         return $produit;
     }
 
-    public function inserer():void {
+    public function inserer(): void
+    {
 
         $chaineSQL = 'INSERT INTO paniers (id_session, date_unix_dernier_acces)
             VALUES (:id_session, :date_unix_dernier_acces)';
 
         $requetePreparee = App::getPDO()->prepare($chaineSQL);
 
-        $requetePreparee->bindParam(':id_session', $this->id_session,App::getPDO()::PARAM_STR);
-        $requetePreparee->bindParam(':date_unix_dernier_acces', $this->date_unix_dernier_acces,App::getPDO()::PARAM_INT);
+        $requetePreparee->bindParam(':id_session', $this->id_session, App::getPDO()::PARAM_STR);
+        $requetePreparee->bindParam(':date_unix_dernier_acces', $this->date_unix_dernier_acces, App::getPDO()::PARAM_INT);
 
         // Exécuter la requête
         $requetePreparee->execute();
 
     }
 
-    public function modifier():void {
+    public function modifier(): void
+    {
 
         $chaineSQL = ' UPDATE paniers
                         SET id_session = :id_session, date_unix_dernier_acces = :date_unix_dernier_acces WHERE id = :id';
 
         $requetePreparee = App::getPDO()->prepare($chaineSQL);
 
-        $requetePreparee->bindParam(':id_session', $this->id_session,App::getPDO()::PARAM_STR);
-        $requetePreparee->bindParam(':date_unix_dernier_acces', $this->date_unix_dernier_acces,App::getPDO()::PARAM_INT);
-        $requetePreparee->bindParam(':id', $this->id,App::getPDO()::PARAM_INT);
+        $requetePreparee->bindParam(':id_session', $this->id_session, App::getPDO()::PARAM_STR);
+        $requetePreparee->bindParam(':date_unix_dernier_acces', $this->date_unix_dernier_acces, App::getPDO()::PARAM_INT);
+        $requetePreparee->bindParam(':id', $this->id, App::getPDO()::PARAM_INT);
 
         // Exécuter la requête
         $requetePreparee->execute();
 
     }
+
 
 }

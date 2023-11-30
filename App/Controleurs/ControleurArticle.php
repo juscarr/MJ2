@@ -19,18 +19,18 @@ class ControleurArticle
     public function ajouter(): void
     {
 
-        $quantite = $_POST["quantite"];
+        $quantite = $_GET["quantite"];
 
         $idLivre = $_GET["id"];
+        var_dump($quantite);
 
         $panier = Panier::trouverPanierParIdSession();
-
+        var_dump($panier);
         $article = Article::trouverArticleParIdPanierEtIdLivre($panier->getId(), intval($idLivre));
 
         $idPanier = $panier->getId();
 
         if ($quantite > 10) {
-            header('Location:index.php?controleur=livre&action=fiche&id=' . $idLivre);
             exit;
         } else {
             if (!$article) {
@@ -39,18 +39,14 @@ class ControleurArticle
                 $nouveauArticle->setLivreId(intval($idLivre));
                 $nouveauArticle->setQuantite(intval($quantite));
                 $nouveauArticle->inserer();
-                header('Location:index.php?controleur=panier&action=fiche');
-                exit;
             } else {
                 if ($article->getLivreId() === intval($idLivre)) {
                     $quantiteArticle = intval($quantite) + $article->getQuantite();
                     if ($quantiteArticle > 10) {
-                        header('Location:index.php?controleur=livre&action=fiche&id=' . $idLivre);
                         exit;
                     } else {
                         $article->setQuantite($quantiteArticle);
                         $article->modifierQuantite();
-                        header('Location:index.php?controleur=livre&action=fiche&id=' . $idLivre);
                         exit;
                     }
                 }

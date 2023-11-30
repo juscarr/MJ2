@@ -14,6 +14,7 @@
     {{$livre->getId()}}
 
     <div class="article">
+<<<<<<< HEAD
         @php
             $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
         @endphp
@@ -32,6 +33,17 @@
             </form>
             <button class="btn_secondaire">Ajouter aux souhaits</button>
         </div>
+=======
+        <img class="couvert_livre" src="images/colette.jpg">
+{{--        <div class="boutons">--}}
+{{--            <form action="index.php?controleur=article&action=ajouter&id={{$livre->getId()}}" method="POST">--}}
+{{--                <button class="btn_principal"  type="submit">Ajouter au panier</button>--}}
+{{--                <label for="quantite">Quantite : </label>--}}
+{{--                <input id="quantite" name="quantite" type="number">--}}
+{{--            </form>--}}
+{{--            <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>--}}
+{{--        </div>--}}
+>>>>>>> refs/remotes/origin/main
     </div>
     <div class="description" id="descriptionContenu">
         <p>{!!$livre->getLeLivre()!!}</p>
@@ -39,12 +51,13 @@
     </div>
     <div class="boutons-large_container">
         <div class="boutons-large">
-            <form action="index.php?controleur=article&action=ajouter&id={{$livre->getId()}}" method="POST">
-                <button class="btn_principal" type="submit">Ajouter au panier</button>
-                <label for="quantite">Quantite : </label>
-                <input id="quantite" name="quantite" type="number">
-            </form>
-            <button class="btn_secondaire">Ajouter aux souhaits</button>
+
+            <button class="btn_principal" id="btn_principal2">Ajouter au panier</button>
+            <label for="quantite">Quantite : </label>
+            <input id="quantite" name="quantite" type="number">
+            <input id="idLivre" value="{{$livre->getId()}}" hidden>
+
+            <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
         </div>
     </div>
 
@@ -69,8 +82,10 @@
         <a class="precedent" href="">Livre précédent</a>
         <a class="suivant" href="">Livre suivant</a>
     </div>
+    <script defer src="liaisons/js/panier.js"></script>
 
 
+<<<<<<< HEAD
 
     <script defer src="public/liaisons/js/panier.js">
         // Si la description est actuellement tronquée, alors afficher tout
@@ -84,5 +99,7 @@
         }
 
     </script>
+=======
+>>>>>>> refs/remotes/origin/main
 
 @endsection

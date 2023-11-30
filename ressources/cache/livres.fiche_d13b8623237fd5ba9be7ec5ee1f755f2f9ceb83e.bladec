@@ -17,6 +17,7 @@
 
 
  <div class="article">
+<<<<<<< HEAD
  <?php 
  $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
  ?>
@@ -35,6 +36,17 @@
  </form>
  <button class="btn_secondaire">Ajouter aux souhaits</button>
  </div>
+=======
+ <img class="couvert_livre" src="images/colette.jpg">
+<?php /*        <div class="boutons">*/ ?>
+<?php /*            <form action="index.php?controleur=article&action=ajouter&id=<?php echo \htmlentities($livre->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>" method="POST">*/ ?>
+<?php /*                <button class="btn_principal"  type="submit">Ajouter au panier</button>*/ ?>
+<?php /*                <label for="quantite">Quantite : </label>*/ ?>
+<?php /*                <input id="quantite" name="quantite" type="number">*/ ?>
+<?php /*            </form>*/ ?>
+<?php /*            <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>*/ ?>
+<?php /*        </div>*/ ?>
+>>>>>>> refs/remotes/origin/main
  </div>
  <div class="description" id="descriptionContenu">
  <p><?php echo $livre->getLeLivre(); ?></p>
@@ -42,12 +54,13 @@
  </div>
  <div class="boutons-large_container">
  <div class="boutons-large">
- <form action="index.php?controleur=article&action=ajouter&id=<?php echo \htmlentities($livre->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>" method="POST">
- <button class="btn_principal" type="submit">Ajouter au panier</button>
+
+ <button class="btn_principal" id="btn_principal2">Ajouter au panier</button>
  <label for="quantite">Quantite : </label>
  <input id="quantite" name="quantite" type="number">
- </form>
- <button class="btn_secondaire">Ajouter aux souhaits</button>
+ <input id="idLivre" value="<?php echo \htmlentities($livre->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>" hidden>
+
+ <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
  </div>
  </div>
 
@@ -72,8 +85,10 @@
  <a class="precedent" href="">Livre précédent</a>
  <a class="suivant" href="">Livre suivant</a>
  </div>
+ <script defer src="liaisons/js/panier.js"></script>
 
 
+<<<<<<< HEAD
 
  <script defer src="public/liaisons/js/panier.js">
  // Si la description est actuellement tronquée, alors afficher tout
@@ -87,6 +102,8 @@
  }
 
  </script>
+=======
+>>>>>>> refs/remotes/origin/main
 
 <?php $this->stopSection(); ?>
 

@@ -93,7 +93,9 @@
  <div class="panier-total"></div>
  <div class="panier-livraison"><b>Le délai de livraison est de 10 jours</b></div>
  <div class="panier-lien">
- <a href="index.php?controleur=panier&action=paiement" class="panier-bouton--lien">Confirmer</a>
+ <a href="index.php?controleur=site&action=livraisonPanier" class="panier-bouton--lien">Confirmer</a>
+
+ <?php /*            <a href="index.php?controleur=panier&action=paiement" class="panier-bouton--lien">Confirmer</a>*/ ?>
  </div>
  <script>
  let prixtotal = document.querySelectorAll(".panier-prixtotal");

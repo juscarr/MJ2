@@ -7,6 +7,9 @@ use App\App;
 use App\FilAriane;
 use App\Modeles\Livre;
 
+
+
+
 class ControleurLivre
 {
 
@@ -14,17 +17,17 @@ class ControleurLivre
     {
     }
 
-//    public function categorie(): void
-//    {
-//        $categorie = $_GET["categorie"];
-//
-//        if ($categorie === "tous") {
-//            $livres = Livre::trouverTout();
-//        } else {
-//            $livres = Livre::trouverParCategorieId($categorie);
-//        }
-//        echo json_encode($livres);
-//    }
+    public function categorie(): void
+    {
+        $categorie = $_GET["categorie"];
+
+        if ($categorie === "tous") {
+            $livres = Livre::trouverTout();
+        } else {
+            $livres = Livre::trouverParCategorieId($categorie);
+        }
+        echo json_encode($livres);
+    }
 
     public function index(): void
     {

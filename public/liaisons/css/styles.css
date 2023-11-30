@@ -148,6 +148,10 @@ p {
   }
 }*/
 /** Boutons **/
+button:hover {
+  opacity: 80%;
+}
+
 /** Input **/
 /****** MODULES ******/
 /** gds - Styles généraux du Guide de styles **/
@@ -174,6 +178,20 @@ p {
 }
 .gds__categorie {
   border-bottom: 1px solid lightgray;
+}
+
+/** Styles généraux du fil d'Arianne **/
+.fil-arianne {
+  margin-top: 20px;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fil-arianne--lien:hover {
+  color: #C84B36;
 }
 
 /** listeInteractivite - Éléments interactifs **/
@@ -545,6 +563,7 @@ element {
 .categorie,
 .prix {
   text-align: left;
+  max-width: 200px;
 }
 
 /*********************************************/
@@ -865,12 +884,142 @@ element {
   color: #C84B36;
 }
 .accueil-item:hover .item_image {
-  background-color: #C84B36;
   opacity: 50%;
 }
 
+<<<<<<< HEAD
+/**************************************/
+.livraisonPanier {
+  display: flex;
+  flex-direction: column;
+  max-width: 282px;
+  margin-left: 10px;
+}
+
+@media (min-width: 600px) {
+  .cadre {
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #C84B36;
+    width: 615px;
+    height: 645px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 25px;
+  }
+}
+.champTexte {
+  height: 35px;
+}
+
+.label_champTexte {
+  margin-top: 20px;
+}
+
+.checkbox {
+  margin-top: 20px;
+}
+
+.btn_principal_livraisonPanier--section1,
+.btn_principal_livraisonPanier--section2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #C84B36;
+  color: #fff;
+  padding: 15px 61px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.h2_livraisonPanier {
+  margin-left: 10px;
+  text-align: center;
+}
+
+.prenom,
+.nom,
+.province,
+.ville,
+.codePostal {
+  width: 200px;
+  height: 35px;
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 5px;
+}
+
+.adresse {
+  width: 300px;
+  height: 35px;
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 5px;
+}
+
+/****************************/
+.rectangle {
+  display: flex;
+  justify-content: center;
+  gap: 76px;
+  margin-bottom: 25px;
+}
+
+.etape1 {
+  width: 150px;
+  height: 50px;
+  border-style: solid;
+  border-color: #231F20;
+}
+
+.etape2 {
+  width: 150px;
+  height: 50px;
+  border-style: solid;
+  border-color: #231F20;
+}
+
+.etape3 {
+  width: 150px;
+  height: 50px;
+  border-style: solid;
+  border-color: #231F20;
+}
+
+.rectangleRempli {
+  background: #C84B36;
+}
+
+.rectangleHorsService {
+  background: #C84B36;
+  opacity: 50%;
+}
+
+.ligne-horizontale {
+  border-top: 2px solid #000;
+  margin-top: 25px;
+  margin-left: -112px;
+  width: 30em;
+}
+=======
+/****************************/
+.p_numeroPanier {
+  margin-left: 13em;
+  margin-top: -7em;
+}
+@media (min-width: 600px) {
+  .p_numeroPanier {
+    margin-left: 13em;
+    margin-top: -2em;
+  }
+}
+>>>>>>> b2220a5a6711ae5cdbe0e99754365d5da927db95
+
+/****************************/
 .body {
-  margin: 0px;
+  margin: 0;
 }
 
 /** Style jcarrier **/
@@ -977,6 +1126,15 @@ element {
 .catalogue-item:visited {
   color: black;
 }
+.catalogue-item .container-item--img {
+  transition: background-color 0.3s ease;
+}
+.catalogue-item .item-titre {
+  transition: color 0.3s ease;
+}
+.catalogue-item .item-img {
+  transition: opacity 0.3s ease;
+}
 .catalogue-item:hover .item-titre {
   color: #C84B36;
 }
@@ -1001,6 +1159,12 @@ element {
 .item-auteur {
   margin-top: 5px;
   margin-bottom: 0;
+}
+.item-auteur-titre {
+  color: black;
+}
+.item-auteur-titre:hover {
+  color: #C84B36;
 }
 
 .item-prix {
@@ -1041,6 +1205,7 @@ element {
 }
 
 .toggle {
+  transition: background-color 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1055,7 +1220,7 @@ element {
   gap: 10px;
 }
 .toggle:hover {
-  border: solid 2px #C84B36;
+  background-color: rgba(200, 75, 54, 0.3);
 }
 .toggle-right {
   border-radius: 0 5px 5px 0;
@@ -1226,6 +1391,14 @@ input[type=radio].radio:checked + label {
   color: #C84B36;
   font-weight: bold;
   font-size: 20px;
+}
+
+.pagination-interaction {
+  color: black;
+  font-weight: bold;
+}
+.pagination-interaction:hover {
+  color: #C84B36;
 }
 
 .container-type--vignette {

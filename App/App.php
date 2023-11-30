@@ -134,6 +134,9 @@ class App
                 case 'accueil':
                     $objControleur->accueil();
                     break;
+                case 'livraisonPanier':
+                    $objControleur->livraisonPanier();
+                    break;
                 case 'apropos':
                     $objControleur->apropos();
                     break;
@@ -230,6 +233,8 @@ class App
             switch ($nomAction) {
                 case 'fiche':
                     $objControleur->fiche();
+                case 'compter':
+                    $objControleur->compter();
                 default:
                     echo 'Erreur 404 - Page introuvable.';
             }
