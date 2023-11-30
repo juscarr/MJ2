@@ -32,6 +32,7 @@ function synchron() {
 
     /*****************************************************************/
 
+<<<<<<< HEAD
     let btnPoursuivre_1 = document.getElementById('btn_principal_livraisonPanier--section1');
 
     btnPoursuivre_1.addEventListener('click', afficherSection2);
@@ -82,6 +83,9 @@ function synchron() {
     }
 
     /*****************************************************************/
+=======
+/*****************************************************************/
+>>>>>>> b0d5f1041975c69f29c60dc41eabce7c7249a38c
 
     fetch('http://localhost:8888/Rpni/MJ2/public/index.php?controleur=panier&action=compter')
         .then(response => response.json())
