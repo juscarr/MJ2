@@ -20,8 +20,8 @@ class ControleurArticle
     {
 
         $quantite = $_GET["quantite"];
-
         $idLivre = $_GET["id"];
+
         var_dump($quantite);
 
         $panier = Panier::trouverPanierParIdSession();
