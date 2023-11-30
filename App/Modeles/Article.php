@@ -75,7 +75,6 @@ class Article
         return Livre::trouverParId($this->livre_id);
     }
 
-
     public static function trouverArticlesParIdPanier($id_panier)
     {
         $chaineSQL = 'SELECT * FROM articles WHERE panier_id=:idPanier';
@@ -143,6 +142,7 @@ class Article
         $requetePreparee->execute();
 
     }
+
     public function supprimer(): void
     {
 
@@ -155,6 +155,7 @@ class Article
         $requetePreparee->execute();
 
     }
+
     public static function supprimerPanier($panier_id): void
     {
 
@@ -167,4 +168,30 @@ class Article
         $requetePreparee->execute();
 
     }
+
+    public static function compterNombreArticleParPanier($panier_id): int
+    {
+
+        // Définir la chaine SQL
+        $chaineSQL = 'SELECT quantite FROM articles WHERE panier_id=:idPanier;';
+
+        // Préparer la requête (optimisation)
+        $requetePreparee = App::getPDO()->prepare($chaineSQL);
+        $requetePreparee->bindParam(':idPanier', $panier_id, PDO::PARAM_INT);
+
+        // Définir le mode de récupération
+        $requetePreparee->setFetchMode(PDO::FETCH_ASSOC);
+        // Exécuter la requête
+        $requetePreparee->execute();
+        // Récupérer le résultat
+        $nbArticle = $requetePreparee->fetchAll();
+
+        $quantiteTotal = 0;
+
+        foreach ($nbArticle as $quantite) {
+            $quantiteTotal = $quantiteTotal + $quantite['quantite'];
+        }
+        return $quantiteTotal;
+    }
+
 }
