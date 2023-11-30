@@ -44,7 +44,7 @@
 
  <div class="container-item--img">
  <img class="item-img"
- src="https://placehold.co/240x320">
+ src="../images/photos-auteur/auteurs_optim/optim_<?php echo \htmlentities(strtoupper($auteur->getPrenom())??'', ENT_QUOTES, 'UTF-8', false); ?>-<?php echo \htmlentities(strtoupper($auteur->getNom())??'', ENT_QUOTES, 'UTF-8', false); ?>_CreditAlexBeausoleil.jpg">
  </div>
  <p class="item-titre"><?php echo \htmlentities($auteur->getPrenomNom()??'', ENT_QUOTES, 'UTF-8', false); ?></p>
  </a>
@@ -59,7 +59,16 @@
  <?php echo $this->runChild('auteurs.fragments.pagination'); ?>
 
  </div>
+ <script>let images = document.querySelectorAll("img")
+ images.forEach((image) => {
+ image.onerror = function () {
+ image.src = "https://placehold.co/240x320";
+ };
+ }
+ )
+ console.log(images);
 
+ </script>
 
  </div>
  <script src="liaisons/js/categorie.js"></script>
