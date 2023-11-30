@@ -869,8 +869,125 @@ element {
   opacity: 50%;
 }
 
+/**************************************/
+.livraisonPanier {
+  display: flex;
+  flex-direction: column;
+  max-width: 282px;
+  margin-left: 10px;
+}
+
+@media (min-width: 600px) {
+  .cadre {
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #C84B36;
+    width: 615px;
+    height: 645px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 25px;
+  }
+}
+.champTexte {
+  height: 35px;
+}
+
+.label_champTexte {
+  margin-top: 20px;
+}
+
+.checkbox {
+  margin-top: 20px;
+}
+
+.btn_principal_livraisonPanier--section1,
+.btn_principal_livraisonPanier--section2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #C84B36;
+  color: #fff;
+  padding: 15px 61px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.h2_livraisonPanier {
+  margin-left: 10px;
+  text-align: center;
+}
+
+.prenom,
+.nom,
+.province,
+.ville,
+.codePostal {
+  width: 200px;
+  height: 35px;
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 5px;
+}
+
+.adresse {
+  width: 300px;
+  height: 35px;
+  border-style: solid;
+  border-color: #C84B36;
+  border-radius: 5px;
+}
+
+/****************************/
+.rectangle {
+  display: flex;
+  justify-content: center;
+  gap: 76px;
+  margin-bottom: 25px;
+}
+
+.etape1 {
+  width: 150px;
+  height: 50px;
+  border-style: solid;
+  border-color: #231F20;
+}
+
+.etape2 {
+  width: 150px;
+  height: 50px;
+  border-style: solid;
+  border-color: #231F20;
+}
+
+.etape3 {
+  width: 150px;
+  height: 50px;
+  border-style: solid;
+  border-color: #231F20;
+}
+
+.rectangleRempli {
+  background: #C84B36;
+}
+
+.rectangleHorsService {
+  background: #C84B36;
+  opacity: 50%;
+}
+
+.ligne-horizontale {
+  border-top: 2px solid #000;
+  margin-top: 25px;
+  margin-left: -112px;
+  width: 30em;
+}
+
+/****************************/
 .body {
-  margin: 0px;
+  margin: 0;
 }
 
 /** Style jcarrier **/

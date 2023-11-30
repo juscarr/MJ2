@@ -24,7 +24,7 @@
                         </li>
                         <li><a class="lien" href="#">Liste de souhaits</a></li>
                         <li><a class="lien" href="index.php?controleur=auteur&action=index&page=1">Auteurs</a></li>
-                        <li><a class="lien" href="#">Contact</a></li>
+                        <li><a class="lien" href="">Contact</a></li>
                     </ul>
                 </nav>
             </header>

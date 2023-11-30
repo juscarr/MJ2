@@ -28,8 +28,12 @@ class ControleurSite
 
         $tDonnees = array("livres"=>$livres, "actualites"=>$actualites, "evenements"=>$evenements, "nouveau" => $date2022, "aparaitre" => $date2024, "aujourdhui" => $aujourdhui);
 
-        echo App::getBlade()->run("accueil", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...
+        echo App::getBlade()->run("accueil", $tDonnees);
 
+    }
+
+    public function livraisonPanier():void {
+        echo App::getBlade()->run("livraisonPanier");
     }
 
 

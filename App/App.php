@@ -134,6 +134,9 @@ class App
                 case 'accueil':
                     $objControleur->accueil();
                     break;
+                case 'livraisonPanier':
+                    $objControleur->livraisonPanier();
+                    break;
                 case 'apropos':
                     $objControleur->apropos();
                     break;
