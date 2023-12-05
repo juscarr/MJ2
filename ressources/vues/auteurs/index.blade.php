@@ -7,11 +7,11 @@
         <div class="content">
             <div class="fil-arianne"> @foreach($filAriane as $lien)
                     @if(isset($lien["lien"]))
-                        <a href="{{$lien["lien"]}}">{{$lien["titre"]}}</a>
+                        <a class="fil-arianne--lien" href="{{$lien["lien"]}}">{{$lien["titre"]}}</a>
+                        <span> | </span>
                     @else
-                        {{$lien["titre"]}}
+                        <p class="fil-arianne--titre">{{$lien["titre"]}}</p>
                     @endif
-                    <span> | </span>
                 @endforeach
             </div>
             <h1>Artistes</h1>
@@ -42,7 +42,7 @@
 
                                 <div class="container-item--img">
                                     <img class="item-img"
-                                         src="https://placehold.co/240x320">
+                                         src="../images/photos-auteur/auteurs_optim/optim_{{strtoupper($auteur->getPrenom())}}-{{strtoupper($auteur->getNom())}}_CreditAlexBeausoleil.jpg">
                                 </div>
                                 <p class="item-titre">{{$auteur->getPrenomNom()}}</p>
                             </a>
@@ -57,7 +57,16 @@
             @include('auteurs.fragments.pagination')
 
         </div>
+        <script>let images = document.querySelectorAll("img")
+            images.forEach((image) => {
+                    image.onerror = function () {
+                        image.src = "https://placehold.co/240x320";
+                    };
+                }
+            )
+            console.log(images);
 
+        </script>
 
         </div>
         <script src="liaisons/js/categorie.js"></script>

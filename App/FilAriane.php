@@ -81,8 +81,6 @@ class FilAriane
                         //Lien de retour vers l'accueil
                         $lien0 = array("titre" => "Accueil", "lien" => "index.php?controleur=site&action=accueil");
 
-                        //@todo adapter cet algo pour les catégories...
-
                         //Lien vers la liste des pages se qualifiant (catégorie, nouveauté...)
                         if (isset($_GET["nouveau"])) {
                             $lien1 = array("titre" => "Nouveautés", "lien" => "index.php?controleur=livre&action=index&nouveau=" . $_GET["nouveau"]);

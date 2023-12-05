@@ -1,6 +1,7 @@
 @extends('gabarit')
 
 @section('contenu')
+
     <div class="intro">
         <h1>{{$livre->getTitre()}}</h1>
         <h2><p id="nomAuteur" class="auteur">
@@ -10,12 +11,18 @@
         <p><strong>{{$livre->getPrixCan()}} </strong>{{$livre->getPagination()}} pages</p>
         <p><strong>{{$livre->getAgeMin()}} ans et plus</strong></p>
     </div>
+    {{$livre->getId()}}
+
     <div class="article">
         <img class="couvert_livre" src="images/colette.jpg">
-        <div class="boutons">
-            <button class="btn_principal">Ajouter au panier</button>
-            <button class="btn_secondaire">Ajouter aux souhaits</button>
-        </div>
+{{--        <div class="boutons">--}}
+{{--            <form action="index.php?controleur=article&action=ajouter&id={{$livre->getId()}}" method="POST">--}}
+{{--                <button class="btn_principal"  type="submit">Ajouter au panier</button>--}}
+{{--                <label for="quantite">Quantite : </label>--}}
+{{--                <input id="quantite" name="quantite" type="number">--}}
+{{--            </form>--}}
+{{--            <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>--}}
+{{--        </div>--}}
     </div>
     <div class="description" id="descriptionContenu">
         <p>{!! $livre->getLeLivre() !!}</p>
@@ -23,8 +30,13 @@
     </div>
     <div class="boutons-large_container">
         <div class="boutons-large">
-            <button class="btn_principal">Ajouter au panier</button>
-            <button class="btn_secondaire">Ajouter aux souhaits</button>
+
+            <button class="btn_principal" id="btn_principal2">Ajouter au panier</button>
+            <label for="quantite">Quantite : </label>
+            <input id="quantite" name="quantite" type="number">
+            <input id="idLivre" value="{{$livre->getId()}}" hidden>
+
+            <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
         </div>
     </div>
 
@@ -42,21 +54,8 @@
         <a class="precedent" href="">Livre précédent</a>
         <a class="suivant" href="">Livre suivant</a>
     </div>
+    <script defer src="liaisons/js/panier.js"></script>
 
-    <script>
-        function afficherDescription() {
-            var descriptionContenu = document.getElementById("descriptionContenu");
-            var voirPlusLink = document.querySelector(".voir_plus");
 
-            // Si la description est actuellement tronquée, alors afficher tout
-            if (descriptionContenu.classList.contains("tronquee")) {
-                descriptionContenu.classList.remove("tronquee");
-                voirPlusLink.innerHTML = "Voir moins";
-            } else {
-                // Sinon, tronquer la description et ajouter "Voir plus"
-                descriptionContenu.classList.add("tronquee");
-                voirPlusLink.innerHTML = "Voir plus";
-            }
-        }
-    </script>
+
 @endsection
