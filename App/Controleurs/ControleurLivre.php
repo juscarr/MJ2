@@ -114,7 +114,6 @@ class ControleurLivre
     public function fiche(): void
     {
         $id = (int)$_GET['id'];
-
         $livre = Livre::trouverParId($id);
         $tDonnees = array("livre" => $livre);
         echo App::getBlade()->run("livres.fiche", $tDonnees); // /ressource/vues/accueil.blade.php doit exister...

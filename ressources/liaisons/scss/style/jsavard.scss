@@ -87,6 +87,7 @@
   .boutons-large{
     display: inline-block;
     white-space: nowrap;
+    margin-left: 10%;
   }
   .boutons-large_container{
     padding-top: 320px;
@@ -148,5 +149,11 @@
   }
 }
 
+.quantite{
 
-
+}
+.input_quantite{
+  width: 10%;
+  padding: 8px;
+  color: #C84B36;
+}

@@ -887,7 +887,19 @@ element {
   opacity: 50%;
 }
 
-<<<<<<< HEAD
+/****************************/
+.p_numeroPanier {
+  margin-left: 13em;
+  margin-top: -7em;
+}
+@media (min-width: 600px) {
+  .p_numeroPanier {
+    margin-left: 13em;
+    margin-top: -2em;
+  }
+}
+
+/****************************/
 /**************************************/
 .livraisonPanier {
   display: flex;
@@ -1003,19 +1015,6 @@ element {
   margin-left: -112px;
   width: 30em;
 }
-=======
-/****************************/
-.p_numeroPanier {
-  margin-left: 13em;
-  margin-top: -7em;
-}
-@media (min-width: 600px) {
-  .p_numeroPanier {
-    margin-left: 13em;
-    margin-top: -2em;
-  }
-}
->>>>>>> b2220a5a6711ae5cdbe0e99754365d5da927db95
 
 /****************************/
 .body {
@@ -1627,6 +1626,7 @@ input[type=radio].radio:checked + label {
   .boutons-large {
     display: inline-block;
     white-space: nowrap;
+    margin-left: 10%;
   }
   .boutons-large_container {
     padding-top: 320px;
@@ -1685,6 +1685,11 @@ input[type=radio].radio:checked + label {
   .commentaires {
     width: 48%;
   }
+}
+.input_quantite {
+  width: 10%;
+  padding: 8px;
+  color: #C84B36;
 }
 
 /*# sourceMappingURL=styles.css.map */

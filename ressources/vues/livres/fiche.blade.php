@@ -14,7 +14,6 @@
     {{$livre->getId()}}
 
     <div class="article">
-<<<<<<< HEAD
         @php
             $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
         @endphp
@@ -28,22 +27,10 @@
         <div class="boutons">
             <form action="index.php?controleur=article&action=ajouter&id={{$livre->getId()}}" method="POST">
                 <button class="btn_principal" id="btn_principal" type="submit">Ajouter au panier</button>
-                <label for="quantite">Quantite : </label>
-                <input id="quantite" name="quantite" type="number">
             </form>
             <button class="btn_secondaire">Ajouter aux souhaits</button>
         </div>
-=======
-        <img class="couvert_livre" src="images/colette.jpg">
-{{--        <div class="boutons">--}}
-{{--            <form action="index.php?controleur=article&action=ajouter&id={{$livre->getId()}}" method="POST">--}}
-{{--                <button class="btn_principal"  type="submit">Ajouter au panier</button>--}}
-{{--                <label for="quantite">Quantite : </label>--}}
-{{--                <input id="quantite" name="quantite" type="number">--}}
-{{--            </form>--}}
-{{--            <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>--}}
-{{--        </div>--}}
->>>>>>> refs/remotes/origin/main
+
     </div>
     <div class="description" id="descriptionContenu">
         <p>{!!$livre->getLeLivre()!!}</p>
@@ -53,11 +40,20 @@
         <div class="boutons-large">
 
             <button class="btn_principal" id="btn_principal2">Ajouter au panier</button>
-            <label for="quantite">Quantite : </label>
-            <input id="quantite" name="quantite" type="number">
+
             <input id="idLivre" value="{{$livre->getId()}}" hidden>
 
             <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
+            <div class="container_quantite">
+                <label for="quantite">Quantite : </label>
+                <input class="input_quantite" id="quantite" name="quantite" type="number">
+            </div>
+            <legend>Choisir la quantité</legend>
+            <div class="quantite_container">
+                <button type="button" title="Down" class="sub">Down</button>
+                <input type="number" name="quantity" pattern="[0-9]+">
+                <button type="button" title="Up" class="add">Up</button>
+            </div>
         </div>
     </div>
 
@@ -84,9 +80,6 @@
     </div>
     <script defer src="liaisons/js/panier.js"></script>
 
-
-<<<<<<< HEAD
-
     <script defer src="public/liaisons/js/panier.js">
         // Si la description est actuellement tronquée, alors afficher tout
         if (descriptionContenu.classList.contains("tronquee")) {
@@ -99,7 +92,4 @@
         }
 
     </script>
-=======
->>>>>>> refs/remotes/origin/main
-
 @endsection
