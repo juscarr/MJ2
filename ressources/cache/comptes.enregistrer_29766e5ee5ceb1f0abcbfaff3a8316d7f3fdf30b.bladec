@@ -3,29 +3,108 @@
 <?php $this->startSection('contenu'); ?>
  <link rel="stylesheet" href="../public/liaisons/css/modules/connexion.css">
  <h1>Créez un nouveau compte</h1>
- <legend>Vous avez déja un compte? <a href = "index.php?controleur=compte&action=connexion">Connectez-vous</a></legend>
+ <legend>Vous avez déja un compte? <a href="index.php?controleur=compte&action=connexion">Connectez-vous</a></legend>
 
- <form class="connection-form">
+ <form class="connection-form" method="POST" action="index.php?controleur=compte&action=inserer">
  <fieldset class="connection-fieldset">
- <div class="elements-container">
- <div class="prenom">
- <label>Prénom</label>
- <input type="text">
+ <p><label for="prenom" class="screen-reader-only">Prénom</label>
+ <input value="<?php if(isset($tValidation['Prenom']['valeur'])): ?> <?php echo \htmlentities($tValidation['Prenom']['valeur']??'', ENT_QUOTES, 'UTF-8', false); ?> <?php endif; ?>"
+ type="text"
+ name="prenom" id="prenom"
+ pattern="[a-zA-ZÀ-ÿ -]+"
+ title="Caractères alphabétiques français seulement."></p>
+
+ <p class="erreur__message">
+ <?php if(isset($tValidation['Prenom']) && isset($tValidation['Prenom']['valide'])): ?>
+ <?php if($tValidation['Prenom']['valide']): ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php else: ?>
+ <?php echo \htmlentities($tValidation['Prenom']['message']??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ <span class="spriteRETRO spriteRETRO--warning"></span>
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+
+ <!-- Nom ---------------------->
+ <p><label for="nom" class="screen-reader-only">Nom</label>
+ <input <?php if(isset($tValidation['Nom']['valeur'])): ?>
+ value="<?php echo \htmlentities($tValidation['Nom']['valeur']??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ <?php endif; ?>
+ type="text"
+ name="nom" id="nom"
+ pattern="[a-zA-ZÀ-ÿ' -]+"
+ title="Caractères alphabétiques français seulement."></p>
+
+
+ <p class="erreur__message">
+ <?php if(isset($tValidation['Nom']) && isset($tValidation['Nom']['valide'])): ?>
+ <?php if($tValidation['Nom']['valide']): ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php else: ?>
+ <?php echo \htmlentities($tValidation['Nom']['message']??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ <span class="spriteRETRO spriteRETRO--warning"></span>
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+
+ <!-- Courriel ---------------------->
+ <div class="ctnForm ctnForm--regulier">
+ <p>
+ <label for="courriel">Courriel</label>
+ <input <?php if(isset($tValidation['Courriel']['valeur'])): ?> value="<?php echo \htmlentities($tValidation['Courriel']['valeur']??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ <?php endif; ?>
+ type="email"
+ name="courriel"
+ id="courriel">
+
+ </p>
+ <p class="erreur__message">
+ <?php if(isset($tValidation['Courriel']) && isset($tValidation['Courriel']['valide'])): ?>
+ <?php if(!$tValidation['Courriel']['valide']): ?>
+ <?php echo \htmlentities($tValidation['Courriel']['message']??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ <span class="spriteRETRO spriteRETRO--warning"></span>
+ <?php else: ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+
  </div>
- <div class="nom">
- <label>Nom</label>
- <input type="text">
+ <!-- Mot de passe ---------------------->
+ <div class="ctnForm ctnForm--regulier">
+ <p>
+ <label for="mdp">Mot de passe</label>
+ <input <?php if(isset($tValidation['Mdp']['valeur'])): ?> value="<?php echo \htmlentities($tValidation['Mdp']['valeur']??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ <?php endif; ?>
+ type="text"
+ name="mdp"
+ id="mdp">
+ <ul>
+ <li>Votre mot de passe doit contenir au moin une lettre minuscule</li>
+ <li>Votre mot de passe doit contenir au moin une lettre majuscule</li>
+ <li>Votre mot de passe doit contenir au moin un chiffre</li>
+ <li>Votre mot de passe doit contenir au moin un caractère spécial</li>
+ <li>Votre mot de passe doit contenir au moin 8 caractères</li>
+ </ul>
+ </p>
+ <p class="erreur__message">
+ <?php if(isset($tValidation['Mdp']) && isset($tValidation['Mdp']['valide'])): ?>
+ <?php if(!$tValidation['Mdp']['valide']): ?>
+ <?php echo \htmlentities($tValidation['Mdp']['message']??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ <span class="spriteRETRO spriteRETRO--warning"></span>
+ <?php else: ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+
  </div>
- <div class="courriel">
- <label>Courriel</label>
- <input type="email">
- </div>
- <div class="mdp">
- <label>Mot de passe</label>
- <input type="password">
- </div>
- </div>
- <button>Créer un compte</button>
+
+ <button type="submit">Créer un compte</button>
  </fieldset>
  </form>
 <?php $this->stopSection(); ?>

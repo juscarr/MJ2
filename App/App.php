@@ -154,6 +154,9 @@ class App
                 case 'nouveau':
                     $objControleur->nouveau();
                     break;
+                case 'inserer':
+                    $objControleur->inserer();
+                    break;
                 default:
                     echo 'Erreur 404 - Page introuvable.';
             }

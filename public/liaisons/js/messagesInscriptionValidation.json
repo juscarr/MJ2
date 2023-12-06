@@ -1,0 +1,30 @@
+{
+    "prenom": {
+        "vide": "Serveur: Vous devez entrer votre prénom",
+        "pattern": "Serveur: Pour le prénom, les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+    "nom": {
+        "vide": "Serveur: Vous devez entrer votre nom de famille",
+        "pattern": "Serveur: Pour le nom de famille, les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+    "courriel": {
+        "vide": "Serveur: Vous devez entrer votre adresse courriel",
+        "pattern": "Serveur: Assurez-vous d'entrer une adresse courriel valide."
+    },
+    "tel_indicatif": {
+        "vide": "Serveur: Vous devez entrer votre indicatif régional",
+        "pattern": "Serveur: Assurez-vous d'entrer trois chiffres."
+    },
+    "tel_numero": {
+        "vide": "Serveur: Vous devez entrer votre numéro de téléphone",
+        "pattern": "Serveur: Assurez-vous d'entrer seulement sept chiffres sans espace."
+    },
+    "mdp": {
+        "vide": "Serveur: Vous devez entrer un mot de passe",
+        "pattern": "Serveur: Assurez-vous d'entrer un mot de passe valide."
+    },
+    "acceptation_reglements": {
+        "vide": "Serveur: Vous devez avoir lu et accepté les conditions du concours.",
+        "pattern": ""
+    }
+}
