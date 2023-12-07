@@ -48,3 +48,7 @@ function afficherSection3(){
     rectangle2_section3.classList.add('rectangleHorsService');
     rectangle3_section3.classList.add('rectangleRempli');
 }
+
+/*****************************************************************/
+/*****************************************************************/
+/*****************************************************************/
