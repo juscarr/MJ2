@@ -517,6 +517,12 @@ element {
   margin-right: 25px;
   cursor: pointer;
 }
+@media (min-width: 600px) {
+  .cercleGauche1:hover,
+  .cercleDroit1:hover {
+    background-color: rgba(200, 75, 54, 0.3);
+  }
+}
 
 .cercleGauche2,
 .cercleDroit2 {
@@ -531,6 +537,12 @@ element {
   margin-right: 25px;
   cursor: pointer;
 }
+@media (min-width: 600px) {
+  .cercleGauche2:hover,
+  .cercleDroit2:hover {
+    background-color: rgba(200, 75, 54, 0.3);
+  }
+}
 
 .cercleGauche3,
 .cercleDroit3 {
@@ -544,6 +556,12 @@ element {
   margin-left: 25px;
   margin-right: 25px;
   cursor: pointer;
+}
+@media (min-width: 600px) {
+  .cercleGauche3:hover,
+  .cercleDroit3:hover {
+    background-color: rgba(200, 75, 54, 0.3);
+  }
 }
 
 .flecheMobile {
@@ -818,6 +836,7 @@ element {
 .ul {
   list-style: none;
   margin-left: -40px;
+  margin-top: 66px;
 }
 
 .lien {
@@ -892,12 +911,30 @@ element {
   border-radius: 25px;
   padding: 3px;
   margin-bottom: 50px;
-  margin-left: 12px;
+  margin-left: 30px;
 }
 @media (min-width: 600px) {
   .panier {
     margin-left: 52em;
     margin-bottom: 10px;
+  }
+  .panier:hover {
+    background-color: rgb(200, 75, 54);
+  }
+}
+
+.numeroPanier {
+  background-color: white;
+  margin-left: 12.7em;
+  text-align: center;
+  border-radius: 5px;
+  width: 35px;
+}
+@media (min-width: 600px) {
+  .numeroPanier {
+    margin-left: 71.8em;
+    border-radius: 44px;
+    width: 45px;
   }
 }
 
@@ -908,6 +945,7 @@ element {
   border: solid 2px #C84B36;
   font-weight: bold;
   margin-top: 12em;
+  margin-left: 40px;
   background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
 }
 @media (min-width: 600px) {
@@ -929,13 +967,25 @@ element {
 
 /****************************/
 .p_numeroPanier {
-  margin-left: 13em;
-  margin-top: -7em;
+  margin-top: -7.5em;
+  padding: 8px;
 }
 @media (min-width: 600px) {
   .p_numeroPanier {
-    margin-left: 13em;
-    margin-top: -2em;
+    margin-top: -4em;
+    padding: 6px;
+  }
+}
+
+.animationPanier {
+  animation: scaleAnimation 0.5s infinite alternate; /* 2s de durée, en alternance, en continu */
+}
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(1); /* Taille normale */
+  }
+  100% {
+    transform: scale(1.2); /* Grossissement à 120% de la taille normale */
   }
 }
 
@@ -1004,40 +1054,77 @@ element {
 }
 
 .adresse {
-  width: 300px;
+  width: 280px;
   height: 35px;
   border-style: solid;
   border-color: #C84B36;
   border-radius: 5px;
+}
+@media (min-width: 600px) {
+  .adresse {
+    width: 300px;
+  }
 }
 
 /****************************/
 .rectangle {
   display: flex;
   justify-content: center;
-  gap: 76px;
+  gap: 2px;
   margin-bottom: 25px;
+}
+@media (min-width: 600px) {
+  .rectangle {
+    gap: 76px;
+  }
 }
 
 .etape1 {
-  width: 150px;
+  width: 100px;
   height: 50px;
   border-style: solid;
   border-color: #231F20;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+@media (min-width: 600px) {
+  .etape1 {
+    width: 150px;
+  }
 }
 
 .etape2 {
-  width: 150px;
+  width: 100px;
   height: 50px;
   border-style: solid;
   border-color: #231F20;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+@media (min-width: 600px) {
+  .etape2 {
+    width: 150px;
+  }
 }
 
 .etape3 {
-  width: 150px;
+  width: 100px;
   height: 50px;
   border-style: solid;
   border-color: #231F20;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+@media (min-width: 600px) {
+  .etape3 {
+    width: 150px;
+  }
 }
 
 .rectangleRempli {
@@ -1052,8 +1139,14 @@ element {
 .ligne-horizontale {
   border-top: 2px solid #000;
   margin-top: 25px;
-  margin-left: -112px;
-  width: 30em;
+  margin-left: 3px;
+  width: 15em;
+}
+@media (min-width: 600px) {
+  .ligne-horizontale {
+    margin-left: -112px;
+    width: 30em;
+  }
 }
 
 /****************************/

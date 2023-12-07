@@ -23,6 +23,9 @@ btnAjouter.addEventListener("click", () => {
 
 function synchron() {
     let quantiteLivre = document.getElementById('quantite').value;
+    if(numeroPanier.value <= 1){
+        numeroPanier.classList.add('animationPanier');
+    }
 
     fetch('http://localhost:8888/Rpni/MJ2/public/index.php?controleur=article&action=ajouter&id=' + idLivre + '&quantite=' + quantiteLivre)
 
@@ -32,5 +35,8 @@ function synchron() {
                 numeroPanier.innerText = JSON.stringify(json1.quantite);
             }
         )
+
+
+
 }
 

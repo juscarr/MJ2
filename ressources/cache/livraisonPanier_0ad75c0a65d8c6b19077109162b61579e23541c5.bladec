@@ -7,9 +7,9 @@
  <h2 class="h2_livraisonPanier">Adresse de livraison</h2>
 
  <div class="rectangle">
- <div class="etape1" id="etape1_section1"></div>
- <div class="etape2" id="etape2_section1"></div>
- <div class="etape3" id="etape3_section1"></div>
+ <div class="etape1" id="etape1_section1">Livraison</div>
+ <div class="etape2" id="etape2_section1">Facturation</div>
+ <div class="etape3" id="etape3_section1">Résumé</div>
  </div>
 
  <div class="cadre">
@@ -68,9 +68,9 @@
  <h2 class="h2_livraisonPanier">Adresse de facturation</h2>
 
  <div class="rectangle">
- <div class="etape1" id="etape1_section2"></div>
- <div class="etape2" id="etape2_section2"></div>
- <div class="etape3" id="etape3_section2"></div>
+ <div class="etape1" id="etape1_section2">Livraison</div>
+ <div class="etape2" id="etape2_section2">Facturation</div>
+ <div class="etape3" id="etape3_section2">Résumé</div>
  </div>
 
  <div class="cadre">
@@ -127,9 +127,9 @@
  <h2 class="h2_livraisonPanier">Résumé de la transaction</h2>
 
  <div class="rectangle">
- <div class="etape1" id="etape1_section3"></div>
- <div class="etape2" id="etape2_section3"></div>
- <div class="etape3" id="etape3_section3"></div>
+ <div class="etape1" id="etape1_section3">Livraison</div>
+ <div class="etape2" id="etape2_section3">Facturation</div>
+ <div class="etape3" id="etape3_section3">Résumé</div>
  </div>
 
  <div class="cadre">

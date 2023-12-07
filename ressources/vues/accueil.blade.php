@@ -35,7 +35,7 @@
                         @endphp
 
                         @if (file_exists($imagePath))
-                            <img class="item_image" src="{{ $imagePath }}" alt="">
+                            <img class="item_image" src="{{ $imagePath }}" alt="Image du livre correspondant">
                         @else
                         <!-- Image de remplacement à afficher si l'image n'existe pas -->
                             <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
@@ -86,7 +86,7 @@
                         @endphp
 
                         @if (file_exists($imagePath))
-                            <img class="item_image" src="{{ $imagePath }}" alt="">
+                            <img class="item_image" src="{{ $imagePath }}" alt="Image du livre correspondant">
                         @else
                         <!-- Image de remplacement à afficher si l'image n'existe pas -->
                             <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
@@ -134,7 +134,7 @@
                         @endphp
 
                         @if (file_exists($imagePath))
-                            <img class="item_image" src="{{ $imagePath }}" alt="">
+                            <img class="item_image" src="{{ $imagePath }}" alt="Image du livre correspondant">
                         @else
                         <!-- Image de remplacement à afficher si l'image n'existe pas -->
                             <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
