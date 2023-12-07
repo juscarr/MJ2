@@ -1,7 +1,7 @@
 @extends('gabarit')
 
 @section('contenu')
-    <script defer src="liaisons/js/panier.js"></script>
+    <script defer src="liaisons/js/facturation.js"></script>
 
     <div class="section1" id="section1">
         <h2 class="h2_livraisonPanier">Adresse de livraison</h2>
