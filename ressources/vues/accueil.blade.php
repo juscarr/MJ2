@@ -4,7 +4,6 @@
 
     <link rel="stylesheet" href="../public/liaisons/css/styles.css">
     <script defer src="../public/liaisons/js/visionneuse.js"></script>
-    <!-- Importer les infos de la base de donnée en mode aléatoire (Nom / Date / Photo / Description) -->
     {{$cpt = rand(0, count($evenements))}}
     <h1 class="h1_accueil">{{ $evenements[$cpt]->getTitre() }}</h1>
     <p class="date_evenement">{{ $evenements[$cpt]->getDate() }}</p>
@@ -29,19 +28,18 @@
 
                         <a class="accueil-item" href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
-                        @php
-                            $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
-                        @endphp
+                            @php
+                                $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
+                            @endphp
 
-                        @if (file_exists($imagePath))
-                            <img class="item_image" src="{{ $imagePath }}" alt="">
-                        @else
-                        <!-- Image de remplacement à afficher si l'image n'existe pas -->
-                            <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
-                        @endif
+                            @if (file_exists($imagePath))
+                                <img class="item_image" src="{{ $imagePath }}" alt="">
+                            @else
+                                <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
+                            @endif
 
 
-                        <h3 class="h3">{{$livre->getTitre()}}</h3>
+                            <h3 class="h3">{{$livre->getTitre()}}</h3>
                         </a>
                         <p class="auteur">@foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
                                 {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
@@ -67,32 +65,30 @@
 
     <h2 class="h2 h2_section2">Bandes Dessinées</h2>
     <div class="prix_recu">
-        <!-- Importer les infos de la base de donnée en mode aléatoire (Titre de livre / Nom auteur / Catégorie / Prix en cad) -->
 
         <ul class="itemCacheEnMobile">
             @foreach($livres as $livre)
-{{--                @if($livre->getDateParutionQuebec() > $aujourdhui && $livre->getDateParutionQuebec() < $aparaitre)--}}
+
                 @if($livre->getCategorieId() === 1)
-{{--                    <div class="container-type--vignette  container-type">À paraître</div>--}}
+
 
                     <li class="item_li2" hidden>
-{{--                        <div class="container-type--vignette  container-type">À paraitre</div>--}}
+
 
                         <a class="accueil-item" href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
-                        @php
-                            $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
-                        @endphp
+                            @php
+                                $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
+                            @endphp
 
-                        @if (file_exists($imagePath))
-                            <img class="item_image" src="{{ $imagePath }}" alt="">
-                        @else
-                        <!-- Image de remplacement à afficher si l'image n'existe pas -->
-                            <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
-                        @endif
+                            @if (file_exists($imagePath))
+                                <img class="item_image" src="{{ $imagePath }}" alt="">
+                            @else
+                                <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
+                            @endif
 
 
-                        <h3 class="h3">{{$livre->getTitre()}}</h3>
+                            <h3 class="h3">{{$livre->getTitre()}}</h3>
                         </a>
 
                         <p class="auteur">@foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
@@ -118,7 +114,6 @@
     <h2 class="h2 h2_section3">BD Jeunesse</h2>
     <div class="livres_recommandes">
 
-        <!-- Importer les infos de la base de donnée en mode aléatoire (Titre de livre / Nom auteur / Catégorie / Prix en cad) -->
 
         <ul class="itemCacheEnMobile">
             @foreach($livres as $livre)
@@ -128,19 +123,19 @@
 
                         <a class="accueil-item" href="index.php?controleur=livre&action=fiche&id={{$livre->getId()}}">
 
-                        @php
-                            $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
-                        @endphp
+                            @php
+                                $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
+                            @endphp
 
-                        @if (file_exists($imagePath))
-                            <img class="item_image" src="{{ $imagePath }}" alt="">
-                        @else
-                        <!-- Image de remplacement à afficher si l'image n'existe pas -->
-                            <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
-                        @endif
+                            @if (file_exists($imagePath))
+                                <img class="item_image" src="{{ $imagePath }}" alt="">
+                            @else
+                            <!-- Image de remplacement à afficher si l'image n'existe pas -->
+                                <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
+                            @endif
 
 
-                        <h3 class="h3">{{$livre->getTitre()}}</h3>
+                            <h3 class="h3">{{$livre->getTitre()}}</h3>
                         </a>
 
                         <p class="auteur">@foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
