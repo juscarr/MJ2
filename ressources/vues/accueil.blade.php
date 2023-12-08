@@ -17,7 +17,6 @@
 
     <h2 class="h2 h2_section1">Nouveautés</h2>
     <div class="nouveautes">
-        <!-- Importer les infos de la base de donnée en mode aléatoire (Titre de livre / Nom auteur / Catégorie / Prix en cad) -->
         <ul class="itemCacheEnMobile">
 
             @foreach($livres as $livre)
@@ -35,7 +34,7 @@
                         @endphp
 
                         @if (file_exists($imagePath))
-                            <img class="item_image" src="{{ $imagePath }}" alt="Image du livre correspondant">
+                            <img class="item_image" src="{{ $imagePath }}" alt="">
                         @else
                         <!-- Image de remplacement à afficher si l'image n'existe pas -->
                             <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
@@ -86,7 +85,7 @@
                         @endphp
 
                         @if (file_exists($imagePath))
-                            <img class="item_image" src="{{ $imagePath }}" alt="Image du livre correspondant">
+                            <img class="item_image" src="{{ $imagePath }}" alt="">
                         @else
                         <!-- Image de remplacement à afficher si l'image n'existe pas -->
                             <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
@@ -134,7 +133,7 @@
                         @endphp
 
                         @if (file_exists($imagePath))
-                            <img class="item_image" src="{{ $imagePath }}" alt="Image du livre correspondant">
+                            <img class="item_image" src="{{ $imagePath }}" alt="">
                         @else
                         <!-- Image de remplacement à afficher si l'image n'existe pas -->
                             <img class="item_image" src="https://placehold.co/210x340" alt="Image Placeholder">
