@@ -55,6 +55,7 @@ class Actualite
         return $this->lien_instagram;
     }
 
+
     /* Méthode STATIC */
     public static function trouverTout() {
         // Définir la chaine SQL
