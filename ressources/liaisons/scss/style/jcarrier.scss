@@ -1,4 +1,11 @@
+//** CSS titre **//
+
+.catalogue-h1 {
+  text-align: center;
+}
+
 //** CSS des filtres + liste **//
+
 
 .catalogue {
   @media(min-width: 600px) {
@@ -198,6 +205,13 @@
 
 }
 
+.item-liste .item-prix {
+  display: none;
+  @media(min-width: 400px) {
+    display: block;
+  }
+}
+
 .item-prix {
   font-weight: bold;
   margin: {
@@ -217,6 +231,7 @@
 
 .fil-arianne {
   text-align: left;
+  margin-left: 20px;
 }
 
 .fil-arianne--lien {

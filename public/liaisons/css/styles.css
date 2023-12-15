@@ -1022,6 +1022,10 @@ element {
 }
 
 /** Style jcarrier **/
+.catalogue-h1 {
+  text-align: center;
+}
+
 @media (min-width: 600px) {
   .catalogue {
     display: flex;
@@ -1166,6 +1170,15 @@ element {
   color: #C84B36;
 }
 
+.item-liste .item-prix {
+  display: none;
+}
+@media (min-width: 400px) {
+  .item-liste .item-prix {
+    display: block;
+  }
+}
+
 .item-prix {
   font-weight: bold;
   margin-top: 5px;
@@ -1180,6 +1193,7 @@ element {
 /** CSS du fil arianne (à mettre en global) **/
 .fil-arianne {
   text-align: left;
+  margin-left: 20px;
 }
 
 .fil-arianne--lien {

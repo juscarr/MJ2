@@ -16,7 +16,10 @@ class ControleurCompte
 
     public function connexion(): void
     {
-        echo App::getBlade()->run("comptes.identifier");
+        $tValidation = $_SESSION['tValidation'];
+
+        $tDonnees = ["tValidation" => $tValidation];
+        echo App::getBlade()->run("comptes.identifier", $tDonnees);
     }
 
     public function nouveau(): void
@@ -70,6 +73,36 @@ class ControleurCompte
 
         if (Validation::$erreur) {
             header('Location:index.php?controleur=compte&action=nouveau');
+        } else {
+            header('Location:index.php?controleur=site');
+        }
+        exit;
+
+    }
+
+    public function connecter(): void
+    {
+        $tValidation = array();
+
+        $_SESSION['tValidation'] = $tValidation;
+
+
+        // Autre
+
+        $courriel = $_POST["courriel"];
+        $mdp = $_POST["mdp"];
+
+
+        $courrielValidation = Validation::validerChampAutre($courriel, "courriel");
+        $mdpValidation = Validation::validerChampAutre($mdp, "mdp");
+
+
+        $tValidation = ["Courriel" => $courrielValidation, "Mdp" => $mdpValidation];
+        $_SESSION['tValidation'] = $tValidation;
+
+
+        if (Validation::$erreur) {
+            header('Location:index.php?controleur=compte&action=connexion');
         } else {
             header('Location:index.php?controleur=site');
         }

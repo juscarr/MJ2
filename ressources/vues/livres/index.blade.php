@@ -7,14 +7,14 @@
         <div class="content">
             <div class="fil-arianne"> @foreach($filAriane as $lien)
                     @if(isset($lien["lien"]))
-                        <a class="fil-arianne--lien" href="{{$lien["lien"]}}">{{$lien["titre"]}}</a>
+                        <a class="fil-arianne--lien" href="{{$lien["lien"]}}"><p>{{$lien["titre"]}}</p></a>
                         <span> | </span>
                     @else
                         <p class="fil-arianne--titre">{{$lien["titre"]}}</p>
                     @endif
                 @endforeach
             </div>
-            <h1>Catalogue</h1>
+            <h1 class="catalogue-h1">Catalogue</h1>
             <div class="catalogue">
                 <div class="catalogue-filtre">
                     <div class="filtre-disposition">
@@ -137,7 +137,8 @@
                             <p class="item-auteur">
 
                                 @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
-                                    <a class="item-auteur-titre" href="index.php?controleur=auteur&action=fiche&id={{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getId()}}">
+                                    <a class="item-auteur-titre"
+                                       href="index.php?controleur=auteur&action=fiche&id={{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getId()}}">
                                         {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
                                     </a>
                                 @endforeach

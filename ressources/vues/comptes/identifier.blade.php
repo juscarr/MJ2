@@ -18,7 +18,7 @@
                     <input class="mdp-element" type="password">
                 </div>
             </div>
-            <button>Créer un compte</button>
+            <button type="submit">Se connecter</button>
         </fieldset>
     </form>
 @endsection
