@@ -26,6 +26,8 @@ class ControleurSite
         $date2024 = date('Y-m-d', strtotime('+1 year'));
         $aujourdhui = date('Y-m-d');
 
+        $tableauEvenement = [1,2,3,4,5,6,7,8,9];
+
         $tDonnees = array("livres"=>$livres, "actualites"=>$actualites, "evenements"=>$evenements, "nouveau" => $date2022, "aparaitre" => $date2024, "aujourdhui" => $aujourdhui);
 
         echo App::getBlade()->run("accueil", $tDonnees);

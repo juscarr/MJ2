@@ -1,4 +1,3 @@
-/*****************************************************************/
 
 let btnPoursuivre_1 = document.getElementById('btn_principal_livraisonPanier--section1');
 
@@ -20,8 +19,6 @@ let rectangle3_section3 = document.getElementById('etape3_section3');
 
 rectangle1_section1.classList.add('rectangleRempli');
 
-/******************************************************/
-
 function afficherSection2(){
     section1.style.display = "none";
     section2.style.display = "block";
@@ -30,10 +27,6 @@ function afficherSection2(){
     rectangle1_section2.classList.add('rectangleHorsService');
     rectangle2_section2.classList.add('rectangleRempli');
 }
-
-/*****************************************************************/
-/*****************************************************************/
-/*****************************************************************/
 
 let btnPoursuivre_2 = document.getElementById('btn_principal_livraisonPanier--section2');
 
@@ -49,6 +42,3 @@ function afficherSection3(){
     rectangle3_section3.classList.add('rectangleRempli');
 }
 
-/*****************************************************************/
-/*****************************************************************/
-/*****************************************************************/

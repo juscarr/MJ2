@@ -18,9 +18,11 @@
  <input class="mdp-element" type="password">
  </div>
  </div>
+ <button type="submit">Se connecter</button>
  <div class="btn_container">
  <button class="btn-connexion">Connexion</button>
  </div>
+
  </fieldset>
  </form>
 </section>

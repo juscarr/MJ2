@@ -4,7 +4,7 @@
 
     <link rel="stylesheet" href="../public/liaisons/css/styles.css">
     <script defer src="../public/liaisons/js/visionneuse.js"></script>
-    {{$cpt = rand(0, count($evenements))}}
+    {{$cpt = rand(0, count($evenements)-1)}}
     <h1 class="h1_accueil">{{ $evenements[$cpt]->getTitre() }}</h1>
     <p class="date_evenement">{{ $evenements[$cpt]->getDate() }}</p>
 

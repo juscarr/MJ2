@@ -9,7 +9,7 @@ for (i = 0; i < categories.length; i++) {
 let numeroPanier = document.getElementById('p_numeroPanier');
 
 
-fetch('http://localhost:8888/Rpni/MJ2/public/index.php?controleur=panier&action=compter')
+fetch('https://timunix3.csfoy.ca/~mj2/public/index.php?controleur=panier&action=compter')
     .then(response => response.json())
     .then(json1 => {
             numeroPanier.innerText = JSON.stringify(json1.quantite);

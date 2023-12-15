@@ -69,6 +69,7 @@ flecheGauche3.addEventListener('click', changerImagePrecedent3);
 
 /*****************************************************************/
 changerImageSuivant();
+
 /*****************************************************************/
 
 
@@ -84,7 +85,13 @@ function changerImageSuivant() {
 
         flecheGauche1.classList.remove('flecheNonFonctionnel');
         flecheGauche1.addEventListener('click', changerImagePrecedent);
+        console.log(index)
 
+        if (index === 4) {
+
+            flecheDroite1.classList.add('flecheNonFonctionnel');
+            flecheDroite1.removeEventListener('click', changerImageSuivant);
+        }
     } else {
         listeLivre[index].hidden = true;
         index++;
@@ -92,6 +99,8 @@ function changerImageSuivant() {
         flecheGauche1.classList.remove('flecheNonFonctionnel');
         flecheGauche1.addEventListener('click', changerImagePrecedent);
     }
+
+
 }
 
 function changerImagePrecedent() {
@@ -106,9 +115,12 @@ function changerImagePrecedent() {
 
         console.log(index);
 
-        if (index === 1){
+        if (index === 1) {
             flecheGauche1.classList.add('flecheNonFonctionnel');
             flecheGauche1.removeEventListener('click', changerImagePrecedent);
+        } else {
+            flecheGauche1.classList.remove('flecheNonFonctionnel');
+            flecheGauche1.addEventListener('click', changerImagePrecedent);
         }
 
     } else {
@@ -116,7 +128,7 @@ function changerImagePrecedent() {
         index--;
         listeLivre[index].hidden = false;
 
-        if (index === 0){
+        if (index === 0) {
             flecheGauche1.classList.add('flecheNonFonctionnel');
             flecheGauche1.removeEventListener('click', changerImagePrecedent);
         }
@@ -126,11 +138,13 @@ function changerImagePrecedent() {
 /*********************************************************************/
 function changerImageSuivant2() {
     if (large) {
-        console.log(large)
+
         listeLivre2[index2 - 1].hidden = true;
         listeLivre2[index2].hidden = true;
         listeLivre2[index2 + 1].hidden = true;
+
         index2++
+
         listeLivre2[index2 - 1].hidden = false;
         listeLivre2[index2].hidden = false;
         listeLivre2[index2 + 1].hidden = false;
@@ -157,11 +171,12 @@ function changerImagePrecedent2() {
         listeLivre2[index2].hidden = false;
         listeLivre2[index2 + 1].hidden = false;
 
-        console.log(index2);
-
-        if (index2 === 1){
+        if (index2 === 1) {
             flecheGauche2.classList.add('flecheNonFonctionnel');
             flecheGauche2.removeEventListener('click', changerImagePrecedent2);
+        } else {
+            flecheGauche2.classList.remove('flecheNonFonctionnel');
+            flecheGauche2.addEventListener('click', changerImagePrecedent2);
         }
 
     } else {
@@ -169,10 +184,6 @@ function changerImagePrecedent2() {
         index2--;
         listeLivre2[index2].hidden = false;
 
-        if (index2 === 0){
-            flecheGauche2.classList.add('flecheNonFonctionnel');
-            flecheGauche2.removeEventListener('click', changerImagePrecedent2);
-        }
     }
 }
 
@@ -180,11 +191,12 @@ function changerImagePrecedent2() {
 /*********************************************************************/
 function changerImageSuivant3() {
     if (large) {
-        console.log(large)
         listeLivre3[index3 - 1].hidden = true;
         listeLivre3[index3].hidden = true;
         listeLivre3[index3 + 1].hidden = true;
+
         index3++
+
         listeLivre3[index3 - 1].hidden = false;
         listeLivre3[index3].hidden = false;
         listeLivre3[index3 + 1].hidden = false;
@@ -194,7 +206,9 @@ function changerImageSuivant3() {
 
     } else {
         listeLivre3[index3].hidden = true;
+
         index3++;
+
         listeLivre3[index3].hidden = false;
         flecheGauche3.classList.remove('flecheNonFonctionnel');
         flecheGauche3.addEventListener('click', changerImagePrecedent3);
@@ -212,7 +226,7 @@ function changerImagePrecedent3() {
         listeLivre3[index3 + 1].hidden = false;
 
 
-        if (index3 === 1){
+        if (index3 === 1) {
             flecheGauche3.classList.add('flecheNonFonctionnel');
             flecheGauche3.removeEventListener('click', changerImagePrecedent3);
         }
@@ -222,7 +236,7 @@ function changerImagePrecedent3() {
         index3--;
         listeLivre3[index3].hidden = false;
 
-        if (index3 === 0){
+        if (index3 === 0) {
             flecheGauche3.classList.add('flecheNonFonctionnel');
             flecheGauche3.removeEventListener('click', changerImagePrecedent3);
         }

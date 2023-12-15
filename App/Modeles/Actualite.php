@@ -14,7 +14,7 @@ class Actualite
 {
     private int $id = 0;
     private string $titre = '';
-    private string $l_activite = '';
+    private string $l_actualite = '';
     private string $date = '0000-00-00';
     private string $lien_facebook = '';
     private string $lien_instagram = '';
@@ -37,7 +37,7 @@ class Actualite
 
     public function getl_actualite(): string
     {
-        return $this->l_activite;
+        return $this->l_actualite;
     }
 
     public function getDate(): string

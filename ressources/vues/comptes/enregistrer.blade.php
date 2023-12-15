@@ -8,7 +8,7 @@
 
     <form class="connection-form" method="POST" action="index.php?controleur=compte&action=inserer">
         <fieldset class="connection-fieldset">
-            <p><label for="prenom" class="screen-reader-only">Prénom</label>
+            <p><label for="prenom">Prénom</label>
                 <input value="@isset($tValidation['Prenom']['valeur']) {{$tValidation['Prenom']['valeur']}} @endisset"
                        type="text"
                        name="prenom" id="prenom"
@@ -27,7 +27,7 @@
             </p>
 
             <!-- Nom ---------------------->
-            <p><label for="nom" class="screen-reader-only">Nom</label>
+            <p><label for="nom">Nom</label>
                 <input @isset($tValidation['Nom']['valeur'])
                        value="{{ $tValidation['Nom']['valeur'] }}"
                        @endisset
