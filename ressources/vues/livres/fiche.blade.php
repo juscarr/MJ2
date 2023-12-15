@@ -8,11 +8,9 @@
                 @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
                     {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
                 @endforeach</p></h2>
-<<<<<<< HEAD
-        <p><strong>{{$livre->getPrixCan()}} </strong>|| {{$livre->getPagination()}} pages</p>
-=======
+
         <p><strong>{{$livre->getPrixCan()}} </strong>{{$livre->getPagination()}} pages</p>
->>>>>>> b5ab802ada2973b3b12abbe391a58ba8d6b6eb20
+
         <p><strong>{{$livre->getAgeMin()}} ans et plus</strong></p>
     </div>
     {{$livre->getId()}}
@@ -37,13 +35,9 @@
 
     </div>
     <div class="description" id="descriptionContenu">
-<<<<<<< HEAD
-        <p>{!!$livre->getLeLivre()!!}</p>
-        <a class="voir_plus" href="#" onclick="afficherDescription()">Voir plus</a>
-=======
         <p>{!! $livre->getLeLivre() !!}</p>
         <a class="voir_plus" href="javascript:void(0);" onclick="afficherDescription()">Voir plus</a>
->>>>>>> b5ab802ada2973b3b12abbe391a58ba8d6b6eb20
+
     </div>
     <div class="boutons-large_container">
         <div class="boutons-large">
@@ -57,16 +51,10 @@
                 <label for="quantite">Quantite : </label>
                 <input class="input_quantite" id="quantite" name="quantite" type="number">
             </div>
-            <legend>Choisir la quantité</legend>
-            <div class="quantite_container">
-                <button type="button" title="Down" class="sub">Down</button>
-                <input type="number" name="quantity" pattern="[0-9]+">
-                <button type="button" title="Up" class="add">Up</button>
-            </div>
         </div>
     </div>
 
-    <h3>Format</h3>
+    <h3 class="format">Format</h3>
     <div class="formats">
         <button class="un-format space">Audio</button>
         <button class="un-format">PDF</button>
