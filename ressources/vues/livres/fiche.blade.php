@@ -8,16 +8,17 @@
                 @foreach ($livre->getAuteurAssociee($livre->getId()) as $livreAssocAuteur)
                     {{$livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getPrenom() . " " . $livreAssocAuteur->getAuteurAssoc($livreAssocAuteur->getIdAuteur())->getNom()}}
                 @endforeach</p></h2>
-<<<<<<< HEAD
         <p><strong>{{$livre->getPrixCan()}} </strong>|| {{$livre->getPagination()}} pages</p>
-=======
-        <p><strong>{{$livre->getPrixCan()}} </strong>{{$livre->getPagination()}} pages</p>
->>>>>>> b5ab802ada2973b3b12abbe391a58ba8d6b6eb20
         <p><strong>{{$livre->getAgeMin()}} ans et plus</strong></p>
+        <div class="description-large" id="descriptionContenu">
+            <p>{!!$livre->getLeLivre()!!}</p>
+            <a class="voir_plus" href="#" onclick="afficherDescription()">Voir plus</a>
+        </div>
     </div>
     {{$livre->getId()}}
 
     <div class="article">
+
         @php
             $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
         @endphp
@@ -34,36 +35,44 @@
             </form>
             <button class="btn_secondaire">Ajouter aux souhaits</button>
         </div>
+        <div class="boutons-large_container">
+            <div class="boutons-large">
+                <button class="btn_principal" id="btn_principal2">Ajouter au panier</button>
+                <input id="idLivre" value="{{$livre->getId()}}" hidden>
+                <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
+            </div>
 
     </div>
     <div class="description" id="descriptionContenu">
-<<<<<<< HEAD
         <p>{!!$livre->getLeLivre()!!}</p>
         <a class="voir_plus" href="#" onclick="afficherDescription()">Voir plus</a>
-=======
-        <p>{!! $livre->getLeLivre() !!}</p>
-        <a class="voir_plus" href="javascript:void(0);" onclick="afficherDescription()">Voir plus</a>
->>>>>>> b5ab802ada2973b3b12abbe391a58ba8d6b6eb20
     </div>
-    <div class="boutons-large_container">
-        <div class="boutons-large">
 
-            <button class="btn_principal" id="btn_principal2">Ajouter au panier</button>
 
-            <input id="idLivre" value="{{$livre->getId()}}" hidden>
-
-            <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
-            <div class="container_quantite">
-                <label for="quantite">Quantite : </label>
-                <input class="input_quantite" id="quantite" name="quantite" type="number">
+            <div class="counter">
+                <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                <input type="text" name="quantite" value="1">
+                <span class="up"  onClick='increaseCount(event, this)'>+</span>
             </div>
-            <legend>Choisir la quantité</legend>
-            <div class="quantite_container">
-                <button type="button" title="Down" class="sub">Down</button>
-                <input type="number" name="quantity" pattern="[0-9]+">
-                <button type="button" title="Up" class="add">Up</button>
-            </div>
-        </div>
+
+            <script type="text/javascript">
+                function increaseCount(a, b) {
+                    var input = b.previousElementSibling;
+                    var value = parseInt(input.value, 10);
+                    value = isNaN(value)? 0 : value;
+                    value ++;
+                    input.value = value;
+                }
+                function decreaseCount(a, b) {
+                    var input = b.nextElementSibling;
+                    var value = parseInt(input.value, 10);
+                    if (value > 1) {
+                        value = isNaN(value)? 0 : value;
+                        value --;
+                        input.value = value;
+                    }
+                }
+            </script>
     </div>
 
     <h3>Format</h3>
@@ -80,18 +89,5 @@
         <a class="precedent" href="">Livre précédent</a>
         <a class="suivant" href="">Livre suivant</a>
     </div>
-    <script defer src="liaisons/js/panier.js"></script>
 
-    <script defer src="public/liaisons/js/panier.js">
-        // Si la description est actuellement tronquée, alors afficher tout
-        if (descriptionContenu.classList.contains("tronquee")) {
-            descriptionContenu.classList.remove("tronquee");
-            voirPlusLink.innerHTML = "Voir plus";
-        } else {
-            // Sinon, tronquer la description et ajouter "Voir plus"
-            descriptionContenu.classList.add("tronquee");
-            voirPlusLink.innerHTML = "Voir moins";
-        }
-
-    </script>
 @endsection

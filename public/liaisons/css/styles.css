@@ -1644,9 +1644,17 @@ input[type=radio].radio:checked + label {
 
 @media screen and (min-width: 600px) {
   .description {
-    float: right;
-    width: 50%;
-    text-align: left;
+    display: none;
+  }
+}
+.description-large {
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
+  .description-large {
+    display: flex;
+    flex-direction: column;
   }
 }
 .boutons {
@@ -1666,11 +1674,23 @@ input[type=radio].radio:checked + label {
   .boutons-large {
     display: inline-block;
     white-space: nowrap;
-    margin-left: 10%;
+    margin-left: 0%;
   }
   .boutons-large_container {
-    padding-top: 320px;
+    padding-top: 2%;
     margin-right: 10%;
+  }
+}
+@media screen and (max-width: 1120px) {
+  .boutons-large {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width: 600px) {
+  .boutons-large {
+    display: none;
   }
 }
 .boutons button {
@@ -1730,6 +1750,47 @@ input[type=radio].radio:checked + label {
   width: 10%;
   padding: 8px;
   color: #C84B36;
+}
+
+.counter {
+  width: 150px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter input {
+  width: 50px;
+  border: 0;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  background: #fff;
+  color: #000;
+  appearance: none;
+  outline: 0;
+}
+
+.counter span {
+  display: block;
+  font-size: 25px;
+  padding: 0 10px;
+  cursor: pointer;
+  color: #ffffff;
+  background: #C84B36;
+  user-select: none;
+  width: 20px;
+}
+
+.down {
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.up {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 /*# sourceMappingURL=styles.css.map */

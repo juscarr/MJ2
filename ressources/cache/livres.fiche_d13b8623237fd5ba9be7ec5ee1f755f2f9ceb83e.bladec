@@ -12,11 +12,16 @@
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?></p></h2>
  <p><strong><?php echo \htmlentities($livre->getPrixCan()??'', ENT_QUOTES, 'UTF-8', false); ?> </strong>|| <?php echo \htmlentities($livre->getPagination()??'', ENT_QUOTES, 'UTF-8', false); ?> pages</p>
  <p><strong><?php echo \htmlentities($livre->getAgeMin()??'', ENT_QUOTES, 'UTF-8', false); ?> ans et plus</strong></p>
+ <div class="description-large" id="descriptionContenu">
+ <p><?php echo $livre->getLeLivre(); ?></p>
+ <a class="voir_plus" href="#" onclick="afficherDescription()">Voir plus</a>
+ </div>
  </div>
  <?php echo \htmlentities($livre->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>
 
 
  <div class="article">
+
  <?php 
  $imagePath = "../images/img_couvert_livres/{$livre->getCategorieId()}/{$livre->getIsbnPapier()}.jpg";
  ?>
@@ -33,31 +38,44 @@
  </form>
  <button class="btn_secondaire">Ajouter aux souhaits</button>
  </div>
+ <div class="boutons-large_container">
+ <div class="boutons-large">
+ <button class="btn_principal" id="btn_principal2">Ajouter au panier</button>
+ <input id="idLivre" value="<?php echo \htmlentities($livre->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>" hidden>
+ <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
+ </div>
 
  </div>
  <div class="description" id="descriptionContenu">
  <p><?php echo $livre->getLeLivre(); ?></p>
  <a class="voir_plus" href="#" onclick="afficherDescription()">Voir plus</a>
  </div>
- <div class="boutons-large_container">
- <div class="boutons-large">
 
- <button class="btn_principal" id="btn_principal2">Ajouter au panier</button>
 
- <input id="idLivre" value="<?php echo \htmlentities($livre->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>" hidden>
+ <div class="counter">
+ <span class="down" onClick='decreaseCount(event, this)'>-</span>
+ <input type="text" name="quantite" value="1">
+ <span class="up"  onClick='increaseCount(event, this)'>+</span>
+ </div>
 
- <button class="btn_secondaire" id="btn_secondaire">Ajouter aux souhaits</button>
- <div class="container_quantite">
- <label for="quantite">Quantite : </label>
- <input class="input_quantite" id="quantite" name="quantite" type="number">
- </div>
- <legend>Choisir la quantité</legend>
- <div class="quantite_container">
- <button type="button" title="Down" class="sub">Down</button>
- <input type="number" name="quantity" pattern="[0-9]+">
- <button type="button" title="Up" class="add">Up</button>
- </div>
- </div>
+ <script type="text/javascript">
+ function increaseCount(a, b) {
+ var input = b.previousElementSibling;
+ var value = parseInt(input.value, 10);
+ value = isNaN(value)? 0 : value;
+ value ++;
+ input.value = value;
+ }
+ function decreaseCount(a, b) {
+ var input = b.nextElementSibling;
+ var value = parseInt(input.value, 10);
+ if (value > 1) {
+ value = isNaN(value)? 0 : value;
+ value --;
+ input.value = value;
+ }
+ }
+ </script>
  </div>
 
  <h3>Format</h3>
@@ -74,20 +92,7 @@
  <a class="precedent" href="">Livre précédent</a>
  <a class="suivant" href="">Livre suivant</a>
  </div>
- <script defer src="liaisons/js/panier.js"></script>
 
- <script defer src="public/liaisons/js/panier.js">
- // Si la description est actuellement tronquée, alors afficher tout
- if (descriptionContenu.classList.contains("tronquee")) {
- descriptionContenu.classList.remove("tronquee");
- voirPlusLink.innerHTML = "Voir plus";
- } else {
- // Sinon, tronquer la description et ajouter "Voir plus"
- descriptionContenu.classList.add("tronquee");
- voirPlusLink.innerHTML = "Voir moins";
- }
-
- </script>
 <?php $this->stopSection(); ?>
 
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('gabarit'); } ?>
