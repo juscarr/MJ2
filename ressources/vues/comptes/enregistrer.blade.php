@@ -2,6 +2,7 @@
 
 @section('contenu')
     <link rel="stylesheet" href="../public/liaisons/css/modules/connexion.css">
+    <section class="page_creation">
     <h1>Créez un nouveau compte</h1>
     <legend>Vous avez déja un compte? <a href="index.php?controleur=compte&action=connexion">Connectez-vous</a></legend>
 

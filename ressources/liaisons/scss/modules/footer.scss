@@ -10,7 +10,7 @@ footer {
 
 @media screen and (min-width: 600px) {
   .logo {
-    max-width: 20%;
+    max-width: 100%;
   }
 }
 
@@ -27,13 +27,21 @@ footer {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-right: 15%;
 }
 
 @media screen and (min-width: 600px) {
   .liens_container {
     position: absolute;
-    margin-left: 70%;
+    margin-left: 60%;
+    margin-top: 10%;
   }
+}
+
+.parent_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .lien_footer {
@@ -56,6 +64,10 @@ footer {
   }
 }
 
+.adresse_footer{
+  font-weight: bold;
+}
+
 .heure-ouverture_container {
   display: flex;
   align-items: center;
@@ -67,15 +79,6 @@ footer {
   .heure-ouverture_container {
     display: inline-block;
     float: right;
-  }
-}
-
-@media (min-width: 600px) {
-  .adresse-heure_container {
-    position: absolute;
-    margin-left: 38%;
-    margin-top: -170px;
-
   }
 }
 
@@ -91,7 +94,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 15%;
+    margin-left: 5%;
 
   }
 }
@@ -115,6 +118,12 @@ footer {
   flex-direction: column;
   color: white;
 }
+@media (min-width: 600px) {
+  .bas-page {
+    margin-top: 5%;
+  }
+}
+
 
 @media (min-width: 600px) {
   .ligne {
@@ -125,5 +134,37 @@ footer {
 @media (min-width: 600px) {
   hr {
     display: none;
+  }
+}
+
+@media (max-width: 1188px) {
+  .container_bas-footer{
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (min-width: 600px) {
+  .container_bas-footer{
+    margin-top: 15%;
+  }
+}
+@media (max-width: 1188px) {
+  .adresse-heure_container{
+    display: flex;
+    flex-direction: row;
+  }
+}
+@media (max-width: 600px) {
+  .adresse-heure_container{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 600px) {
+  .texte_footer{
+    margin: 1%;
   }
 }

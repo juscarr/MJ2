@@ -1,6 +1,7 @@
 <footer>
+ <div class="parent_container">
  <div class="logo_container">
- <img class="logo" src="images/image%203.png">
+ <img class="logo" src="../images/logo_LaPasteque/logo.png">
  </div>
  <div class="liens_container">
  <p><a class="lien_footer" href="">Tous les livres</a></p>
@@ -8,9 +9,14 @@
  <p><a class="lien_footer" href="">Autres</a></p>
  <p><a class="lien_footer" href="">Contacts</a></p>
  </div>
+ </div>
  <br>
+ <div class="container_bas-footer">
+ <div class="adresse-heure_container">
  <div class="adresse_container">
- <p class="adresse"><strong>Adresse</strong></p>
+ <p class="adresse_footer">
+ <sg>Adresse</strong>
+ </p>
  <p class="adresse-num ligne">102 avenue Laurier Ouest</p>
  <p class="adresse-ville">Montréal, H2T 2N7</p>
  </div>
@@ -21,6 +27,7 @@
  <p><strong>10h - 17h</strong></p>
  <p class="ligne">Lundi, Mardi et Dimanche:</p>
  <p><strong>Fermé</strong></p>
+ </div>
  </div>
  <hr>
  <div class="fondateurs_container">
@@ -39,10 +46,11 @@
  </div>
  </div>
  </div>
+ </div>
  <br>
  <div class="bas-page">
- <p>info@lapasteque.com</p>
- <p><small>&copy;2023 Technique d’Intégration Multimédia</small></p>
+ <p class="texte_footer">info@lapasteque.com</p>
+ <p class="texte_footer"><small>&copy;2023 Technique d’Intégration Multimédia</small></p>
  </div>
 
 
